@@ -1,0 +1,308 @@
+---
+title             : "Is partner choice related to prosociality? A cross-national investigation"
+shorttitle        : "Partner choice and prosociality"
+
+author: 
+  - name          : "Scott Claessens"
+    affiliation   : "1"
+    corresponding : yes
+    address       : "Floor 2, Building 302, 23 Symonds Street, Auckland, 1010, New Zealand"
+    email         : "scott.claessens@gmail.com"
+  - name          : "Thanos Kyritsis"
+    affiliation   : "1"
+
+affiliation:
+  - id            : "1"
+    institution   : "School of Psychology, University of Auckland, Auckland, New Zealand"
+
+abstract: |
+ Why does human prosociality vary around the world? Evolutionary models and laboratory experiments suggest that possibilities for partner choice (i.e. the ability to leave unprofitable relationships and strike up new ones) should promote cooperation across human societies. Leveraging the Global Preferences Survey (n = 27,125; 27 countries) and the World Values Survey (n = 54,728; 32 countries), we test this theory by estimating the associations between relational mobility, a socioecological measure of partner choice, and a wide variety of prosocial attitudes and behaviours, including impersonal altruism, reciprocity, trust, collective action, and moral judgements of antisocial behaviour. Contrary to our pre-registered predictions, we found little evidence to suggest that partner choice is related to prosociality across countries. After controlling for posited shared causes of relational mobility and prosociality around the world --- environmental harshness, subsistence style, and geographic and linguistic proximity --- we found that only impersonal altruism and trust in people from another religion are positively related to relational mobility. We did not find positive relationships between relational mobility and reciprocity, generalised trust, collective action, or moral judgements of antisocial behaviour. These findings challenge existing evolutionary theories of human cooperation which emphasise partner choice as a key explanatory mechanism, and highlight the need to generalise theoretical models and controlled experiments to global samples.
+
+note              : "This working paper has not yet been peer-reviewed."
+keywords          : "partner choice, relational mobility, cooperation, prosociality, cross-cultural"
+wordcount         : "4600 words"
+bibliography      : ["r-references.bib"]
+floatsintext      : yes
+figurelist        : no
+figsintext        : yes
+tablelist         : no
+footnotelist      : no
+linenumbers       : yes
+mask              : no
+draft             : no
+numbersections    : false
+documentclass     : "apa6"
+classoption       : "man"
+output            : papaja::apa6_pdf
+header-includes: 
+  - \raggedbottom
+  - \usepackage{setspace}
+  - \AtBeginEnvironment{tabular}{\singlespacing}
+  - \AtBeginEnvironment{lltable}{\singlespacing}
+  - \AtBeginEnvironment{tablenotes}{\doublespacing}
+  - \captionsetup[table]{font={stretch=1.5}}
+  - \captionsetup[figure]{font={stretch=1.5}}
+appendix          : "appendix.Rmd"
+csl               : apa.csl
+urlcolor          : blue
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+# Introduction
+
+Humans are a uniquely prosocial species, and this prosociality is expressed in populations all around the world [@Cronk2019]. Yet, despite its ubiquity, there is also substantial global variation in prosociality, with some modern nation states expressing higher levels of cooperation than others [@Angelo2021; @Dorrough2016; @VanDoesume2021]. What explains this variation in prosociality across countries?
+
+One factor that could explain global variation in prosociality is differing possibilities for partner choice across countries. Here, 'partners' are defined as individuals that people socially interact with to provide mutual benefits (e.g. friends, neighbours, colleagues, mates). Theoretical models of partner choice show that when individuals can leave interactions with uncooperative partners and actively choose new interactions with cooperative partners, cooperation can evolve and be sustained [@Aktipis2004; @Aktipis2011; @Enquist1993; @Roberts1998; @Roberts2020; @Roberts2021]. Partner choice allows for the assortative matching of cooperators, creating a market in which individuals use prosocial displays to compete for access to profitable social partnerships [@Barclay2013; @Barclay2016b]. Thus, partner choice models predict that humans should be more prosocial and cooperative if they are able to leave unprofitable partnerships and freely choose new partnerships.
+
+Lab and field evidence has begun to support theoretical models of partner choice. Experiments with economic games have shown that introducing partner choice causes people to cooperate more in social dilemmas [@Barclay2004; @Barclay2007; @Barclay2016a; @Sylwester2010; @Sylwester2013] and allowing for partner choice on dynamic social networks promotes assortative matching of cooperators [@Jordan2013; @Rand2011]. Anthropological evidence also supports the role of partner choice in human cooperation, showing that people across a diverse range of societies selectively choose social partners with prosocial reputations, thereby encouraging prosociality [@BliegeBird2015; @Lyle2014; @Smith2020; @Tognetti2014]. For example, among the Aboriginal Australian Martu peoples, hunters with reputations as generous food sharers are more central in social networks and, as a result, receive more help from others [@BliegeBird2015].
+
+As well as predicting behaviour in the lab and in small-scale societies, partner choice models also predict that socioecological conditions favouring partner choice should promote prosociality in countries around the world. One recently developed socioecological variable that captures differing possibilities for partner choice is relational mobility [@Yuki2012]. Relational mobility captures "how much freedom and opportunity a society affords individuals to choose and dispose of interpersonal relationships based on personal preference" [p. 7521; @Thomson2018]. In societies with low relational mobility, people do not actively choose their relationships and their social partners are relatively fixed. By contrast, in societies with high relational mobility, people actively choose who they interact with, creating dynamic social networks. The former is akin to classic partner control models in evolutionary game theory, where individuals are forced to interact for a fixed period [@Axelrod1981], whereas the latter is akin to models of partner choice and biological markets [@Barclay2013].
+
+We hypothesise, then, that people in higher relational mobility societies should express more prosocial behaviour and attitudes. Previous work has begun to test this hypothesis. For example, research has shown that people in higher relational mobility societies provide social support to others more frequently [@Kito2017], have greater trust in strangers [@Thomson2018], and are more likely to give gifts in romantic relationships [@Komiya2019]. Conversely, a recent meta-analysis found that people in higher relational mobility societies did not contribute more in incentivised social dilemma experiments [@Spadaro_preprint]. However, social support and cooperation in social dilemmas are only a subset of the possible measures of prosocial behaviours and attitudes, which also include impersonal altruism, reciprocity, generalised trust, collective action, and moral assessments of cheating behaviour. The relationship between relational mobility and these prosocial behaviours and attitudes is less understood.
+
+Here, we report the results of two pre-registered studies of the cross-national associations between relational mobility, our socioecological proxy for partner choice, and a range of prosocial behaviours and attitudes. In Study 1, we leveraged data from the Global Preferences Survey [@Falk2018], a cross-national study of social preferences including impersonal altruism, positive reciprocity, and generalised trust. We linked these data to country-level relational mobility scores from 27 countries [@Thomson2018]. In Study 2, we used variables from the World Values Survey [@WVS2014] measuring collective action, trust, and moral assessments of cheating behaviour, and linked these data to relational mobility scores from 32 countries [@Thomson2018]. Based on existing theory and literature, we pre-registered for both studies that we would find a positive relationship between relational mobility and prosocial behaviours and attitudes (https://osf.io/e528t/).
+
+# Study 1
+
+## Methods
+
+### Sample
+
+```{r echo=F}
+tar_load(d1)
+```
+
+In 2012, participants took part in the Global Preferences Survey [@Falk2016; @Falk2018], a large-scale study of economic decision-making across countries. This sample is unique in its measurement of social preferences with extensive global coverage. The full sample from the Global Preferences Survey contains 80,337 individuals from 76 countries. For the purposes of our study, we retained only participants from 27 countries that were also included in a 2018 multi-country study of relational mobility [@Thomson2018]. We also excluded participants who did not have data for any of the three main prosociality variables from the Global Preferences Survey: altruism, positive reciprocity, and generalised trust. This resulted in a final sample of `r printnum(as.double(length(unique(d1$id))), digits = 0)` individuals (`r d1 %>% group_by(id, gender) %>% summarise(count = n(), .groups = "keep") %>% pull(gender) %>% sum() %>% as.double() %>% printnum(digits = 0)` female; mean age = `r d1 %>% group_by(id) %>% summarise(age = mean(age), .groups = "keep") %>% pull(age) %>% mean(na.rm = TRUE) %>% printnum()` years, SD = `r d1 %>% group_by(id) %>% summarise(age = mean(age), .groups = "keep") %>% pull(age) %>% sd(na.rm = TRUE) %>% printnum()` years). The countries retained in the final sample were Australia, Brazil, Canada, Chile, Colombia, Egypt, Estonia, France, Germany, Hungary, Israel, Japan, Jordan, Mexico, Morocco, the Netherlands, the Philippines, Poland, Portugal, South Korea, Spain, Sweden, Turkey, Ukraine, the United Kingdom, the United States of America, and Venezuela (Supplementary Figure \@ref(fig:plotGPSWorld)).
+
+The Global Preferences Survey was conducted as part of the 2012 World Gallup Poll (https://www.gallup.com/analytics/213704/world-poll.aspx). The World Gallup Poll is conducted either via telephone or via face-to-face interview. For telephone interviews, nationally representative samples were achieved through the use of random-digit dialling or nationally representative lists of phone numbers. For face-to-face interviews, nationally representative samples were achieved through the use of a random route procedure within primary sampling units stratified by geography and/or population size.
+
+### Measures
+
+#### Prosociality
+
+Participants in the Global Preferences Survey were asked a series of self-report questions that measure the following social preferences: altruism, generalised trust, positive reciprocity, negative reciprocity, risk-taking, and patience. For the purposes of our study, we focused on the altruism, trust, and positive reciprocity items. Negative reciprocity was not studied, as previous factor analyses have shown that punitive behaviour forms a separate latent variable distinct from cooperation [@Peysakhovich2014].
+
+Altruism was measured by two items; a hypothetical charitable donation ("Imagine the following situation: Today you unexpectedly received 1000 euros. How much of this amount would you donate to a good cause?") and willingness to unconditionally donate to charity ("How willing are you to give to good causes without expecting anything in return?"). Trust was measured by a single item: agreement with the statement "I assume that people have only the best intentions". Positive reciprocity was measured by two items: stating the price of a hypothetical thank-you gift the participant would give to a stranger who helped them, and agreement with the statement "When someone does me a favour I am willing to return it". These items have been shown to reliably predict altruistic, trusting, and reciprocal behaviour in incentivised economic decision-making experiments [@Falk2016].
+
+#### Relational mobility
+
+We related measures of prosociality from the Global Preferences Survey to country-level relational mobility latent scores [@Thomson2018]. Country-level data on relational mobility were retrieved from a separate multi-country study [@Thomson2018], in which 16,939 participants across 39 countries were contacted via an online survey between 2014 and 2016. We leveraged these data since they provide valid and reliable indicators of relational mobility across multiple countries. Country-level relational mobility latent scores were estimated from self-report ratings of the relational mobility of participants' immediate societies, from a previously validated scale [@Yuki2007]. Measurement equivalence analyses have shown that the scale has partial scalar invariance across countries. Positive correlations with related variables, like job mobility and number of new acquaintances, also indicate that the scale has high convergent validity [@Thomson2018].
+
+#### Control variables
+
+In addition to our main variables, we also included several control variables in our regressions. These control variables are justified by a causal model in which both relational mobility and prosociality are jointly affected by various confounds (see Supplementary Figure \@ref(fig:plotDAG)).
+
+First, we controlled for environmental harshness and subsistence style. These two variables were retrieved from the same multi-country study of relational mobility [@Thomson2018]. Environmental harshness was a composite measure of seven indicators of historical and ecological threats: (1) history of territorial threats, (2) demanding geoclimate, (3) historical pathogen prevalence, (4) tuberculosis incidence, (5) disaster vulnerability, (6) population density in 1500, and (7) daily fat supply (reversed). Subsistence style was an index that represented the amount of area harvested with wheat, minus the percentage of pasture land for herding, plus the amount of harvested area devoted to rice farming, creating a continuum from relatively mobile and independent subsistence to more settled and interdependent subsistence. @Thomson2018 argue that these country-level characteristics are key antecedents of relational mobility. Additional evidence suggests that these variables also affect prosociality [@Cronk2019; @Talhelm2014]. These variables are thus shared causes that could confound the direct relationship between relational mobility and prosociality. We statistically conditioned on both environmental harshness and subsistence style to remove this confounding.
+
+Second, we controlled for geographic and linguistic proximity between countries. Countries that are close to one another and share common cultural ancestors are likely to be more similar to one another, due to similar ecologies, climates, institutions, and norms (see Supplementary Figure \@ref(fig:plotDAG)). To account for these unmeasured confounds, we allowed countries to covary according to geographic and linguistic proximity in our models. Geographic proximity was calculated as the inverse of the logged geodesic distance between country capital cities [data from the R package _maps_; @Brownrigg2018] using the R package _geosphere_ [@Hijmans2019]. Linguistic proximity between two countries was calculated as the cultural proximity between all languages spoken within those countries, weighted by speaker percentages [see Supplementary Methods for more details; @Glottolog; @Ethnologue].
+
+### Statistical analysis
+
+To estimate the cross-national relationships between prosociality and relational mobility, we fitted pre-registered Bayesian multilevel regression models to the data (https://osf.io/e528t/). We analysed the data in long format, with multiple prosociality measures per participant (n = `r printnum(as.numeric(nrow(d1)), digits = 0)`). The outcome variable was the score for the particular prosociality measure. The country-level predictor variable was the relational mobility latent score, with latent standard deviations included in the model to account for measurement error. We included random intercepts for participants, and random intercepts and slopes for prosociality measures (altruism, trust, and positive reciprocity) and countries (see Supplementary Methods). In order to systematically compare the various effects of our variables and controls, we fitted several models: (1) an intercept-only model, (2) a model including relational mobility as a predictor, and (3) a model additionally controlling for environmental harshness and subsistence type. In all models, we allowed country random intercepts to covary according to geographic and linguistic proximity. We used approximate leave-one-out cross-validation to compare models [@Vehtari2017].
+
+All analyses were conducted in R v4.0.2. [@R]. The _brms_ package was used for Bayesian multilevel modelling [@Burkner2017]. We used weakly informative priors and all models converged normally ($\hat{R}$ = 1). The _loo_ package was used to compute approximate leave-one-out cross-validation scores [@Vehtari2017]. Visualisations were produced using the _ggplot2_ [@Wickham2016] and _cowplot_ [@Wilke2019] packages. The manuscript was reproducibly generated using the _targets_ [@Landau2021] and _papaja_ [@Aust2020] packages.
+
+## Results and Discussion
+
+```{r echo=F}
+tar_load(c(looCompare1a, looCompare1b, post1.1, post1.2))
+slope1 <- post1.1[,,"bsp_meRMLRML_SEgrEQiso"]
+slope2 <- post1.1[,,"bsp_meRMLRML_SEgrEQiso"] + post1.1[,,"r_item[altruism,RML]"]
+slope3 <- post1.1[,,"bsp_meRMLRML_SEgrEQiso"] + post1.1[,,"r_item[posrecip,RML]"]
+slope4 <- post1.1[,,"bsp_meRMLRML_SEgrEQiso"] + post1.1[,,"r_item[trust,RML]"]
+```
+
+Model comparison revealed that adding relational mobility as a predictor of prosocial preferences did not improve model fit over a null intercept-only model (difference in expected log predictive density = `r printnum(abs(looCompare1a[2,1]))`, standard error = `r printnum(abs(looCompare1a[2,2]))`). The median posterior slope for relational mobility predicting overall prosocial preferences was `r printnum(median(slope1))`, 95% credible interval [`r printnum(quantile(slope1, 0.025))` `r printnum(quantile(slope1, 0.975))`] (Figure \@ref(fig:plotGPS1)). Incorporating item random effects further revealed that relational mobility did not predict altruism (median posterior slope = `r printnum(median(slope2))`, 95% CI [`r printnum(quantile(slope2, 0.025))` `r printnum(quantile(slope2, 0.975))`]), positive reciprocity (median posterior slope = `r printnum(median(slope3))`, 95% CI [`r printnum(quantile(slope3, 0.025))` `r printnum(quantile(slope3, 0.975))`]), or generalised trust (median posterior slope = `r printnum(median(slope4))`, 95% CI [`r printnum(quantile(slope4, 0.025))` `r printnum(quantile(slope4, 0.975))`]).
+
+(ref:plotGPS1Caption) _Posterior predictions from a Bayesian multilevel regression predicting prosocial preferences from country-level relational mobility, without control variables._ (a) The overall effect of relational mobility on prosociality. (b-d) The individual effects of relational mobility on altruism, positive reciprocity, and generalised trust. Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average prosociality levels and relational mobility scores for each of the 27 countries, with error bars representing +/- 1 standard error.
+
+```{r plotGPS1, echo=F, fig.width=6.5, fig.height=6.5, fig.cap="(ref:plotGPS1Caption)"}
+tar_read(plotGPS1)
+```
+
+```{r echo=F, message=F, warning=F}
+slope1 <- post1.2[,,"bsp_meRMLRML_SEgrEQiso"]
+slope2 <- post1.2[,,"bsp_meRMLRML_SEgrEQiso"] + post1.2[,,"r_item[altruism,RML]"]
+slope3 <- post1.2[,,"bsp_meRMLRML_SEgrEQiso"] + post1.2[,,"r_item[posrecip,RML]"]
+slope4 <- post1.2[,,"bsp_meRMLRML_SEgrEQiso"] + post1.2[,,"r_item[trust,RML]"]
+```
+
+We also included two additional predictors as control variables: environmental harshness and subsistence style. Model comparison revealed that additionally conditioning on both environmental harshness and subsistence style improved model fit over a model containing only relational mobility (difference in expected log predictive density = `r printnum(abs(looCompare1b[2,1]))`, standard error = `r printnum(abs(looCompare1b[2,2]))`). The median posterior slope for relational mobility predicting overall prosocial preferences was `r printnum(median(slope1))`, 95% credible interval [`r printnum(quantile(slope1, 0.025))` `r printnum(quantile(slope1, 0.975))`] (Figure \@ref(fig:plotGPS2)). Incorporating random effects further revealed that relational mobility now slightly positively predicted altruism (median posterior slope = `r printnum(median(slope2))`, 95% CI [`r printnum(quantile(slope2, 0.025))` `r printnum(quantile(slope2, 0.975))`]), did not predict positive reciprocity (median posterior slope = `r printnum(median(slope3))`, 95% CI [`r printnum(quantile(slope3, 0.025))` `r printnum(quantile(slope3, 0.975))`]), and _negatively_ predicted generalised trust (median posterior slope = `r printnum(median(slope4))`, 95% CI [`r printnum(quantile(slope4, 0.025))` `r printnum(quantile(slope4, 0.975))`]). The slight relationship between relational mobility and impersonal altruism is in line with our pre-registered hypothesis, but the negative relationship between relational mobility and generalised trust contradicts previous research suggesting that relational mobility is positively related to trust in others [@Yuki2007; @Thomson2018].
+
+(ref:plotGPS2Caption) _Posterior predictions from a Bayesian multilevel regression predicting prosocial preferences from country-level relational mobility, controlling for environmental harshness and subsistence style._ (a) The overall effect of relational mobility on prosociality. (b-d) The individual effects of relational mobility on altruism, positive reciprocity, and generalised trust. Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average prosociality levels and relational mobility scores for each of the 27 countries, with error bars representing +/- 1 standard error.
+
+```{r plotGPS2, echo=F, fig.width=6.5, fig.height=6.5, fig.cap="(ref:plotGPS2Caption)"}
+tar_read(plotGPS2)
+```
+
+There are several possible explanations for these mixed results. First, over half of our sample of countries were from Western Europe and North America, where relational mobility is higher than average. This does not leave much variation to detect associations, especially with a small sample size of 27 countries. Second, only a small set of prosociality measures were available in the Global Preferences Survey, limited to charitable donations, exchanges of gifts and favours, and generalised trust. As such, this dataset did not cover other important aspects of prosociality, such as collective action and moral judgements of antisocial cheating behaviour.
+
+In order to investigate whether these factors could explain our results, we conducted a second study with a different dataset. In Study 2, we leveraged data from the World Values Survey [@WVS2014], a multi-country self-report study of values and attitudes. This study has global coverage and includes items measuring a wide variety of prosocial behaviours and attitudes. We were able to link data from 32 countries to country-level data on relational mobility, expanding our sample size and including additional Asian countries. We hypothesised that individuals from countries with higher relational mobility would: (1) be more likely to belong to humanitarian and charitable organisations, our measure of collective action; (2) be more likely to believe that most people can be trusted; (3) report higher trust for specific groups; and (4) report lower justifiability for self-interested moral transgressions.
+
+# Study 2
+
+## Methods
+
+### Sample
+
+```{r echo=F}
+tar_load(d2)
+```
+
+Between 2017 and 2020, participants completed either the seventh wave of the World Values Survey or the fifth wave of the European Values Survey. The full sample size from these combined waves was 135,000 participants from 81 countries. For the purposes of our study, we retained only participants from 32 countries that were also included in @Thomson2018. This resulted in a final sample of `r printnum(as.numeric(nrow(d2)), digits = 0)` individuals (`r printnum(as.numeric(sum(d2$X001 == 2)), digits = 0)` female; mean age = `r printnum(mean(d2$X003[d2$X003 > 0]))` years, SD = `r printnum(sd(d2$X003[d2$X003 > 0]))` years). The countries retained in the final sample were Australia, Brazil, Canada, Chile, Colombia, Egypt, Estonia, France, Germany, Hong Kong, Hungary, Japan, Jordan, Lebanon, Malaysia, Mexico, the Netherlands, New Zealand, the Philippines, Poland, Portugal, Puerto Rico, Singapore, South Korea, Spain, Sweden, Taiwan, Tunisia, Turkey, Ukraine, the United Kingdom, and the United States of America (Supplementary Figure \@ref(fig:plotWVSWorld)).
+
+The World Values Survey and the European Values Survey are conducted mainly via face-to-face interviews. The surveys contact a minimum sample of 1200 participants per country. All samples are representative of the population aged 18 and over, via full probability or a combination of probability and stratified sampling methods.
+
+### Measures
+
+#### Prosociality
+
+Participants in both the World Values Survey and the European Values Survey answer a range of self-report questions on social values, societal wellbeing, trust, economic values, religion, politics, and ethics. For the purposes of our study, we highlighted several variables as measures of cooperation, trust, and prosociality. The first variable captures cooperation via collective action ["Are you a member of a charitable or humanitarian organisation?"; for a similar interpretation of this variable, see @Jacquet2021]. The second variable captures generalised trust ("Generally speaking, would you say that most people can be trusted or that you need to be very careful in dealing with people?"). The third set of variables captures levels of trust in specific groups of people, namely family, neighborhood, personal acquaintances, people the respondent has met for the first time, people of another religion, and people of another nationality. The fourth set of variables captures the justifiability of different self-interested moral trangressions, including claiming unentitled government benefits, avoiding a fare on public transport, cheating on taxes, and someone accepting a bribe. 
+
+#### Relational mobility and control variables
+
+As in Study 1, we related prosociality measures to country-level relational mobility latent scores [@Thomson2018]. We also controlled for the same measures of environmental harshness and subsistence style, and allowed countries to covary according to the same measures of geographic and linguistic proximity.
+
+### Statistical analysis
+
+To estimate cross-national relationships, we fitted pre-registered Bayesian multilevel models to the data (https://osf.io/e528t/). For the charitable organisation and generalised trust variables, we fitted logistic regression models for binary data with random intercepts for countries. For trust in specific groups and justifiability of moral transgressions, we converted the data to long format, reversed the outcome variable such that higher values reflect higher levels of prosociality, and fitted cumulative link regression models for ordinal data. In these models, we included random intercepts for individuals and countries, and random intercepts and slopes for groups / moral transgressions (see Supplementary Methods).
+
+As described in Study 1, we included measurement error on the relational mobility latent scores and accounted for spatial and cultural non-independence between countries with correlated random intercepts. We additionally controlled for environmental harshness and subsistence style. All analyses were conducted in R v4.0.2. [@R].
+
+## Results and Discussion
+
+```{r echo=F}
+tar_load(c(looCompare5, looCompare6, looCompare8, 
+           post5.1, post5.2, post6.1, post6.2,
+           post7.1, post7.2, post8.1, post8.2))
+slope1 <- post5.1[,,"bsp_meRMLRML_SEgrEQiso"]
+slope2 <- post5.2[,,"bsp_meRMLRML_SEgrEQiso"]
+```
+
+For our measure of cooperation and collective action --- charitable organisation membership --- model comparison revealed that adding relational mobility as a predictor improved model fit over a null intercept-only model (difference in expected log predictive density = `r printnum(abs(looCompare5[2,1]))`, standard error = `r printnum(abs(looCompare5[2,2]))`). The posterior log odds slope for relational mobility predicting charitable organisation membership was in the expected direction, but the 95% credible interval included zero (median posterior slope = `r printnum(median(slope1))`, 95% CI [`r printnum(quantile(slope1, 0.025))` `r printnum(quantile(slope1, 0.975))`]; Figure \@ref(fig:plotWVS5a)). The 95% credible interval continued to include zero after controlling for environmental harshness and subsistence type (median posterior slope = `r printnum(median(slope2))`, 95% CI [`r printnum(quantile(slope2, 0.025))` `r printnum(quantile(slope2, 0.975))`]; Supplementary Figure \@ref(fig:plotWVS5b)).
+
+(ref:plotWVS5aCaption) _Posterior predictions from a Bayesian multilevel logistic regression predicting charitable organisation membership from country-level relational mobility, without controls._ The line and shaded area indicate the median posterior regression line and 95% credible intervals. Points indicate the proportion of individuals belonging to charitable organisations on the y-axis and relational mobility scores on the x-axis, for each of the 32 countries, with error bars representing +/- 1 standard error.
+
+```{r plotWVS5a, echo=F, fig.width=5, fig.height=3.5, fig.cap="(ref:plotWVS5aCaption)"}
+tar_read(plotWVS_5.1)
+```
+
+```{r echo=F}
+slope1 <- post6.1[,,"bsp_meRMLRML_SEgrEQiso"]
+slope2 <- post6.2[,,"bsp_meRMLRML_SEgrEQiso"]
+```
+
+For generalised trust, model comparison revealed that adding relational mobility as a predictor improved model fit over a null intercept-only model (difference in expected log predictive density = `r printnum(abs(looCompare6[2,1]))`, standard error = `r printnum(abs(looCompare5[2,2]))`). The 95% credible interval for the posterior log odds slope for relational mobility predicting generalised trust included zero (median posterior slope = `r printnum(median(slope1))`, 95% CI [`r printnum(quantile(slope1, 0.025))` `r printnum(quantile(slope1, 0.975))`]; Figure \@ref(fig:plotWVS6a)). The 95% credible interval continued to include zero after controlling for environmental harshness and subsistence type (median posterior slope = `r printnum(median(slope2))`, 95% CI [`r printnum(quantile(slope2, 0.025))` `r printnum(quantile(slope2, 0.975))`]; Supplementary Figure \@ref(fig:plotWVS6b)).
+
+(ref:plotWVS6aCaption) _Posterior predictions from a Bayesian multilevel logistic regression predicting generalised trust from country-level relational mobility, without controls._ The line and shaded area indicate the median posterior regression line and 95% credible intervals. Points indicate the proportion of individuals stating that "most people can be trusted" on the y-axis and relational mobility scores on the x-axis, for each of the 32 countries, with error bars representing +/- 1 standard error.
+
+```{r plotWVS6a, echo=F, fig.width=5, fig.height=3.5, fig.cap="(ref:plotWVS6aCaption)"}
+tar_read(plotWVS_6.1)
+```
+
+```{r echo=F}
+slope1a <- post7.1[,,"bsp_meRMLRML_SEgrEQiso"] + post7.1[,,"r_group[Your.family,RML]"]
+slope1b <- post7.2[,,"bsp_meRMLRML_SEgrEQiso"] + post7.2[,,"r_group[Your.family,RML]"]
+slope2a <- post7.1[,,"bsp_meRMLRML_SEgrEQiso"] + post7.1[,,"r_group[Your.neighbourhood,RML]"]
+slope2b <- post7.2[,,"bsp_meRMLRML_SEgrEQiso"] + post7.2[,,"r_group[Your.neighbourhood,RML]"]
+slope3a <- post7.1[,,"bsp_meRMLRML_SEgrEQiso"] + post7.1[,,"r_group[People.you.know.personally,RML]"]
+slope3b <- post7.2[,,"bsp_meRMLRML_SEgrEQiso"] + post7.2[,,"r_group[People.you.know.personally,RML]"]
+slope4a <- post7.1[,,"bsp_meRMLRML_SEgrEQiso"] + post7.1[,,"r_group[People.you.meet.for.the.first.time,RML]"]
+slope4b <- post7.2[,,"bsp_meRMLRML_SEgrEQiso"] + post7.2[,,"r_group[People.you.meet.for.the.first.time,RML]"]
+slope5a <- post7.1[,,"bsp_meRMLRML_SEgrEQiso"] + post7.1[,,"r_group[People.of.another.religion,RML]"]
+slope5b <- post7.2[,,"bsp_meRMLRML_SEgrEQiso"] + post7.2[,,"r_group[People.of.another.religion,RML]"]
+slope6a <- post7.1[,,"bsp_meRMLRML_SEgrEQiso"] + post7.1[,,"r_group[People.of.another.nationality,RML]"]
+slope6b <- post7.2[,,"bsp_meRMLRML_SEgrEQiso"] + post7.2[,,"r_group[People.of.another.nationality,RML]"]
+```
+
+For trust in specific groups (Figure \@ref(fig:plotWVS7a)), random slopes revealed that relational mobility was _negatively_ related to trust in family (median posterior slope = `r printnum(median(slope1a))`, 95% CI [`r printnum(quantile(slope1a, 0.025))` `r printnum(quantile(slope1a, 0.975))`]). Relational mobility was unrelated to trust in one's neighbourhood (median posterior slope = `r printnum(median(slope2a))`, 95% CI [`r printnum(quantile(slope2a, 0.025))` `r printnum(quantile(slope2a, 0.975))`]), trust in people one knows personally (median posterior slope = `r printnum(median(slope3a))`, 95% CI [`r printnum(quantile(slope3a, 0.025))` `r printnum(quantile(slope3a, 0.975))`]), and trust in people one meets for the first time (median posterior slope = `r printnum(median(slope4a))`, 95% CI [`r printnum(quantile(slope4a, 0.025))` `r printnum(quantile(slope4a, 0.975))`]). Relational mobility was positively related to trust in people of another religion (median posterior slope = `r printnum(median(slope5a))`, 95% CI [`r printnum(quantile(slope5a, 0.025))` `r printnum(quantile(slope5a, 0.975))`]) and trust in people of another nationality (median posterior slope = `r printnum(median(slope6a))`, 95% CI [`r printnum(quantile(slope6a, 0.025))` `r printnum(quantile(slope6a, 0.975))`]). Only the relationship between relational mobility and trust in people of another religion was attenuated after controlling for environmental harshness and subsistence style (median posterior slope = `r printnum(median(slope5b))`, 95% CI [`r printnum(quantile(slope5b, 0.025))` `r printnum(quantile(slope5b, 0.975))`]; Supplementary Figure \@ref(fig:plotWVS7b)).
+
+(ref:plotWVS7aCaption) _Posterior predictions from a Bayesian multilevel ordinal regression predicting trust in specific groups from country-level relational mobility, without controls._ Higher numbers on the y-axis indicate higher levels of trust. Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average trust and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error.
+
+```{r plotWVS7a, echo=F, fig.width=8, fig.height=6.5, fig.cap="(ref:plotWVS7aCaption)"}
+tar_read(plotWVS_7.1)
+```
+
+```{r echo=F}
+slope1a <- post8.1[,,"bsp_meRMLRML_SEgrEQiso"] + post8.1[,,"r_item[Claiming.government.benefits.to.which.you.are.not.entitled,RML]"]
+slope1b <- post8.2[,,"bsp_meRMLRML_SEgrEQiso"] + post8.2[,,"r_item[Claiming.government.benefits.to.which.you.are.not.entitled,RML]"]
+slope2a <- post8.1[,,"bsp_meRMLRML_SEgrEQiso"] + post8.1[,,"r_item[Avoiding.a.fare.on.public.transport,RML]"]
+slope2b <- post8.2[,,"bsp_meRMLRML_SEgrEQiso"] + post8.2[,,"r_item[Avoiding.a.fare.on.public.transport,RML]"]
+slope3a <- post8.1[,,"bsp_meRMLRML_SEgrEQiso"] + post8.1[,,"r_item[Cheating.on.taxes,RML]"]
+slope3b <- post8.2[,,"bsp_meRMLRML_SEgrEQiso"] + post8.2[,,"r_item[Cheating.on.taxes,RML]"]
+slope4a <- post8.1[,,"bsp_meRMLRML_SEgrEQiso"] + post8.1[,,"r_item[Someone.accepting.a.bribe,RML]"]
+slope4b <- post8.2[,,"bsp_meRMLRML_SEgrEQiso"] + post8.2[,,"r_item[Someone.accepting.a.bribe,RML]"]
+```
+
+For moral justifiability of self-interested moral transgressions, model comparison revealed that adding relational mobility as a predictor improved model fit over a null intercept-only model (difference in expected log predictive density = `r printnum(abs(looCompare8[2,1]))`, standard error = `r printnum(abs(looCompare8[2,2]))`; Figure \@ref(fig:plotWVS8a)). In this model, random slopes revealed that relational mobility was unrelated to self-reported justifiability for all four scenarios: claiming government benefits to which one is not entitled (median posterior slope = `r printnum(median(slope1a))`, 95% CI [`r printnum(quantile(slope1a, 0.025))` `r printnum(quantile(slope1a, 0.975))`]), avoiding a fare on public transport (median posterior slope = `r printnum(median(slope2a))`, 95% CI [`r printnum(quantile(slope2a, 0.025))` `r printnum(quantile(slope2a, 0.975))`]), cheating on taxes (median posterior slope = `r printnum(median(slope3a))`, 95% CI [`r printnum(quantile(slope3a, 0.025))` `r printnum(quantile(slope3a, 0.975))`]), and someone accepting a bribe (median posterior slope = `r printnum(median(slope4a))`, 95% CI [`r printnum(quantile(slope4a, 0.025))` `r printnum(quantile(slope4a, 0.975))`]). These results remained unchanged after controlling for environmental harshness and subsistence style (Supplementary Figure \@ref(fig:plotWVS8b)).
+
+(ref:plotWVS8aCaption) _Posterior predictions from a Bayesian multilevel ordinal regression predicting moral justifiability of different scenarios from country-level relational mobility, without controls._ Higher numbers on the y-axis indicate _lower_ justifiability ratings for each scenario, such that higher values reflect higher levels of prosociality. Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average justifiability (reversed) and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error.
+
+```{r plotWVS8a, echo=F, fig.width=6, fig.height=6, fig.cap="(ref:plotWVS8aCaption)"}
+tar_read(plotWVS_8.1)
+```
+
+Overall, contrary to our pre-registered hypotheses, we found that relational mobility was unrelated to collective action (operationalised as charitable organisation membership), generalised trust, and moral justifiability ratings for self-interested behaviours. Relational mobility was also unrelated to trust in most specific groups, though we did find that relational mobility negatively predicted trust in family and positively predicted trust in people of another religion and nationality. This "scope of trust" effect, whereby relational mobility is associated with lower trust in closer contacts but greater trust in more distant contacts, is an interesting feature of the construct that aligns with previous work [@Thomson2018].
+
+# General discussion
+
+Across two pre-registered cross-national studies, we found little evidence to suggest that partner choice via relational mobility is positively associated with prosociality around the world. In our first study, we initially found no relationships between relational mobility and altruism, positive reciprocity, or trust. Only when we controlled for environmental harshness and subsistence style did we find that relational mobility negatively predicted trust and slightly positively predicted altruism. In our second study, we found no relationships between relational mobility and collective action, generalised trust, or moral judgements of antisocial behaviour. Relational mobility was also unrelated to trust in most specific groups, although we found that relational mobility did negatively predict trust in family and positively predict trust in people of another religion and nationality.
+
+Why did we not find the expected relationships between relational mobility and prosociality for most measures? One might argue that relational mobility is not an adequate measure of the kinds of partner choice implemented in theoretical models of cooperation or laboratory experiments. We would contest this view. Relational mobility is explicitly defined as a construct that quantifies "variance in partner choice in human societies" [p. 7521; @Thomson2018]. In the relational mobility scale, people are asked about their immediate society, including friends and acquaintances, and whether people in this immediate society can "leave [current relationships] for better ones" and "choose... the people they interact with". These are the exact same opportunities afforded to agents in partner choice models and participants in partner choice experiments.
+
+Others might argue that our measures of prosociality lacked construct validity. Indeed, these were self-reported rather than behavioural measures of prosociality that in some cases (e.g. charitable membership organisation) mapped only loosely onto the construct of interest. This was largely unadvoidable: using secondary data, we were limited to survey questions that had not been explicitly designed to test our particular hypotheses. However, the self-report measures of prosociality from the Global Preferences Survey were generated based on their strong positive relationships with prosocial behaviour in incentivised economic games, and yet the evidence with these measures remained mixed.
+
+Instead of arising as an artifact of our operationalisations, we are confident that our findings reflect a true null relationship between relational mobility and prosociality. Across two studies, we leveraged large samples in a multilevel design, allowing us to make claims about individual-level psychology in socioecological context. We used a wide variety of prosociality measures. We explicitly mapped out a causal diagram and controlled for various sources of confounding in our statistical models, including geographic and cultural non-independence, an issue that is largely ignored in cross-national studies and can create spurious influences [@Bromham2018]. We also directly modelled measurement error on the relational mobility variable, since this country-level variable was a factor score that was itself measured imperfectly [@Thomson2018]. With these methodological strengths, we found that relational mobility was not reliably related to prosociality.
+
+These findings challenge previous theoretical and empirical studies suggesting that partner choice promotes prosociality and cooperation in humans. Theoretical models show that introducing the possibility of partner choice creates conditions that favour the evolution of cooperation [@Aktipis2004; @Aktipis2011; @Enquist1993; @Roberts1998; @Roberts2020; @Roberts2021]. Laboratory and field work also suggests that partner choice, over and above simple reputational effects, encourages forms of competitive prosociality as people endeavour to be chosen for profitable partnerships [@Barclay2004; @Barclay2007; @Barclay2016a; @Sylwester2010; @Sylwester2013; @BliegeBird2015]. Yet our findings suggest that cross-national variation in prosociality is not well explained by differences in possibilities for partner choice.
+
+It is possible that relational mobility does affect prosocial behaviour and attitudes, but at a more local scale. This would explain why our results differ to those from previous lab and field studies which measure partner choice in controlled experiments or in small-scale communities. It is also possible that people in low relational mobility nations are just as prosocial as people in high relational mobility nations, but this prosociality is achieved in different ways. Partner control models, such as the iterated Prisoner's Dilemma [@Axelrod1981], show that strategies can successfully promote cooperation in fixed interactions if they cooperate conditionally and punish non-cooperation (e.g. tit-for-tat strategies). Likewise, repeatedly interacting individuals in low relational mobility nations might use these same mechanisms to encourage prosociality in their own ways. Thus, we might expect that non-cooperation in low relational mobility nations should be met with a quick rescindment of cooperation and high levels of punishment, rather than leaving to search for alternative partners. These nuances about the mechanisms generating similar levels of prosociality across nations were not captured by the measures in our studies.
+
+As well as raising questions about previous work on the evolution of cooperation in humans, our findings also add to a growing body of evidence linking relational mobility to trust. We found a "scope of trust" effect, whereby relational mobility negatively predicts trust in close contacts (family members) and positively predicts trust in distant contacts (people of other religions and nationalities). This finding builds on previous work finding that relational mobility predicts trust in strangers [@Thomson2018] and additionally shows, with multiple groups of increasing social distance, that relational mobility scales up people's circles of trust beyond close kin. However, we also found that relational mobility was not reliably related to generalised trust across our two studies. This result contradicts previous reported associations between relational mobility and generalised trust [@Yuki2012; @Yuki2007].
+
+In sum, we found little evidence that partner choice, proxied as relational mobility, is related to cross-national variation in prosociality around the world. These findings challenge evolutionary theories that seek to explain why human cooperation has flourished and been maintained around the world. They also highlight the need to connect theoretical models and tightly-controlled experiments with global samples to make generalisable claims about human behaviour.
+
+\newpage
+
+# Acknowledgements
+
+We would like to acknowledge the many researchers involved in the Global Preferences Survey, the World Values Survey, and the World Relationships Survey measuring relational mobility. Without these researchers' efforts and their open science practices, this study would not have been possible.
+
+# Author Contributions
+
+SC and TK conceived and designed the studies. SC performed the statistical analyses. SC wrote the paper with significant input from TK.
+
+# Financial support
+
+This research received no specific grant from any funding agency, commercial or not-for-profit sectors.
+
+# Conflicts of Interest
+
+The authors declare no conflicts of interest.
+
+# Research Transparency and Reproducibility
+
+All data and code to reproduce the statistical analyses in this manuscript can be found on the Open Science Framework: https://osf.io/e528t/
+
+\newpage
+
+# References
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+<div id="refs" custom-style="Bibliography"></div>
+\endgroup
+
+
+\newpage
+
+# (APPENDIX) Appendix {-}
+
+```{r child = "appendix.Rmd"}
+```
+

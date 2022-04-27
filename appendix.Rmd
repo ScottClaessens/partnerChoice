@@ -1,0 +1,188 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+\renewcommand{\appendixname}{Supplementary Materials}
+\renewcommand{\thefigure}{S\arabic{figure}} \setcounter{figure}{0}
+\renewcommand{\thetable}{S\arabic{table}} \setcounter{table}{0}
+\renewcommand{\theequation}{S\arabic{table}} \setcounter{equation}{0}
+
+#
+
+## Supplementary Methods
+
+### Calculating linguistic distances between nations
+
+Linguistic distance between two countries was calculated as the cultural proximity between all languages spoken within those countries, weighted by speaker percentages. We acquired cultural proximity data by combining the language family trees provided by Glottolog v3.0 (Hammarström et al., 2017) into one global language tree (undated and unresolved). We calculated cultural proximity $s$ between two languages $j$ and $k$ as the distance (in number of nodes traversed) of their most recent common ancestor $i$ to the root of the tree, through the formula:
+
+$$
+s_{jk} = \frac{n_{r}-n_{i}}{n_{r}}
+$$
+
+where $n_{r}$ is the maximum path length (in number of nodes traversed) leading to the pan-human root $r$, and $n_{i}$ is the maximum path length leading to node $i$. We then combined these proximities with speaker data from Ethnologue 21 (Eberhard et al., 2018) and compared every language spoken within those countries by at least 1 permille of the population, weighted by speaker percentages, through the formula:
+
+$$
+w_{lm} = {\Sigma}{\Sigma}p_{lj}p_{mk}s_{jk}
+$$
+
+where $p_{lj}$ is the percentage of the population in nation $l$ speaking language $j$, $p_{mk}$ is the percentage of the population in nation $m$ speaking language $k$, and $s_{jk}$ is the proximity measure between languages $j$ and $k$ (Eff, 2008).
+
+### Bayesian multilevel models
+
+In both Studies 1 and 2, we use Bayesian multilevel models to test our hypotheses. Below, we write out the formulae for the different models. We focus on models that include relational mobility as the only predictor, but these can be generalised to include additional predictors.
+
+In Study 1, we model prosociality as the outcome variable ($\text{Pro}$), relational mobility as the country-level predictor variable ($\text{Rel}$), random intercepts and slopes for different prosociality items in the Global Preferences Survey (altruism, positive reciprocity, and trust), and random intercepts for participants and countries. We allow separate random intercepts for countries to covary according to geographic ($\textbf{G}$) and linguistic ($\textbf{L}$) proximity matrices, and additionally include a residual random intercept over countries to capture country-specific effects that are independent of geographic and linguistic relationships with other countries. We also model relational mobility with measurement error by including standard deviations ($\text{Rel}_{\text{SD}}$) from observed latent variable means ($\text{Rel}_{\text{OBS}}$). The model formulae is as follows:
+
+$$
+\begin{aligned}
+\text{Pro}_{i} &\sim \text{Normal}(\mu_{i},\sigma) \\
+\mu_{i} &= \alpha_{i} + \beta_{i}\text{Rel}_{\text{TRUE},i} \\
+\text{Rel}_{\text{TRUE},i} &= \lambda + \kappa z \\
+\text{Rel}_{\text{OBS},i} &\sim \text{Normal}(\text{Rel}_{\text{TRUE},i}, \text{Rel}_{\text{SD},i}) \\
+\alpha_{i} &= \bar{\alpha} + \alpha_{\text{item}[i]} + \alpha_{\text{part}[i]} + \alpha_{\text{G,country}[i]} + \alpha_{\text{L,country}[i]} + \alpha_{\text{R,country}[i]} \\
+\beta_{i} &= \bar{\beta} + \beta_{\text{item}[i]} \\
+\begin{bmatrix}\alpha_{\text{item}}\\
+\beta_{\text{item}}\end{bmatrix} &\sim \text{MVNormal}
+\begin{pmatrix}\begin{bmatrix}0\\0\end{bmatrix},\textbf{S}
+\end{pmatrix}\\
+\textbf{S} &=
+\begin{pmatrix}\tau_{\alpha}&0\\0&\tau_{\beta}\end{pmatrix}
+\textbf{R}
+\begin{pmatrix}\tau_{\alpha}&0\\0&\tau_{\beta}\end{pmatrix} \\
+\alpha_{\text{part}} &\sim \text{Normal}(0, \tau_{P}) \\
+\alpha_{\text{G,country}} &\sim \text{Normal}(0, \tau_{G} \textbf{G}) \\
+\alpha_{\text{L,country}} &\sim \text{Normal}(0, \tau_{L} \textbf{L}) \\
+\alpha_{\text{R,country}} &\sim \text{Normal}(0, \tau_{R}) \\
+z &\sim \text{Normal}(0, 1)\\
+\bar{\alpha},\bar{\beta},\lambda &\sim \text{Normal}(0, 0.1) \\
+\textbf{R} &\sim \text{LKJCorr}(1)\\
+\kappa,\tau_{\alpha},\tau_{\beta},\tau_{P},\tau_{G},\tau_{L},\tau_{R},\sigma &\sim \text{Exponential}(5)
+\end{aligned}
+$$
+\newpage
+
+In Study 2, we use two types of Bayesian multilevel model. To analyse binary data on charitable organisation membership ($\text{Org}$) and generalised trust ($\text{GenTru}$), we use multilevel logistic regression models with random intercepts for countries. As in Study 1, we allow country random intercepts to vary according to geographic and linguistic proximity, and we model measurement error on the relational mobility predictor.
+
+$$
+\begin{aligned}
+\text{Org}_{i}/\text{GenTru}_{i} &\sim \text{Bernoulli}(p_{i}) \\
+\text{logit}(p_{i}) &= \alpha_{i} + \beta\text{Rel}_{\text{TRUE},i} \\
+\text{Rel}_{\text{TRUE},i} &= \lambda + \kappa z \\
+\text{Rel}_{\text{OBS},i} &\sim \text{Normal}(\text{Rel}_{\text{TRUE},i}, \text{Rel}_{\text{SD},i}) \\
+\alpha_{i} &= \bar{\alpha} + \alpha_{\text{G,country}[i]} + \alpha_{\text{L,country}[i]} + \alpha_{\text{R,country}[i]} \\
+\alpha_{\text{G,country}} &\sim \text{Normal}(0, \tau_{G} \textbf{G}) \\
+\alpha_{\text{L,country}} &\sim \text{Normal}(0, \tau_{L} \textbf{L}) \\
+\alpha_{\text{R,country}} &\sim \text{Normal}(0, \tau_{R}) \\
+\lambda &\sim \text{Normal}(0, 0.1) \\
+\kappa &\sim \text{Exponential}(5) \\
+\bar{\alpha},\beta,z &\sim \text{Normal}(0, 1)\\
+\tau_{G},\tau_{L},\tau_{R} &\sim \text{Exponential}(2)
+\end{aligned}
+$$
+
+To analyse ordinal data on trust in different groups ($\text{Trust}$) and moral justifiability of different antisocial behaviours ($\text{Just}$), we use multilevel cumulative link regression models with random intercepts and slopes for groups / behaviours ($\text{item}$), as well as random intercepts for participants and countries. Again, as in Study 1, we allow country random intercepts to vary according to geographic and linguistic proximity, and we model measurement error on the relational mobility predictor.
+
+$$
+\begin{aligned}
+\text{Trust}_{i}/\text{Just}_{i} &\sim \text{Ordered-logit}(\phi_{i},\zeta) \\
+\phi_{i} &= \alpha_{i} + \beta_{i}\text{Rel}_{\text{TRUE},i} \\
+\text{Rel}_{\text{TRUE},i} &= \lambda + \kappa z \\
+\text{Rel}_{\text{OBS},i} &\sim \text{Normal}(\text{Rel}_{\text{TRUE},i}, \text{Rel}_{\text{SD},i}) \\
+\alpha_{i} &= \alpha_{\text{item}[i]} + \alpha_{\text{part}[i]} + \alpha_{\text{G,country}[i]} + \alpha_{\text{L,country}[i]} + \alpha_{\text{R,country}[i]} \\
+\beta_{i} &= \bar{\beta} + \beta_{\text{item}[i]} \\
+\begin{bmatrix}\alpha_{\text{item}}\\
+\beta_{\text{item}}\end{bmatrix} &\sim \text{MVNormal}
+\begin{pmatrix}\begin{bmatrix}0\\0\end{bmatrix}, \textbf{S}
+\end{pmatrix}\\
+\textbf{S} &=
+\begin{pmatrix}\tau_{\alpha}&0\\0&\tau_{\beta}\end{pmatrix}
+\textbf{R}
+\begin{pmatrix}\tau_{\alpha}&0\\0&\tau_{\beta}\end{pmatrix} \\
+\alpha_{\text{part}} &\sim \text{Normal}(0, \tau_{P}) \\
+\alpha_{\text{G,country}} &\sim \text{Normal}(0, \tau_{G} \textbf{G}) \\
+\alpha_{\text{L,country}} &\sim \text{Normal}(0, \tau_{L} \textbf{L}) \\
+\alpha_{\text{R,country}} &\sim \text{Normal}(0, \tau_{R}) \\
+z &\sim \text{Normal}(0, 1)\\
+\zeta_{j} &\sim \text{Normal}(0, 2)\\
+\bar{\beta} &\sim \text{Normal}(0, 0.5) \\
+\lambda &\sim \text{Normal}(0, 0.1) \\
+\kappa &\sim \text{Exponential}(5) \\
+\textbf{R} &\sim \text{LKJCorr}(1)\\
+\tau_{\alpha},\tau_{\beta},\tau_{P},\tau_{G},\tau_{L},\tau_{R} &\sim \text{Exponential}(4) \\
+\end{aligned}
+$$
+
+\newpage
+
+## Supplementary Figures
+
+(ref:plotGPSWorldCaption) _Countries sampled in the final dataset for Study 1._ Data from the Global Preferences Survey. Point sizes indicate relative numbers of participants sampled in each country.
+
+```{r plotGPSWorld, echo=F, fig.width=8, fig.height=4, fig.cap="(ref:plotGPSWorldCaption)"}
+tar_read(plotGPSWorld)
+```
+
+\newpage
+
+(ref:plotDAGCaption) _Directed acyclic graph of the causal model justifying the inclusion of covariates in our statistical models._ Thomson et al. (2018) show that environmental harshness (Harsh) and subsistence style (Sub) are antecedents of relational mobility (RM), but other evidence also suggests that environmental harshness and subsistence style directly affect prosociality (Pro; Cronk et al., 2019; Talhelm et al., 2014). Environmental harshness and subsistence style are thus third variables that confound the direct path from relational mobility to prosociality. Moreover, all four of these variables are confounded by unmeasured factors (U), such as ecology, climate, institutions, and norms. We cannot directly condition on unmeasured factors, but since these factors are themselves predicted by geographic (Geo) and linguistic (Lin) proximity between countries, we can account for them by allowing countries to covary according to geographic and linguistic proximity.
+
+```{r plotDAG, echo=F, fig.width=6, fig.height=4, fig.cap="(ref:plotDAGCaption)"}
+tar_read(plotDAG)
+```
+
+\newpage
+
+(ref:plotWVSWorldCaption) _Countries sampled in the final dataset for Study 2._ Data from the World Values Survey and European Values Survey. Point sizes indicate relative numbers of participants sampled in each country.
+
+```{r plotWVSWorld, echo=F, fig.width=8, fig.height=4, fig.cap="(ref:plotWVSWorldCaption)"}
+tar_read(plotWVSWorld)
+```
+
+\newpage
+
+(ref:plotWVS5bCaption) _Posterior predictions from a Bayesian multilevel logistic regression predicting charitable organisation membership from country-level relational mobility, controlling for environmental harshness and subsistence style._ The line and shaded area indicate the median posterior regression line and 95% credible intervals. Points indicate the proportion of individuals belonging to charitable organisations on the y-axis and relational mobility scores on the x-axis, for each of the 32 countries, with error bars representing +/- 1 standard error.
+
+```{r plotWVS5b, echo=F, fig.width=5, fig.height=3.5, fig.cap="(ref:plotWVS5bCaption)"}
+tar_read(plotWVS_5.2)
+```
+
+\newpage
+
+(ref:plotWVS6bCaption) _Posterior predictions from a Bayesian multilevel logistic regression predicting generalised trust from country-level relational mobility, controlling for environmental harshness and subsistence style._ The line and shaded area indicate the median posterior regression line and 95% credible intervals. Points indicate the proportion of individuals stating that "most people can be trusted" on the y-axis and relational mobility scores on the x-axis, for each of the 32 countries, with error bars representing +/- 1 standard error.
+
+```{r plotWVS6b, echo=F, fig.width=5, fig.height=3.5, fig.cap="(ref:plotWVS6bCaption)"}
+tar_read(plotWVS_6.2)
+```
+
+\newpage
+
+(ref:plotWVS7bCaption) _Posterior predictions from a Bayesian multilevel ordinal regression predicting trust in specific groups from country-level relational mobility, controlling for environmental harshness and subsistence style._ Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average trust and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error.
+
+```{r plotWVS7b, echo=F, fig.width=8, fig.height=6.5, fig.cap="(ref:plotWVS7bCaption)"}
+tar_read(plotWVS_7.2)
+```
+
+\newpage
+
+(ref:plotWVS8bCaption) _Posterior predictions from a Bayesian multilevel ordinal regression predicting moral justifiability of different scenarios from country-level relational mobility, controlling for environmental harshness and subsistence style._ Higher numbers on the y-axis indicate _lower_ justifiability ratings for each scenario. Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average justifiability (reversed) and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error.
+
+```{r plotWVS8b, echo=F, fig.width=6, fig.height=6, fig.cap="(ref:plotWVS8bCaption)"}
+tar_read(plotWVS_8.2)
+```
+
+\newpage
+
+## Supplementary References
+
+Cronk, L., Berbesque, C., Conte, T., Gervais, M., Iyer, P., McCarthy, B., Sonkoi, D., Townsend, C., & Aktipis, A. (2019). Managing risk through cooperation: Need-based transfers and risk pooling among the societies of the Human Generosity Project. In L. R. Lozny & T. H. McGovern (Eds.), _Global perspectives on long term community resource management_ (pp. 41---75). Springer International Publishing. https://doi.org/10.1007/978-3-030-15800-2_4
+
+Eberhard, D. M., Simons, G. F., & Fennig, C. D. (Eds.). (2018). _Ethnologue: Languages of the world_ (Twenty-first). SIL International.
+
+Eff, E. A. (2008). Weight matrices for cultural proximity: Deriving weights from a language phylogeny. _Structure and Dynamics_, _3_(2).
+
+Hammarström, H., Forkel, R., Haspelmath, M., & Bank, S. (2017). _Glottolog 3.0._ Max Planck Institute for the Science of Human History. https://doi.org/10.5281/zenodo.4061162
+
+Talhelm, T., Zhang, X., Oishi, S., Shimin, C., Duan, D., Lan, X., & Kitayama, S. (2014). Large-scale psychological differences within china explained by rice versus wheat agriculture. _Science_, _344_(6184), 603–608. https://doi.org/10.1126/science.1246850
+
+Thomson, R., Yuki, M., Talhelm, T., Schug, J., Kito, M., Ayanian, A. H., Becker, J. C., Becker, M., Chiu, C.-y., Choi, H.-S., Ferreira, C. M., Fülöp, M., Gul, P., Houghton-Illera, A. M., Joasoo, M., Jong, J., Kavanagh, C. M., Khutkyy, D., Manzi, C., ... Visserman, M. L. (2018). Relational mobility predicts social behaviors in 39 countries and is tied to historical farming and threat. _Proceedings of the National Academy of Sciences_, _115_(29), 7521–7526. https://doi.org/10.1073/pnas.1713191115
