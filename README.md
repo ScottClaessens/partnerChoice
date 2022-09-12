@@ -9,9 +9,9 @@ This repository contains the R code for the manuscript "Is partner choice relate
 To run this code, you will need to [install R](https://www.r-project.org/) and the following R packages:
 
 ```
-install.packages(c("brms","cowplot","ggdag","haven","papaja", 
-                   "readxl","rmarkdown","rnaturalearth","sjlabelled", 
-                   "targets","tarchetypes","tidyverse"))
+install.packages(c("brms","cowplot","ggdag","ggrepel","haven","lavaan",
+                   "papaja","readxl","rmarkdown","rnaturalearth",
+                   "semTools","simr","sjlabelled","stringr","tidyverse"))
 ```
 
 ### Executing code

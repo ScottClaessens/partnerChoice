@@ -3,7 +3,7 @@ output:
   pdf_document: default
   html_document: default
 ---
-\renewcommand{\appendixname}{Supplementary Materials}
+\renewcommand{\appendixname}{\bf{Supplementary Materials}}
 \renewcommand{\thefigure}{S\arabic{figure}} \setcounter{figure}{0}
 \renewcommand{\thetable}{S\arabic{table}} \setcounter{table}{0}
 \renewcommand{\theequation}{S\arabic{table}} \setcounter{equation}{0}
@@ -125,14 +125,6 @@ tar_read(plotGPSWorld)
 
 \newpage
 
-(ref:plotDAGCaption) _Directed acyclic graph of the causal model justifying the inclusion of covariates in our statistical models._ Thomson et al. (2018) show that environmental harshness (Harsh) and subsistence style (Sub) are antecedents of relational mobility (RM), but other evidence also suggests that environmental harshness and subsistence style directly affect prosociality (Pro; Cronk et al., 2019; Talhelm et al., 2014). Environmental harshness and subsistence style are thus third variables that confound the direct path from relational mobility to prosociality. Moreover, all four of these variables are confounded by unmeasured factors (U), such as ecology, climate, institutions, and norms. We cannot directly condition on unmeasured factors, but since these factors are themselves predicted by geographic (Geo) and linguistic (Lin) proximity between countries, we can account for them by allowing countries to covary according to geographic and linguistic proximity.
-
-```{r plotDAG, echo=F, fig.width=6, fig.height=4, fig.cap="(ref:plotDAGCaption)"}
-tar_read(plotDAG)
-```
-
-\newpage
-
 (ref:plotWVSWorldCaption) _Countries sampled in the final dataset for Study 2._ Data from the World Values Survey and European Values Survey. Point sizes indicate relative numbers of participants sampled in each country.
 
 ```{r plotWVSWorld, echo=F, fig.width=8, fig.height=4, fig.cap="(ref:plotWVSWorldCaption)"}
@@ -165,6 +157,14 @@ tar_read(plotWVS_7.2)
 
 \newpage
 
+(ref:plotWVS7cCaption) _Posterior predictions from a Bayesian multilevel ordinal regression predicting trust in specific groups from country-level relational mobility, controlling for environmental harshness and subsistence style and including a quadratic effect for relational mobility._ Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average trust and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error.
+
+```{r plotWVS7c, echo=F, fig.width=8, fig.height=6.5, fig.cap="(ref:plotWVS7cCaption)"}
+tar_read(plotWVS_7.3)
+```
+
+\newpage
+
 (ref:plotWVS8bCaption) _Posterior predictions from a Bayesian multilevel ordinal regression predicting moral justifiability of different scenarios from country-level relational mobility, controlling for environmental harshness and subsistence style._ Higher numbers on the y-axis indicate _lower_ justifiability ratings for each scenario. Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average justifiability (reversed) and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error.
 
 ```{r plotWVS8b, echo=F, fig.width=6, fig.height=6, fig.cap="(ref:plotWVS8bCaption)"}
@@ -173,15 +173,129 @@ tar_read(plotWVS_8.2)
 
 \newpage
 
+(ref:plotWVS8cCaption) _Posterior predictions from a Bayesian multilevel ordinal regression predicting moral justifiability of different scenarios from country-level relational mobility, controlling for environmental harshness and subsistence style and including a quadratic effect for relational mobility._ Higher numbers on the y-axis indicate _lower_ justifiability ratings for each scenario. Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average justifiability (reversed) and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error.
+
+```{r plotWVS8c, echo=F, fig.width=6, fig.height=6, fig.cap="(ref:plotWVS8cCaption)"}
+tar_read(plotWVS_8.3)
+```
+
+\newpage
+
+## Supplementary Tables
+
+(ref:tableRaw1Caption) Raw national-level data from Study 1. Mean averages are reported for prosocial measures from the Global Preferences Survey. SE = standard error for relational mobility score.
+
+```{r tableRaw1, echo=F, warning=F, message=F}
+apa_table(
+  tar_read(tableRaw1),
+  booktabs = TRUE,
+  placement = "h",
+  caption = "(ref:tableRaw1Caption)"
+)
+```
+
+\newpage
+
+(ref:tableInvarianceGPSCaption) Measurement invariance results for the prosociality measures from the Global Preferences Survey. Across nations, the analyses tested the measurement invariance of the factor structure for a single factor with loadings from altruism, positive reciprocity, and trust. Thresholds for good fit: RMSEA < 0.08; SRMR < 0.08; CFI > 0.95 (Hu & Bentler, 1999; MacCallum et al., 1996). 
+
+```{r tableInvarianceGPS, echo=F, warning=F, message=F}
+apa_table(
+  tar_read(tableInvarianceGPS),
+  booktabs = TRUE,
+  placement = "h",
+  align = c("m{4cm}", "m{3cm}", "m{3cm}", "m{3cm}"),
+  caption = "(ref:tableInvarianceGPSCaption)"
+)
+```
+
+\newpage
+
+(ref:tablePowerCaption) Results from power analysis simulations. For each analysis, we simulated multiple datasets with various effect sizes (slopes) for relational mobility and, as a measure of power, determined the proportion of models fitted to these datasets that returned significantly positive slopes (_p_ < 0.05). We manipulated the effect sizes until analyses returned around 80% power. For effect size thresholds in regression, see Funder & Ozer (2019). For effect size thresholds in logistic regression, see Chen, Cohen, and Chen (2010).
+
+```{r tablePower, echo=F, warning=F, message=F}
+apa_table(
+  tar_read(tablePower),
+  booktabs = TRUE,
+  landscape = TRUE,
+  placement = "h",
+  caption = "(ref:tablePowerCaption)"
+)
+```
+
+\newpage
+
+(ref:tableQuadraticCaption) Posterior slopes from models with quadratic effects of relational mobility.
+
+```{r tableQuadratic, echo=F, warning=F, message=F}
+apa_table(
+  tar_read(tableQuadratic),
+  booktabs = TRUE,
+  landscape = TRUE,
+  caption = "(ref:tableQuadraticCaption)"
+)
+```
+
+\newpage
+
+(ref:tableRaw2Caption) Raw national-level data from Study 2. Mean averages are reported for prosocial measures from the World Values Survey. SE = standard error for relational mobility score.
+
+```{r tableRaw2, echo=F, warning=F, message=F}
+apa_table(
+  tar_read(tableRaw2),
+  font_size = "scriptsize",
+  booktabs = TRUE,
+  landscape = TRUE,
+  caption = "(ref:tableRaw2Caption)"
+)
+```
+
+\newpage
+
+(ref:tableInvarianceWVS1Caption) Measurement invariance results for the measures of trust in different groups from the World Values Survey. Across nations, the analyses tested the measurement invariance of the factor structure for two factors: (1) trust in your family, people in your neighbourhood, and people you know personally, and (2) trust in people you meet for the first time, people of another nationality, and people of another religion. Thresholds for good fit: RMSEA < 0.08; SRMR < 0.08; CFI > 0.95 (Hu & Bentler, 1999; MacCallum et al., 1996). 
+
+```{r tableInvarianceWVS1, echo=F, warning=F, message=F}
+apa_table(
+  tar_read(tableInvarianceWVS1),
+  booktabs = TRUE,
+  placement = "h",
+  align = c("m{4cm}", "m{3cm}", "m{3cm}", "m{3cm}"),
+  caption = "(ref:tableInvarianceWVS1Caption)"
+)
+```
+
+\newpage
+
+(ref:tableInvarianceWVS2Caption) Measurement invariance results for the moral justifiability measures from the World Values Survey. Across nations, the analyses tested the measurement invariance of the factor structure for a single factor with loadings from all four items: claiming government benefits, avoiding public transport fare, cheating on taxes, and accepting a bribe. Thresholds for good fit: RMSEA < 0.08; SRMR < 0.08; CFI > 0.95 (Hu & Bentler, 1999; MacCallum et al., 1996). 
+
+```{r tableInvarianceWVS2, echo=F, warning=F, message=F}
+apa_table(
+  tar_read(tableInvarianceWVS2),
+  booktabs = TRUE,
+  placement = "h",
+  align = c("m{4cm}", "m{3cm}", "m{3cm}", "m{3cm}"),
+  caption = "(ref:tableInvarianceWVS2Caption)"
+)
+```
+
+\newpage
+
 ## Supplementary References
 
-Cronk, L., Berbesque, C., Conte, T., Gervais, M., Iyer, P., McCarthy, B., Sonkoi, D., Townsend, C., & Aktipis, A. (2019). Managing risk through cooperation: Need-based transfers and risk pooling among the societies of the Human Generosity Project. In L. R. Lozny & T. H. McGovern (Eds.), _Global perspectives on long term community resource management_ (pp. 41---75). Springer International Publishing. https://doi.org/10.1007/978-3-030-15800-2_4
+Chen, H., Cohen, P., & Chen, S. (2010). How big is a big odds ratio? Interpreting the magnitudes of odds ratios in epidemiological studies. _Communications in Statistics — Simulation and Computation_, _39_(4), 860–864. https://doi.org/10.1080/03610911003650383
+
+Cronk, L., Berbesque, C., Conte, T., Gervais, M., Iyer, P., McCarthy, B., Sonkoi, D., Townsend, C., & Aktipis, A. (2019). Managing risk through cooperation: Need-based transfers and risk pooling among the societies of the Human Generosity Project. In L. R. Lozny & T. H. McGovern (Eds.), _Global perspectives on long term community resource management_ (pp. 41–75). Springer International Publishing. https://doi.org/10.1007/978-3-030-15800-2_4
 
 Eberhard, D. M., Simons, G. F., & Fennig, C. D. (Eds.). (2018). _Ethnologue: Languages of the world_ (Twenty-first). SIL International.
 
-Eff, E. A. (2008). Weight matrices for cultural proximity: Deriving weights from a language phylogeny. _Structure and Dynamics_, _3_(2).
+Eff, E. A. (2008). Weight matrices for cultural proximity: Deriving weights from a language phylogeny. _Structure and Dynamics_, _3_(2). https://doi.org/10.5070/SD932003296
+
+Funder, D. C., & Ozer, D. J. (2019). Evaluating effect size in psychological research: Sense and nonsense. _Advances in Methods and Practices in Psychological Science_, _2_(2), 156–168. https://doi.org/10.1177/2515245919847202
 
 Hammarström, H., Forkel, R., Haspelmath, M., & Bank, S. (2017). _Glottolog 3.0._ Max Planck Institute for the Science of Human History. https://doi.org/10.5281/zenodo.4061162
+
+Hu, L. T., & Bentler, P. M. (1999). Cutoff criteria for fit indexes in covariance structure analysis: Conventional criteria versus new alternatives. _Structural Equation Modeling_, _6_(1), 1–55. https://doi.org/10.1080/10705519909540118
+
+MacCallum, R. C., Browne, M. W., & Sugawara, H. M. (1996). Power analysis and determination of sample size for covariance structure modeling. _Psychological Methods_, _1_(2), 130–149. https://doi.org/10.1037/1082-989x.1.2.130
 
 Talhelm, T., Zhang, X., Oishi, S., Shimin, C., Duan, D., Lan, X., & Kitayama, S. (2014). Large-scale psychological differences within china explained by rice versus wheat agriculture. _Science_, _344_(6184), 603–608. https://doi.org/10.1126/science.1246850
 

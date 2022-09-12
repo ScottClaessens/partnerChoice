@@ -50,6 +50,9 @@ documentation/
 # manuscript_files folder
 manuscript_files/
 
+# revisions folder
+revisions/
+
 # slurm files
 run.sl
 slurm_clustermq.tmpl

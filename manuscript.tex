@@ -1,47 +1,40 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
-\documentclass[english,man,floatsintext]{apa6}
+\documentclass[
+  man,floatsintext]{apa6}
+\usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
   \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
 \usepackage{xcolor}
-\usepackage{hyperref}
-\hypersetup{
-            pdftitle={Is partner choice related to prosociality? A cross-national investigation},
-            pdfauthor={Scott Claessens1 \& Thanos Kyritsis1},
-            pdfkeywords={partner choice, relational mobility, cooperation, prosociality, cross-cultural},
-            colorlinks=true,
-            linkcolor=Maroon,
-            filecolor=Maroon,
-            citecolor=Blue,
-            urlcolor=blue,
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\usepackage{graphicx,grffile}
+\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -50,16 +43,55 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-
-% set default figure placement to htbp
+% Set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{english}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
 % Manuscript styling
 \usepackage{upgreek}
 \captionsetup{font=singlespacing,justification=justified}
@@ -75,9 +107,9 @@
 
 % Create new environments so endfloat can handle them
 % \newenvironment{ltable}
-%   {\begin{landscape}\begin{center}\begin{threeparttable}}
-%   {\end{threeparttable}\end{center}\end{landscape}}
-\newenvironment{lltable}{\begin{landscape}\begin{center}\begin{ThreePartTable}}{\end{ThreePartTable}\end{center}\end{landscape}}
+%   {\begin{landscape}\centering\begin{threeparttable}}
+%   {\end{threeparttable}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\centering\begin{ThreePartTable}}{\end{ThreePartTable}\end{landscape}}
 
 % Enables adjusting longtable caption width to table width
 % Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
@@ -136,13 +168,23 @@
 \AtBeginEnvironment{tablenotes}{\doublespacing}
 \captionsetup[table]{font={stretch=1.5}}
 \captionsetup[figure]{font={stretch=1.5}}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[shorthands=off,main=english]{babel}
-\else
-  % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
-  \usepackage{polyglossia}
-  \setmainlanguage[]{english}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
 \fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Is partner choice related to prosociality? A cross-national investigation},
+  pdfauthor={Scott Claessens1 \& Thanos Kyritsis1},
+  pdflang={en-EN},
+  pdfkeywords={partner choice, relational mobility, cooperation, prosociality, cross-cultural},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
 
 \title{Is partner choice related to prosociality? A cross-national investigation}
 \author{Scott Claessens\textsuperscript{1} \& Thanos Kyritsis\textsuperscript{1}}
@@ -175,11 +217,11 @@ Why does human prosociality vary around the world? Evolutionary models and labor
 
 Humans are a uniquely prosocial species, and this prosociality is expressed in populations all around the world (Cronk et al., 2019). Yet, despite its ubiquity, there is also substantial global variation in prosociality, with some modern nation states expressing higher levels of cooperation than others (Dorrough \& Glöckner, 2016; Romano et al., 2021; Van Doesum et al., 2021). What explains this variation in prosociality across countries?
 
-One factor that could explain global variation in prosociality is differing possibilities for partner choice across countries. Here, \enquote{partners} are defined as individuals that people socially interact with to provide mutual benefits (e.g.~friends, neighbours, colleagues, mates). Theoretical models of partner choice show that when individuals can leave interactions with uncooperative partners and actively choose new interactions with cooperative partners, cooperation can evolve and be sustained (Aktipis, 2004, 2011; Enquist \& Leimar, 1993; Roberts, 2020, 1998; Roberts et al., 2021). Partner choice allows for the assortative matching of cooperators, creating a market in which individuals use prosocial displays to compete for access to profitable social partnerships (Barclay, 2013, 2016). Thus, partner choice models predict that humans should be more prosocial and cooperative if they are able to leave unprofitable partnerships and freely choose new partnerships.
+One factor that could explain global variation in prosociality is differing possibilities for partner choice across countries. Here, `partners' are defined as individuals that people socially interact with to provide mutual benefits (e.g.~friends, neighbours, colleagues, mates). Theoretical models of partner choice show that when individuals can leave interactions with uncooperative partners and actively choose new interactions with cooperative partners, cooperation can evolve and be sustained (Aktipis, 2004, 2011; Enquist \& Leimar, 1993; Roberts, 2020, 1998; Roberts et al., 2021). Partner choice allows for the assortative matching of cooperators, creating a market in which individuals use prosocial displays to compete for access to profitable social partnerships (Barclay, 2013, 2016). Thus, partner choice models predict that humans should be more prosocial and cooperative if they are able to leave unprofitable partnerships and freely choose new partnerships.
 
 Lab and field evidence has begun to support theoretical models of partner choice. Experiments with economic games have shown that introducing partner choice causes people to cooperate more in social dilemmas (Barclay, 2004; Barclay \& Raihani, 2016; Barclay \& Willer, 2007; Sylwester \& Roberts, 2010, 2013) and allowing for partner choice on dynamic social networks promotes assortative matching of cooperators (Jordan et al., 2013; Rand et al., 2011). Anthropological evidence also supports the role of partner choice in human cooperation, showing that people across a diverse range of societies selectively choose social partners with prosocial reputations, thereby encouraging prosociality (Bliege Bird \& Power, 2015; Lyle \& Smith, 2014; Smith \& Apicella, 2020; Tognetti et al., 2014). For example, among the Aboriginal Australian Martu peoples, hunters with reputations as generous food sharers are more central in social networks and, as a result, receive more help from others (Bliege Bird \& Power, 2015).
 
-As well as predicting behaviour in the lab and in small-scale societies, partner choice models also predict that socioecological conditions favouring partner choice should promote prosociality in countries around the world. One recently developed socioecological variable that captures differing possibilities for partner choice is relational mobility (Yuki \& Schug, 2012). Relational mobility captures \enquote{how much freedom and opportunity a society affords individuals to choose and dispose of interpersonal relationships based on personal preference} (p.~7521; Thomson et al., 2018). In societies with low relational mobility, people do not actively choose their relationships and their social partners are relatively fixed. By contrast, in societies with high relational mobility, people actively choose who they interact with, creating dynamic social networks. The former is akin to classic partner control models in evolutionary game theory, where individuals are forced to interact for a fixed period (Axelrod \& Hamilton, 1981), whereas the latter is akin to models of partner choice and biological markets (Barclay, 2013).
+As well as predicting behaviour in the lab and in small-scale societies, partner choice models also predict that socioecological conditions favouring partner choice should promote prosociality in countries around the world. One recently developed socioecological variable that captures differing possibilities for partner choice is relational mobility (Yuki \& Schug, 2012). Relational mobility captures ``how much freedom and opportunity a society affords individuals to choose and dispose of interpersonal relationships based on personal preference'' {[}p.~7521; Thomson et al. (2018){]}. In societies with low relational mobility, people do not actively choose their relationships and their social partners are relatively fixed. By contrast, in societies with high relational mobility, people actively choose who they interact with, creating dynamic social networks. The former is akin to classic partner control models in evolutionary game theory, where individuals are forced to interact for a fixed period (Axelrod \& Hamilton, 1981), whereas the latter is akin to models of partner choice and biological markets (Barclay, 2013).
 
 We hypothesise, then, that people in higher relational mobility societies should express more prosocial behaviour and attitudes. Previous work has begun to test this hypothesis. For example, research has shown that people in higher relational mobility societies provide social support to others more frequently (Kito et al., 2017), have greater trust in strangers (Thomson et al., 2018), and are more likely to give gifts in romantic relationships (Komiya et al., 2019). Conversely, a recent meta-analysis found that people in higher relational mobility societies did not contribute more in incentivised social dilemma experiments (Spadaro et al., 2022). However, social support and cooperation in social dilemmas are only a subset of the possible measures of prosocial behaviours and attitudes, which also include impersonal altruism, reciprocity, generalised trust, collective action, and moral assessments of cheating behaviour. The relationship between relational mobility and these prosocial behaviours and attitudes is less understood.
 
@@ -206,7 +248,7 @@ The Global Preferences Survey was conducted as part of the 2012 World Gallup Pol
 
 Participants in the Global Preferences Survey were asked a series of self-report questions that measure the following social preferences: altruism, generalised trust, positive reciprocity, negative reciprocity, risk-taking, and patience. For the purposes of our study, we focused on the altruism, trust, and positive reciprocity items. Negative reciprocity was not studied, as previous factor analyses have shown that punitive behaviour forms a separate latent variable distinct from cooperation (Peysakhovich et al., 2014).
 
-Altruism was measured by two items; a hypothetical charitable donation (\enquote{Imagine the following situation: Today you unexpectedly received 1000 euros. How much of this amount would you donate to a good cause?}) and willingness to unconditionally donate to charity (\enquote{How willing are you to give to good causes without expecting anything in return?}). Trust was measured by a single item: agreement with the statement \enquote{I assume that people have only the best intentions}. Positive reciprocity was measured by two items: stating the price of a hypothetical thank-you gift the participant would give to a stranger who helped them, and agreement with the statement \enquote{When someone does me a favour I am willing to return it}. These items have been shown to reliably predict altruistic, trusting, and reciprocal behaviour in incentivised economic decision-making experiments (Falk et al., 2016).
+Altruism was measured by two items; a hypothetical charitable donation (``Imagine the following situation: Today you unexpectedly received 1000 euros. How much of this amount would you donate to a good cause?'') and willingness to unconditionally donate to charity (``How willing are you to give to good causes without expecting anything in return?''). Trust was measured by a single item: agreement with the statement ``I assume that people have only the best intentions''. Positive reciprocity was measured by two items: stating the price of a hypothetical thank-you gift the participant would give to a stranger who helped them, and agreement with the statement ``When someone does me a favour I am willing to return it''. These items have been shown to reliably predict altruistic, trusting, and reciprocal behaviour in incentivised economic decision-making experiments (Falk et al., 2016).
 
 \hypertarget{relational-mobility}{%
 \paragraph{Relational mobility}\label{relational-mobility}}
@@ -216,11 +258,19 @@ We related measures of prosociality from the Global Preferences Survey to countr
 \hypertarget{control-variables}{%
 \paragraph{Control variables}\label{control-variables}}
 
-In addition to our main variables, we also included several control variables in our regressions. These control variables are justified by a causal model in which both relational mobility and prosociality are jointly affected by various confounds (see Supplementary Figure \ref{fig:plotDAG}).
+In addition to our main variables, we also included several control variables in our regressions. These control variables are justified by a causal model in which both relational mobility and prosociality are jointly affected by various confounds (see Figure \ref{fig:plotDAG}).
+
+
+
+\begin{figure}
+\centering
+\includegraphics{manuscript_files/figure-latex/plotDAG-1.pdf}
+\caption{\label{fig:plotDAG}\emph{Directed acyclic graph of the causal model justifying the inclusion of covariates in our statistical models.} Thomson et al.~(2018) show that environmental harshness (Harsh) and subsistence style (Sub) are antecedents of relational mobility (RM), but other evidence also suggests that environmental harshness and subsistence style directly affect prosociality (Pro; Cronk et al., 2019; Talhelm et al., 2014). Environmental harshness and subsistence style are thus third variables that confound the direct path from relational mobility to prosociality. Moreover, all four of these variables are confounded by unmeasured factors (U), such as ecology, climate, institutions, and norms. We cannot directly condition on unmeasured factors, but since these factors are themselves predicted by geographic (Geo) and linguistic (Lin) proximity between countries, we can account for them by allowing countries to covary according to geographic and linguistic proximity.}
+\end{figure}
 
 First, we controlled for environmental harshness and subsistence style. These two variables were retrieved from the same multi-country study of relational mobility (Thomson et al., 2018). Environmental harshness was a composite measure of seven indicators of historical and ecological threats: (1) history of territorial threats, (2) demanding geoclimate, (3) historical pathogen prevalence, (4) tuberculosis incidence, (5) disaster vulnerability, (6) population density in 1500, and (7) daily fat supply (reversed). Subsistence style was an index that represented the amount of area harvested with wheat, minus the percentage of pasture land for herding, plus the amount of harvested area devoted to rice farming, creating a continuum from relatively mobile and independent subsistence to more settled and interdependent subsistence. Thomson et al. (2018) argue that these country-level characteristics are key antecedents of relational mobility. Additional evidence suggests that these variables also affect prosociality (Cronk et al., 2019; Talhelm et al., 2014). These variables are thus shared causes that could confound the direct relationship between relational mobility and prosociality. We statistically conditioned on both environmental harshness and subsistence style to remove this confounding.
 
-Second, we controlled for geographic and linguistic proximity between countries. Countries that are close to one another and share common cultural ancestors are likely to be more similar to one another, due to similar ecologies, climates, institutions, and norms (see Supplementary Figure \ref{fig:plotDAG}). To account for these unmeasured confounds, we allowed countries to covary according to geographic and linguistic proximity in our models. Geographic proximity was calculated as the inverse of the logged geodesic distance between country capital cities (data from the R package \emph{maps}; Brownrigg, 2018) using the R package \emph{geosphere} (Hijmans, 2019). Linguistic proximity between two countries was calculated as the cultural proximity between all languages spoken within those countries, weighted by speaker percentages (see Supplementary Methods for more details; Hammarström et al., 2017; Eberhard et al., 2018).
+Second, we controlled for geographic and linguistic proximity between countries. Countries that are close to one another and share common cultural ancestors are likely to be more similar to one another, due to similar ecologies, climates, institutions, and norms (see Figure \ref{fig:plotDAG}). To account for these unmeasured confounds, we allowed countries to covary according to geographic and linguistic proximity in our models. Geographic proximity was calculated as the inverse of the logged geodesic distance between country capital cities {[}data from the R package \emph{maps}; Brownrigg (2018){]} using the R package \emph{geosphere} (Hijmans, 2019). Linguistic proximity between two countries was calculated as the cultural proximity between all languages spoken within those countries, weighted by speaker percentages {[}see Supplementary Methods for more details; Hammarström et al. (2017); Eberhard et al. (2018){]}.
 
 \hypertarget{statistical-analysis}{%
 \subsubsection{Statistical analysis}\label{statistical-analysis}}
@@ -275,7 +325,7 @@ The World Values Survey and the European Values Survey are conducted mainly via 
 \hypertarget{prosociality-1}{%
 \paragraph{Prosociality}\label{prosociality-1}}
 
-Participants in both the World Values Survey and the European Values Survey answer a range of self-report questions on social values, societal wellbeing, trust, economic values, religion, politics, and ethics. For the purposes of our study, we highlighted several variables as measures of cooperation, trust, and prosociality. The first variable captures cooperation via collective action (``Are you a member of a charitable or humanitarian organisation?''; for a similar interpretation of this variable, see Jacquet et al., 2021). The second variable captures generalised trust (\enquote{Generally speaking, would you say that most people can be trusted or that you need to be very careful in dealing with people?}). The third set of variables captures levels of trust in specific groups of people, namely family, neighborhood, personal acquaintances, people the respondent has met for the first time, people of another religion, and people of another nationality. The fourth set of variables captures the justifiability of different self-interested moral trangressions, including claiming unentitled government benefits, avoiding a fare on public transport, cheating on taxes, and someone accepting a bribe.
+Participants in both the World Values Survey and the European Values Survey answer a range of self-report questions on social values, societal wellbeing, trust, economic values, religion, politics, and ethics. For the purposes of our study, we highlighted several variables as measures of cooperation, trust, and prosociality. The first variable captures cooperation via collective action {[}``Are you a member of a charitable or humanitarian organisation?''; for a similar interpretation of this variable, see Jacquet et al. (2021){]}. The second variable captures generalised trust (``Generally speaking, would you say that most people can be trusted or that you need to be very careful in dealing with people?''). The third set of variables captures levels of trust in specific groups of people, namely family, neighborhood, personal acquaintances, people the respondent has met for the first time, people of another religion, and people of another nationality. The fourth set of variables captures the justifiability of different self-interested moral trangressions, including claiming unentitled government benefits, avoiding a fare on public transport, cheating on taxes, and someone accepting a bribe.
 
 \hypertarget{relational-mobility-and-control-variables}{%
 \paragraph{Relational mobility and control variables}\label{relational-mobility-and-control-variables}}
@@ -309,7 +359,7 @@ For generalised trust, model comparison revealed that adding relational mobility
 \begin{figure}
 \centering
 \includegraphics{manuscript_files/figure-latex/plotWVS6a-1.pdf}
-\caption{\label{fig:plotWVS6a}\emph{Posterior predictions from a Bayesian multilevel logistic regression predicting generalised trust from country-level relational mobility, without controls.} The line and shaded area indicate the median posterior regression line and 95\% credible intervals. Points indicate the proportion of individuals stating that \enquote{most people can be trusted} on the y-axis and relational mobility scores on the x-axis, for each of the 32 countries, with error bars representing +/- 1 standard error.}
+\caption{\label{fig:plotWVS6a}\emph{Posterior predictions from a Bayesian multilevel logistic regression predicting generalised trust from country-level relational mobility, without controls.} The line and shaded area indicate the median posterior regression line and 95\% credible intervals. Points indicate the proportion of individuals stating that ``most people can be trusted'' on the y-axis and relational mobility scores on the x-axis, for each of the 32 countries, with error bars representing +/- 1 standard error.}
 \end{figure}
 
 For trust in specific groups (Figure \ref{fig:plotWVS7a}), random slopes revealed that relational mobility was \emph{negatively} related to trust in family (median posterior slope = -1.59, 95\% CI {[}-2.55 -0.63{]}). Relational mobility was unrelated to trust in one's neighbourhood (median posterior slope = -0.56, 95\% CI {[}-1.52 0.41{]}), trust in people one knows personally (median posterior slope = 0.15, 95\% CI {[}-0.81 1.09{]}), and trust in people one meets for the first time (median posterior slope = 0.25, 95\% CI {[}-0.71 1.20{]}). Relational mobility was positively related to trust in people of another religion (median posterior slope = 1.02, 95\% CI {[}0.06 1.98{]}) and trust in people of another nationality (median posterior slope = 1.45, 95\% CI {[}0.49 2.39{]}). Only the relationship between relational mobility and trust in people of another religion was attenuated after controlling for environmental harshness and subsistence style (median posterior slope = 0.51, 95\% CI {[}-0.48 1.48{]}; Supplementary Figure \ref{fig:plotWVS7b}).
@@ -332,14 +382,14 @@ For moral justifiability of self-interested moral transgressions, model comparis
 \caption{\label{fig:plotWVS8a}\emph{Posterior predictions from a Bayesian multilevel ordinal regression predicting moral justifiability of different scenarios from country-level relational mobility, without controls.} Higher numbers on the y-axis indicate \emph{lower} justifiability ratings for each scenario, such that higher values reflect higher levels of prosociality. Lines and shaded areas indicate median posterior regression lines and 95\% credible intervals. Points indicate average justifiability (reversed) and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error.}
 \end{figure}
 
-Overall, contrary to our pre-registered hypotheses, we found that relational mobility was unrelated to collective action (operationalised as charitable organisation membership), generalised trust, and moral justifiability ratings for self-interested behaviours. Relational mobility was also unrelated to trust in most specific groups, though we did find that relational mobility negatively predicted trust in family and positively predicted trust in people of another religion and nationality. This \enquote{scope of trust} effect, whereby relational mobility is associated with lower trust in closer contacts but greater trust in more distant contacts, is an interesting feature of the construct that aligns with previous work (Thomson et al., 2018).
+Overall, contrary to our pre-registered hypotheses, we found that relational mobility was unrelated to collective action (operationalised as charitable organisation membership), generalised trust, and moral justifiability ratings for self-interested behaviours. Relational mobility was also unrelated to trust in most specific groups, though we did find that relational mobility negatively predicted trust in family and positively predicted trust in people of another religion and nationality. This ``scope of trust'' effect, whereby relational mobility is associated with lower trust in closer contacts but greater trust in more distant contacts, is an interesting feature of the construct that aligns with previous work (Thomson et al., 2018).
 
 \hypertarget{general-discussion}{%
 \section{General discussion}\label{general-discussion}}
 
 Across two pre-registered cross-national studies, we found little evidence to suggest that partner choice via relational mobility is positively associated with prosociality around the world. In our first study, we initially found no relationships between relational mobility and altruism, positive reciprocity, or trust. Only when we controlled for environmental harshness and subsistence style did we find that relational mobility negatively predicted trust and slightly positively predicted altruism. In our second study, we found no relationships between relational mobility and collective action, generalised trust, or moral judgements of antisocial behaviour. Relational mobility was also unrelated to trust in most specific groups, although we found that relational mobility did negatively predict trust in family and positively predict trust in people of another religion and nationality.
 
-Why did we not find the expected relationships between relational mobility and prosociality for most measures? One might argue that relational mobility is not an adequate measure of the kinds of partner choice implemented in theoretical models of cooperation or laboratory experiments. We would contest this view. Relational mobility is explicitly defined as a construct that quantifies \enquote{variance in partner choice in human societies} (p.~7521; Thomson et al., 2018). In the relational mobility scale, people are asked about their immediate society, including friends and acquaintances, and whether people in this immediate society can \enquote{leave {[}current relationships{]} for better ones} and \enquote{choose\ldots{} the people they interact with}. These are the exact same opportunities afforded to agents in partner choice models and participants in partner choice experiments.
+Why did we not find the expected relationships between relational mobility and prosociality for most measures? One might argue that relational mobility is not an adequate measure of the kinds of partner choice implemented in theoretical models of cooperation or laboratory experiments. We would contest this view. Relational mobility is explicitly defined as a construct that quantifies ``variance in partner choice in human societies'' {[}p.~7521; Thomson et al. (2018){]}. In the relational mobility scale, people are asked about their immediate society, including friends and acquaintances, and whether people in this immediate society can ``leave {[}current relationships{]} for better ones'' and ``choose\ldots{} the people they interact with''. These are the exact same opportunities afforded to agents in partner choice models and participants in partner choice experiments.
 
 Others might argue that our measures of prosociality lacked construct validity. Indeed, these were self-reported rather than behavioural measures of prosociality that in some cases (e.g.~charitable membership organisation) mapped only loosely onto the construct of interest. This was largely unadvoidable: using secondary data, we were limited to survey questions that had not been explicitly designed to test our particular hypotheses. However, the self-report measures of prosociality from the Global Preferences Survey were generated based on their strong positive relationships with prosocial behaviour in incentivised economic games, and yet the evidence with these measures remained mixed.
 
@@ -349,7 +399,7 @@ These findings challenge previous theoretical and empirical studies suggesting t
 
 It is possible that relational mobility does affect prosocial behaviour and attitudes, but at a more local scale. This would explain why our results differ to those from previous lab and field studies which measure partner choice in controlled experiments or in small-scale communities. It is also possible that people in low relational mobility nations are just as prosocial as people in high relational mobility nations, but this prosociality is achieved in different ways. Partner control models, such as the iterated Prisoner's Dilemma (Axelrod \& Hamilton, 1981), show that strategies can successfully promote cooperation in fixed interactions if they cooperate conditionally and punish non-cooperation (e.g.~tit-for-tat strategies). Likewise, repeatedly interacting individuals in low relational mobility nations might use these same mechanisms to encourage prosociality in their own ways. Thus, we might expect that non-cooperation in low relational mobility nations should be met with a quick rescindment of cooperation and high levels of punishment, rather than leaving to search for alternative partners. These nuances about the mechanisms generating similar levels of prosociality across nations were not captured by the measures in our studies.
 
-As well as raising questions about previous work on the evolution of cooperation in humans, our findings also add to a growing body of evidence linking relational mobility to trust. We found a \enquote{scope of trust} effect, whereby relational mobility negatively predicts trust in close contacts (family members) and positively predicts trust in distant contacts (people of other religions and nationalities). This finding builds on previous work finding that relational mobility predicts trust in strangers (Thomson et al., 2018) and additionally shows, with multiple groups of increasing social distance, that relational mobility scales up people's circles of trust beyond close kin. However, we also found that relational mobility was not reliably related to generalised trust across our two studies. This result contradicts previous reported associations between relational mobility and generalised trust (Yuki et al., 2007; Yuki \& Schug, 2012).
+As well as raising questions about previous work on the evolution of cooperation in humans, our findings also add to a growing body of evidence linking relational mobility to trust. We found a ``scope of trust'' effect, whereby relational mobility negatively predicts trust in close contacts (family members) and positively predicts trust in distant contacts (people of other religions and nationalities). This finding builds on previous work finding that relational mobility predicts trust in strangers (Thomson et al., 2018) and additionally shows, with multiple groups of increasing social distance, that relational mobility scales up people's circles of trust beyond close kin. However, we also found that relational mobility was not reliably related to generalised trust across our two studies. This result contradicts previous reported associations between relational mobility and generalised trust (Yuki et al., 2007; Yuki \& Schug, 2012).
 
 In sum, we found little evidence that partner choice, proxied as relational mobility, is related to cross-national variation in prosociality around the world. These findings challenge evolutionary theories that seek to explain why human cooperation has flourished and been maintained around the world. They also highlight the need to connect theoretical models and tightly-controlled experiments with global samples to make generalisable claims about human behaviour.
 
@@ -390,149 +440,152 @@ All data and code to reproduce the statistical analyses in this manuscript can b
 \setlength{\leftskip}{0.5in}
 
 \hypertarget{refs}{}
-\leavevmode\hypertarget{ref-Aktipis2004}{}%
-Aktipis, C. A. (2004). Know when to walk away: Contingent movement and the evolution of cooperation. \emph{Journal of Theoretical Biology}, \emph{231}(2), 249--260. \url{https://doi.org/https://doi.org/10.1016/j.jtbi.2004.06.020}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-Aktipis2004}{}}%
+Aktipis, C. A. (2004). Know when to walk away: Contingent movement and the evolution of cooperation. \emph{Journal of Theoretical Biology}, \emph{231}(2), 249--260. https://doi.org/\url{https://doi.org/10.1016/j.jtbi.2004.06.020}
 
-\leavevmode\hypertarget{ref-Aktipis2011}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Aktipis2011}{}}%
 Aktipis, C. A. (2011). Is cooperation viable in mobile organisms? Simple walk away rule favors the evolution of cooperation in groups. \emph{Evolution and Human Behavior}, \emph{32}(4), 263--276. \url{https://doi.org/10.1016/j.evolhumbehav.2011.01.002}
 
-\leavevmode\hypertarget{ref-Aust2020}{}%
-Aust, F., \& Barth, M. (2020). \emph{papaja: Prepare reproducible APA journal articles with R Markdown}. \url{https://github.com/crsh/papaja}
+\leavevmode\vadjust pre{\hypertarget{ref-Aust2020}{}}%
+Aust, F., \& Barth, M. (2020). \emph{{papaja}: {Prepare} reproducible {APA} journal articles with {R Markdown}}. \url{https://github.com/crsh/papaja}
 
-\leavevmode\hypertarget{ref-Axelrod1981}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Axelrod1981}{}}%
 Axelrod, R., \& Hamilton, W. D. (1981). The evolution of cooperation. \emph{Science}, \emph{211}(4489), 1390--1396. \url{https://doi.org/10.1126/science.7466396}
 
-\leavevmode\hypertarget{ref-Barclay2004}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Barclay2004}{}}%
 Barclay, P. (2004). Trustworthiness and competitive altruism can also solve the "tragedy of the commons". \emph{Evolution and Human Behavior}, \emph{25}(4), 209--220. \url{https://doi.org/10.1016/j.evolhumbehav.2004.04.002}
 
-\leavevmode\hypertarget{ref-Barclay2013}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Barclay2013}{}}%
 Barclay, P. (2013). Strategies for cooperation in biological markets, especially for humans. \emph{Evolution and Human Behavior}, \emph{34}(3), 164--175. \url{https://doi.org/10.1016/j.evolhumbehav.2013.02.002}
 
-\leavevmode\hypertarget{ref-Barclay2016b}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Barclay2016b}{}}%
 Barclay, P. (2016). Biological markets and the effects of partner choice on cooperation and friendship. \emph{Current Opinion in Psychology}, \emph{7}, 33--38. \url{https://doi.org/10.1016/j.copsyc.2015.07.012}
 
-\leavevmode\hypertarget{ref-Barclay2016a}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Barclay2016a}{}}%
 Barclay, P., \& Raihani, N. (2016). Partner choice versus punishment in human prisoner's dilemmas. \emph{Evolution and Human Behavior}, \emph{37}(4), 263--271. \url{https://doi.org/10.1016/j.evolhumbehav.2015.12.004}
 
-\leavevmode\hypertarget{ref-Barclay2007}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Barclay2007}{}}%
 Barclay, P., \& Willer, R. (2007). Partner choice creates competitive altruism in humans. \emph{Proceedings of the Royal Society B: Biological Sciences}, \emph{274}(1610), 749--753. \url{https://doi.org/10.1098/rspb.2006.0209}
 
-\leavevmode\hypertarget{ref-BliegeBird2015}{}%
-Bliege Bird, R., \& Power, E. A. (2015). Prosocial signaling and cooperation among Martu hunters. \emph{Evolution and Human Behavior}, \emph{36}(5), 389--397. \url{https://doi.org/10.1016/j.evolhumbehav.2015.02.003}
+\leavevmode\vadjust pre{\hypertarget{ref-BliegeBird2015}{}}%
+Bliege Bird, R., \& Power, E. A. (2015). Prosocial signaling and cooperation among {Martu} hunters. \emph{Evolution and Human Behavior}, \emph{36}(5), 389--397. \url{https://doi.org/10.1016/j.evolhumbehav.2015.02.003}
 
-\leavevmode\hypertarget{ref-Bromham2018}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Bromham2018}{}}%
 Bromham, L., Hua, X., Cardillo, M., Schneemann, H., \& Greenhill, S. J. (2018). Parasites and politics: Why cross-cultural studies must control for relatedness, proximity and covariation. \emph{Royal Society Open Science}, \emph{5}(8), 181100.
 
-\leavevmode\hypertarget{ref-Brownrigg2018}{}%
-Brownrigg, R. (2018). \emph{maps: Draw geographical maps}. \url{https://CRAN.R-project.org/package=maps}
+\leavevmode\vadjust pre{\hypertarget{ref-Brownrigg2018}{}}%
+Brownrigg, R. (2018). \emph{{m}aps: Draw geographical maps}. \url{https://CRAN.R-project.org/package=maps}
 
-\leavevmode\hypertarget{ref-Burkner2017}{}%
-Bürkner, P.-C. (2017). brms: An R package for Bayesian multilevel models using Stan. \emph{Journal of Statistical Software}, \emph{80}(1), 1--28. \url{https://doi.org/10.18637/jss.v080.i01}
+\leavevmode\vadjust pre{\hypertarget{ref-Burkner2017}{}}%
+Bürkner, P.-C. (2017). {brms}: An {R} package for {Bayesian} multilevel models using {Stan}. \emph{Journal of Statistical Software}, \emph{80}(1), 1--28. \url{https://doi.org/10.18637/jss.v080.i01}
 
-\leavevmode\hypertarget{ref-Cronk2019}{}%
-Cronk, L., Berbesque, C., Conte, T., Gervais, M., Iyer, P., McCarthy, B., Sonkoi, D., Townsend, C., \& Aktipis, A. (2019). Managing risk through cooperation: Need-based transfers and risk pooling among the societies of the Human Generosity Project. In L. R. Lozny \& T. H. McGovern (Eds.), \emph{Global perspectives on long term community resource management} (pp. 41--75). Springer International Publishing. \url{https://doi.org/10.1007/978-3-030-15800-2_4}
+\leavevmode\vadjust pre{\hypertarget{ref-Cronk2019}{}}%
+Cronk, L., Berbesque, C., Conte, T., Gervais, M., Iyer, P., McCarthy, B., Sonkoi, D., Townsend, C., \& Aktipis, A. (2019). Managing risk through cooperation: Need-based transfers and risk pooling among the societies of the {Human Generosity Project}. In L. R. Lozny \& T. H. McGovern (Eds.), \emph{Global perspectives on long term community resource management} (pp. 41--75). Springer International Publishing. \url{https://doi.org/10.1007/978-3-030-15800-2_4}
 
-\leavevmode\hypertarget{ref-Dorrough2016}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Dorrough2016}{}}%
 Dorrough, A. R., \& Glöckner, A. (2016). Multinational investigation of cross-societal cooperation. \emph{Proceedings of the National Academy of Sciences}, \emph{113}(39), 10836--10841. \url{https://doi.org/10.1073/pnas.1601294113}
 
-\leavevmode\hypertarget{ref-Ethnologue}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Ethnologue}{}}%
 Eberhard, D. M., Simons, G. F., \& Fennig, C. D. (Eds.). (2018). \emph{Ethnologue: Languages of the world} (Twenty-first). SIL International.
 
-\leavevmode\hypertarget{ref-Enquist1993}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Enquist1993}{}}%
 Enquist, M., \& Leimar, O. (1993). The evolution of cooperation in mobile organisms. \emph{Animal Behaviour}, \emph{45}(4), 747--757. \url{https://doi.org/10.1006/anbe.1993.1089}
 
-\leavevmode\hypertarget{ref-Falk2018}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Falk2018}{}}%
 Falk, A., Becker, A., Dohmen, T., Enke, B., Huffman, D., \& Sunde, U. (2018). Global evidence on economic preferences. \emph{The Quarterly Journal of Economics}, \emph{133}(4), 1645--1692. \url{https://doi.org/10.1093/qje/qjy013}
 
-\leavevmode\hypertarget{ref-Falk2016}{}%
-Falk, A., Becker, A., Dohmen, T., Huffman, D. B., \& Sunde, U. (2016). The preference survey module: A validated instrument for measuring risk, time, and social preferences. \emph{IZA Discussion Papers}, \emph{9674}.
+\leavevmode\vadjust pre{\hypertarget{ref-Falk2016}{}}%
+Falk, A., Becker, A., Dohmen, T., Huffman, D. B., \& Sunde, U. (2016). The preference survey module: A validated instrument for measuring risk, time, and social preferences. \emph{IZA Discussion Papers}.
 
-\leavevmode\hypertarget{ref-Glottolog}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Glottolog}{}}%
 Hammarström, H., Forkel, R., Haspelmath, M., \& Bank, S. (2017). \emph{Glottolog 3.0}. Max Planck Institute for the Science of Human History. \url{https://doi.org/10.5281/zenodo.4061162}
 
-\leavevmode\hypertarget{ref-Hijmans2019}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Hijmans2019}{}}%
 Hijmans, R. J. (2019). \emph{Geosphere: Spherical trigonometry}. \url{https://CRAN.R-project.org/package=geosphere}
 
-\leavevmode\hypertarget{ref-WVS2014}{}%
-Inglehart, R., Haerpfer, C., Moreno, A., Welzel, C., Kizilova, K., Diez-Medrano, J., Lagos, M., Norris, P., Ponarin, E., \& Puranen, B. (2014). \emph{World Values Survey: All Rounds - Country-Pooled Datafile}. JD Systems Institute. \url{https://www.worldvaluessurvey.org/WVSDocumentationWVL.jsp}
+\leavevmode\vadjust pre{\hypertarget{ref-WVS2014}{}}%
+Inglehart, R., Haerpfer, C., Moreno, A., Welzel, C., Kizilova, K., Diez-Medrano, J., Lagos, M., Norris, P., Ponarin, E., \& Puranen, B. (2014). \emph{{World Values Survey: All Rounds - Country-Pooled Datafile}}. JD Systems Institute. \url{https://www.worldvaluessurvey.org/WVSDocumentationWVL.jsp}
 
-\leavevmode\hypertarget{ref-Jacquet2021}{}%
-Jacquet, P. O., Pazhoohi, F., Findling, C., Mell, H., Chevallier, C., \& Baumard, N. (2021). Predictive modeling of religiosity, prosociality, and moralizing in 295,000 individuals from European and non-European populations. \emph{Humanities and Social Sciences Communications}, \emph{8}(1), 1--12.
+\leavevmode\vadjust pre{\hypertarget{ref-Jacquet2021}{}}%
+Jacquet, P. O., Pazhoohi, F., Findling, C., Mell, H., Chevallier, C., \& Baumard, N. (2021). Predictive modeling of religiosity, prosociality, and moralizing in 295,000 individuals from {European} and {non-European} populations. \emph{Humanities and Social Sciences Communications}, \emph{8}(1), 1--12.
 
-\leavevmode\hypertarget{ref-Jordan2013}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Jordan2013}{}}%
 Jordan, J. J., Rand, D. G., Arbesman, S., Fowler, J. H., \& Christakis, N. A. (2013). Contagion of cooperation in static and fluid social networks. \emph{PLOS ONE}, \emph{8}(6), 1--10. \url{https://doi.org/10.1371/journal.pone.0066199}
 
-\leavevmode\hypertarget{ref-Kito2017}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Kito2017}{}}%
 Kito, M., Yuki, M., \& Thomson, R. (2017). Relational mobility and close relationships: A socioecological approach to explain cross-cultural differences. \emph{Personal Relationships}, \emph{24}(1), 114--130. \url{https://doi.org/10.1111/pere.12174}
 
-\leavevmode\hypertarget{ref-Komiya2019}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Komiya2019}{}}%
 Komiya, A., Ohtsubo, Y., Nakanishi, D., \& Oishi, S. (2019). Gift-giving in romantic couples serves as a commitment signal: Relational mobility is associated with more frequent gift-giving. \emph{Evolution and Human Behavior}, \emph{40}(2), 160--166. \url{https://doi.org/10.1016/j.evolhumbehav.2018.10.003}
 
-\leavevmode\hypertarget{ref-Landau2021}{}%
-Landau, W. M. (2021). The targets R package: A dynamic Make-like function-oriented pipeline toolkit for reproducibility and high-performance computing. \emph{Journal of Open Source Software}, \emph{6}(57), 2959. \url{https://doi.org/10.21105/joss.02959}
+\leavevmode\vadjust pre{\hypertarget{ref-Landau2021}{}}%
+Landau, W. M. (2021). The targets {R} package: A dynamic {Make}-like function-oriented pipeline toolkit for reproducibility and high-performance computing. \emph{Journal of Open Source Software}, \emph{6}(57), 2959. \url{https://doi.org/10.21105/joss.02959}
 
-\leavevmode\hypertarget{ref-Lyle2014}{}%
-Lyle, H. F., \& Smith, E. A. (2014). The reputational and social network benefits of prosociality in an Andean community. \emph{Proceedings of the National Academy of Sciences}, \emph{111}(13), 4820--4825. \url{https://doi.org/10.1073/pnas.1318372111}
+\leavevmode\vadjust pre{\hypertarget{ref-Lyle2014}{}}%
+Lyle, H. F., \& Smith, E. A. (2014). The reputational and social network benefits of prosociality in an {A}ndean community. \emph{Proceedings of the National Academy of Sciences}, \emph{111}(13), 4820--4825. \url{https://doi.org/10.1073/pnas.1318372111}
 
-\leavevmode\hypertarget{ref-Peysakhovich2014}{}%
-Peysakhovich, A., Nowak, M. A., \& Rand, D. G. (2014). Humans display a ``cooperative phenotype'' that is domain general and temporally stable. \emph{Nature Communications}, \emph{5}, 4939. \url{https://doi.org/10.1038/ncomms5939}
+\leavevmode\vadjust pre{\hypertarget{ref-Peysakhovich2014}{}}%
+Peysakhovich, A., Nowak, M. A., \& Rand, D. G. (2014). Humans display a {``cooperative phenotype''} that is domain general and temporally stable. \emph{Nature Communications}, \emph{5}, 4939. \url{https://doi.org/10.1038/ncomms5939}
 
-\leavevmode\hypertarget{ref-Rand2011}{}%
-Rand, D. G., Arbesman, S., \& Christakis, N. A. (2011). Dynamic social networks promote cooperation in experiments with humans. \emph{Proceedings of the National Academy of Sciences}, \emph{108}(48), 19193--19198. \url{https://doi.org/10.1073/pnas.1108243108}
-
-\leavevmode\hypertarget{ref-R}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-R}{}}%
 R Core Team. (2020). \emph{R: A language and environment for statistical computing}. R Foundation for Statistical Computing. \url{https://www.R-project.org/}
 
-\leavevmode\hypertarget{ref-Roberts2020}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Rand2011}{}}%
+Rand, D. G., Arbesman, S., \& Christakis, N. A. (2011). Dynamic social networks promote cooperation in experiments with humans. \emph{Proceedings of the National Academy of Sciences}, \emph{108}(48), 19193--19198. \url{https://doi.org/10.1073/pnas.1108243108}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Roberts2020}{}}%
 Roberts, G. (2020). Honest signaling of cooperative intentions. \emph{Behavioral Ecology}, \emph{31}(4), 922--932. \url{https://doi.org/10.1093/beheco/araa035}
 
-\leavevmode\hypertarget{ref-Roberts1998}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Roberts1998}{}}%
 Roberts, G. (1998). Competitive altruism: From reciprocity to the handicap principle. \emph{Proceedings of the Royal Society of London. Series B: Biological Sciences}, \emph{265}(1394), 427--431. \url{https://doi.org/10.1098/rspb.1998.0312}
 
-\leavevmode\hypertarget{ref-Roberts2021}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Roberts2021}{}}%
 Roberts, G., Raihani, N., Bshary, R., Manrique, H. M., Farina, A., Samu, F., \& Barclay, P. (2021). The benefits of being seen to help others: Indirect reciprocity and reputation-based partner choice. \emph{Philosophical Transactions of the Royal Society B: Biological Sciences}, \emph{376}(1838), 20200290. \url{https://doi.org/10.1098/rstb.2020.0290}
 
-\leavevmode\hypertarget{ref-Angelo2021}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Angelo2021}{}}%
 Romano, A., Sutter, M., Liu, J. H., \& Balliet, D. (2021). Political ideology, cooperation and national parochialism across 42 nations. \emph{Philosophical Transactions of the Royal Society B: Biological Sciences}, \emph{376}(1822), 20200146. \url{https://doi.org/10.1098/rstb.2020.0146}
 
-\leavevmode\hypertarget{ref-Smith2020}{}%
-Smith, K. M., \& Apicella, C. L. (2020). Partner choice in human evolution: The role of cooperation, foraging ability, and culture in hadza campmate preferences. \emph{Evolution and Human Behavior}, \emph{41}(5), 354--366. \url{https://doi.org/https://doi.org/10.1016/j.evolhumbehav.2020.07.009}
+\leavevmode\vadjust pre{\hypertarget{ref-Smith2020}{}}%
+Smith, K. M., \& Apicella, C. L. (2020). Partner choice in human evolution: The role of cooperation, foraging ability, and culture in hadza campmate preferences. \emph{Evolution and Human Behavior}, \emph{41}(5), 354--366. https://doi.org/\url{https://doi.org/10.1016/j.evolhumbehav.2020.07.009}
 
-\leavevmode\hypertarget{ref-Spadaro_preprint}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Spadaro_preprint}{}}%
 Spadaro, G., Graf, C., Jin, S., Arai, S., Inoue, Y., Lieberman, E., Rinderu, M. I., Yuan, M., Van Lissa, C. J., \& Balliet, D. (2022). \emph{Cross-cultural variation in cooperation: A meta-analysis}. PsyArXiv. \url{https://doi.org/10.1037/pspi0000389}
 
-\leavevmode\hypertarget{ref-Sylwester2010}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Sylwester2010}{}}%
 Sylwester, K., \& Roberts, G. (2010). Cooperators benefit through reputation-based partner choice in economic games. \emph{Biology Letters}, \emph{6}(5), 659--662. \url{https://doi.org/10.1098/rsbl.2010.0209}
 
-\leavevmode\hypertarget{ref-Sylwester2013}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Sylwester2013}{}}%
 Sylwester, K., \& Roberts, G. (2013). Reputation-based partner choice is an effective alternative to indirect reciprocity in solving social dilemmas. \emph{Evolution and Human Behavior}, \emph{34}(3), 201--206. \url{https://doi.org/10.1016/j.evolhumbehav.2012.11.009}
 
-\leavevmode\hypertarget{ref-Talhelm2014}{}%
-Talhelm, T., Zhang, X., Oishi, S., Shimin, C., Duan, D., Lan, X., \& Kitayama, S. (2014). Large-scale psychological differences within China explained by rice versus wheat agriculture. \emph{Science}, \emph{344}(6184), 603--608. \url{https://doi.org/10.1126/science.1246850}
+\leavevmode\vadjust pre{\hypertarget{ref-Talhelm2014}{}}%
+Talhelm, T., Zhang, X., Oishi, S., Shimin, C., Duan, D., Lan, X., \& Kitayama, S. (2014). Large-scale psychological differences within {C}hina explained by rice versus wheat agriculture. \emph{Science}, \emph{344}(6184), 603--608. \url{https://doi.org/10.1126/science.1246850}
 
-\leavevmode\hypertarget{ref-Thomson2018}{}%
-Thomson, R., Yuki, M., Talhelm, T., Schug, J., Kito, M., Ayanian, A. H., Becker, J. C., Becker, M., Chiu, C.-y., Choi, H.-S., Ferreira, C. M., Fülöp, M., Gul, P., Houghton-Illera, A. M., Joasoo, M., Jong, J., Kavanagh, C. M., Khutkyy, D., Manzi, C., \ldots{} Visserman, M. L. (2018). Relational mobility predicts social behaviors in 39 countries and is tied to historical farming and threat. \emph{Proceedings of the National Academy of Sciences}, \emph{115}(29), 7521--7526. \url{https://doi.org/10.1073/pnas.1713191115}
+\leavevmode\vadjust pre{\hypertarget{ref-Thomson2018}{}}%
+Thomson, R., Yuki, M., Talhelm, T., Schug, J., Kito, M., Ayanian, A. H., Becker, J. C., Becker, M., Chiu, C., Choi, H.-S., Ferreira, C. M., Fülöp, M., Gul, P., Houghton-Illera, A. M., Joasoo, M., Jong, J., Kavanagh, C. M., Khutkyy, D., Manzi, C., \ldots{} Visserman, M. L. (2018). Relational mobility predicts social behaviors in 39 countries and is tied to historical farming and threat. \emph{Proceedings of the National Academy of Sciences}, \emph{115}(29), 7521--7526. \url{https://doi.org/10.1073/pnas.1713191115}
 
-\leavevmode\hypertarget{ref-Tognetti2014}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Tognetti2014}{}}%
 Tognetti, A., Berticat, C., Raymond, M., \& Faurie, C. (2014). Assortative mating based on cooperativeness and generosity. \emph{Journal of Evolutionary Biology}, \emph{27}(5), 975--981. \url{https://doi.org/10.1111/jeb.12346}
 
-\leavevmode\hypertarget{ref-VanDoesume2021}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-VanDoesume2021}{}}%
 Van Doesum, N. J., Murphy, R. O., Gallucci, M., Aharonov-Majar, E., Athenstaedt, U., Au, W. T., Bai, L., Böhm, R., Bovina, I., Buchan, N. R., Chen, X.-P., Dumont, K. B., Engelmann, J. B., Eriksson, K., Euh, H., Fiedler, S., Friesen, J., Gächter, S., Garcia, C., \ldots{} Van Lange, P. A. M. (2021). Social mindfulness and prosociality vary across the globe. \emph{Proceedings of the National Academy of Sciences}, \emph{118}(35). \url{https://doi.org/10.1073/pnas.2023846118}
 
-\leavevmode\hypertarget{ref-Vehtari2017}{}%
-Vehtari, A., Gelman, A., \& Gabry, J. (2017). Practical Bayesian model evaluation using leave-one-out cross-validation and WAIC. \emph{Statistics and Computing}, \emph{27}(5), 1413--1432. \url{https://doi.org/10.1007/s11222-016-9696-4}
+\leavevmode\vadjust pre{\hypertarget{ref-Vehtari2017}{}}%
+Vehtari, A., Gelman, A., \& Gabry, J. (2017). Practical {B}ayesian model evaluation using leave-one-out cross-validation and {WAIC}. \emph{Statistics and Computing}, \emph{27}, 1413--1432. \url{https://doi.org/10.1007/s11222-016-9696-4}
 
-\leavevmode\hypertarget{ref-Wickham2016}{}%
-Wickham, H. (2016). \emph{ggplot2: Elegant graphics for data analysis}. Springer-Verlag New York. \url{https://ggplot2.tidyverse.org}
+\leavevmode\vadjust pre{\hypertarget{ref-Wickham2016}{}}%
+Wickham, H. (2016). \emph{{ggplot2}: Elegant graphics for data analysis}. Springer-Verlag New York. \url{https://ggplot2.tidyverse.org}
 
-\leavevmode\hypertarget{ref-Wilke2019}{}%
-Wilke, C. O. (2019). \emph{Cowplot: Streamlined plot theme and plot annotations for ``ggplot2''}. \url{https://CRAN.R-project.org/package=cowplot}
+\leavevmode\vadjust pre{\hypertarget{ref-Wilke2019}{}}%
+Wilke, C. O. (2019). \emph{Cowplot: Streamlined plot theme and plot annotations for {``{ggplot2}''}}. \url{https://CRAN.R-project.org/package=cowplot}
 
-\leavevmode\hypertarget{ref-Yuki2012}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Yuki2012}{}}%
 Yuki, M., \& Schug, J. (2012). Relational mobility: A socioecological approach to personal relationships. In O. Gillath, G. Adams, \& A. Kunkel (Eds.), \emph{Relationship science: Integrating evolutionary, neuroscience, and sociocultural approaches} (pp. 137--151). American Psychological Association. \url{https://doi.org/10.1037/13489-007}
 
-\leavevmode\hypertarget{ref-Yuki2007}{}%
-Yuki, M., Schug, J., Horikawa, H., Takemura, K., Sato, K., Yokota, K., \& Kamaya, K. (2007). Development of a scale to measure perceptions of relational mobility in society (CERSS Working Paper 75). \emph{Sapporo, Japan: Center for Experimental Research in Social Sciences, Hokkaido University}.
+\leavevmode\vadjust pre{\hypertarget{ref-Yuki2007}{}}%
+Yuki, M., Schug, J., Horikawa, H., Takemura, K., Sato, K., Yokota, K., \& Kamaya, K. (2007). Development of a scale to measure perceptions of relational mobility in society ({CERSS Working Paper 75}). \emph{Sapporo, Japan: Center for Experimental Research in Social Sciences, Hokkaido University}.
+
+\end{CSLReferences}
 
 \endgroup
 
@@ -542,7 +595,7 @@ Yuki, M., Schug, J., Horikawa, H., Takemura, K., Sato, K., Yokota, K., \& Kamaya
 \appendix}
 
 
-\renewcommand{\appendixname}{Supplementary Materials}
+\renewcommand{\appendixname}{\bf{Supplementary Materials}}
 \renewcommand{\thefigure}{S\arabic{figure}} \setcounter{figure}{0}
 \renewcommand{\thetable}{S\arabic{table}} \setcounter{table}{0}
 \renewcommand{\theequation}{S\arabic{table}} \setcounter{equation}{0}
@@ -675,16 +728,6 @@ z &\sim \text{Normal}(0, 1)\\
 
 \begin{figure}
 \centering
-\includegraphics{manuscript_files/figure-latex/plotDAG-1.pdf}
-\caption{\label{fig:plotDAG}\emph{Directed acyclic graph of the causal model justifying the inclusion of covariates in our statistical models.} Thomson et al. (2018) show that environmental harshness (Harsh) and subsistence style (Sub) are antecedents of relational mobility (RM), but other evidence also suggests that environmental harshness and subsistence style directly affect prosociality (Pro; Cronk et al., 2019; Talhelm et al., 2014). Environmental harshness and subsistence style are thus third variables that confound the direct path from relational mobility to prosociality. Moreover, all four of these variables are confounded by unmeasured factors (U), such as ecology, climate, institutions, and norms. We cannot directly condition on unmeasured factors, but since these factors are themselves predicted by geographic (Geo) and linguistic (Lin) proximity between countries, we can account for them by allowing countries to covary according to geographic and linguistic proximity.}
-\end{figure}
-
-\newpage
-
-
-
-\begin{figure}
-\centering
 \includegraphics{manuscript_files/figure-latex/plotWVSWorld-1.pdf}
 \caption{\label{fig:plotWVSWorld}\emph{Countries sampled in the final dataset for Study 2.} Data from the World Values Survey and European Values Survey. Point sizes indicate relative numbers of participants sampled in each country.}
 \end{figure}
@@ -706,7 +749,7 @@ z &\sim \text{Normal}(0, 1)\\
 \begin{figure}
 \centering
 \includegraphics{manuscript_files/figure-latex/plotWVS6b-1.pdf}
-\caption{\label{fig:plotWVS6b}\emph{Posterior predictions from a Bayesian multilevel logistic regression predicting generalised trust from country-level relational mobility, controlling for environmental harshness and subsistence style.} The line and shaded area indicate the median posterior regression line and 95\% credible intervals. Points indicate the proportion of individuals stating that \enquote{most people can be trusted} on the y-axis and relational mobility scores on the x-axis, for each of the 32 countries, with error bars representing +/- 1 standard error.}
+\caption{\label{fig:plotWVS6b}\emph{Posterior predictions from a Bayesian multilevel logistic regression predicting generalised trust from country-level relational mobility, controlling for environmental harshness and subsistence style.} The line and shaded area indicate the median posterior regression line and 95\% credible intervals. Points indicate the proportion of individuals stating that ``most people can be trusted'' on the y-axis and relational mobility scores on the x-axis, for each of the 32 countries, with error bars representing +/- 1 standard error.}
 \end{figure}
 
 \newpage
@@ -725,22 +768,306 @@ z &\sim \text{Normal}(0, 1)\\
 
 \begin{figure}
 \centering
+\includegraphics{manuscript_files/figure-latex/plotWVS7c-1.pdf}
+\caption{\label{fig:plotWVS7c}\emph{Posterior predictions from a Bayesian multilevel ordinal regression predicting trust in specific groups from country-level relational mobility, controlling for environmental harshness and subsistence style and including a quadratic effect for relational mobility.} Lines and shaded areas indicate median posterior regression lines and 95\% credible intervals. Points indicate average trust and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error.}
+\end{figure}
+
+\newpage
+
+
+
+\begin{figure}
+\centering
 \includegraphics{manuscript_files/figure-latex/plotWVS8b-1.pdf}
 \caption{\label{fig:plotWVS8b}\emph{Posterior predictions from a Bayesian multilevel ordinal regression predicting moral justifiability of different scenarios from country-level relational mobility, controlling for environmental harshness and subsistence style.} Higher numbers on the y-axis indicate \emph{lower} justifiability ratings for each scenario. Lines and shaded areas indicate median posterior regression lines and 95\% credible intervals. Points indicate average justifiability (reversed) and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error.}
 \end{figure}
 
 \newpage
 
+
+
+\begin{figure}
+\centering
+\includegraphics{manuscript_files/figure-latex/plotWVS8c-1.pdf}
+\caption{\label{fig:plotWVS8c}\emph{Posterior predictions from a Bayesian multilevel ordinal regression predicting moral justifiability of different scenarios from country-level relational mobility, controlling for environmental harshness and subsistence style and including a quadratic effect for relational mobility.} Higher numbers on the y-axis indicate \emph{lower} justifiability ratings for each scenario. Lines and shaded areas indicate median posterior regression lines and 95\% credible intervals. Points indicate average justifiability (reversed) and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error.}
+\end{figure}
+
+\newpage
+
+\hypertarget{supplementary-tables}{%
+\subsection{Supplementary Tables}\label{supplementary-tables}}
+
+
+
+\begin{table}[h]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:tableRaw1}Raw national-level data from Study 1. Mean averages are reported for prosocial measures from the Global Preferences Survey. SE = standard error for relational mobility score.}
+
+\begin{tabular}{llllll}
+\toprule
+Country & \multicolumn{1}{c}{Positive reciprocity} & \multicolumn{1}{c}{Trust} & \multicolumn{1}{c}{Altruism} & \multicolumn{1}{c}{Relational mobility} & \multicolumn{1}{c}{SE}\\
+\midrule
+Australia & 0.07 & 0.38 & 0.18 & 0.14 & 0.06\\
+Brazil & 0.36 & -0.04 & 0.46 & 0.20 & 0.05\\
+Canada & 0.22 & 0.31 & 0.24 & 0.17 & 0.05\\
+Chile & 0.07 & -0.07 & -0.06 & 0.11 & 0.06\\
+Colombia & 0.16 & 0.03 & 0.08 & 0.20 & 0.05\\
+Egypt & 0.55 & 0.61 & 0.64 & -0.19 & 0.06\\
+Estonia & -0.47 & 0.14 & -0.57 & -0.02 & 0.05\\
+France & -0.12 & -0.20 & -0.16 & 0.21 & 0.05\\
+Germany & -0.04 & -0.11 & 0.01 & -0.01 & 0.05\\
+Hungary & -0.06 & 0.56 & -0.54 & -0.39 & 0.06\\
+Israel & -0.02 & -0.04 & -0.33 & 0.09 & 0.06\\
+Japan & -0.19 & -0.49 & -0.20 & -0.41 & 0.05\\
+Jordan & 0.32 & 0.41 & 0.22 & -0.34 & 0.06\\
+Mexico & -1.11 & -0.40 & -0.84 & 0.36 & 0.05\\
+Morocco & 0.55 & -0.10 & 0.55 & -0.14 & 0.06\\
+Netherlands & -0.09 & 0.34 & -0.13 & 0.20 & 0.05\\
+Philippines & 0.19 & 0.31 & 0.38 & -0.08 & 0.06\\
+Poland & -0.13 & -0.12 & -0.34 & 0.05 & 0.05\\
+Portugal & 0.23 & 0.13 & 0.07 & 0.00 & 0.00\\
+South Korea & -0.12 & -0.05 & 0.42 & -0.01 & 0.06\\
+Spain & 0.33 & 0.26 & -0.11 & 0.13 & 0.05\\
+Sweden & 0.01 & 0.35 & -0.15 & 0.17 & 0.05\\
+Turkey & -0.42 & 0.08 & -0.25 & -0.06 & 0.06\\
+UK & -0.05 & 0.25 & 0.03 & 0.04 & 0.06\\
+Ukraine & 0.16 & -0.08 & -0.10 & 0.05 & 0.05\\
+USA & 0.16 & 0.23 & 0.38 & 0.18 & 0.06\\
+Venezuela & 0.02 & 0.12 & 0.08 & 0.23 & 0.05\\
+\bottomrule
+\end{tabular}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+\newpage
+
+
+
+\begin{table}[h]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:tableInvarianceGPS}Measurement invariance results for the prosociality measures from the Global Preferences Survey. Across nations, the analyses tested the measurement invariance of the factor structure for a single factor with loadings from altruism, positive reciprocity, and trust. Thresholds for good fit: RMSEA \textless{} 0.08; SRMR \textless{} 0.08; CFI \textgreater{} 0.95 (Hu \& Bentler, 1999; MacCallum et al., 1996).}
+
+\begin{tabular}{m{4cm}m{3cm}m{3cm}m{3cm}}
+\toprule
+Model & \multicolumn{1}{c}{RMSEA} & \multicolumn{1}{c}{CFI} & \multicolumn{1}{c}{SRMR}\\
+\midrule
+Configural invariance & 0.00 & 1.00 & 0.00\\
+Metric invariance & 0.05 & 0.98 & 0.02\\
+Scalar invariance & 0.16 & 0.44 & 0.09\\
+\bottomrule
+\end{tabular}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+\newpage
+
+
+
+\begin{lltable}
+
+\begin{longtable}{lllllll}\noalign{\getlongtablewidth\global\LTcapwidth=\longtablewidth}
+\caption{\label{tab:tablePower}Results from power analysis simulations. For each analysis, we simulated multiple datasets with various effect sizes (slopes) for relational mobility and, as a measure of power, determined the proportion of models fitted to these datasets that returned significantly positive slopes (\emph{p} \textless{} 0.05). We manipulated the effect sizes until analyses returned around 80\% power. For effect size thresholds in regression, see Funder \& Ozer (2019). For effect size thresholds in logistic regression, see Chen, Cohen, and Chen (2010).}\\
+\toprule
+Outcome & \multicolumn{1}{c}{Model} & \multicolumn{1}{c}{Slope} & \multicolumn{1}{c}{Effect size} & \multicolumn{1}{c}{Power} & \multicolumn{1}{c}{Lower 95\%} & \multicolumn{1}{c}{Upper 95\%}\\
+\midrule
+\endfirsthead
+\caption*{\normalfont{Table \ref{tab:tablePower} continued}}\\
+\toprule
+Outcome & \multicolumn{1}{c}{Model} & \multicolumn{1}{c}{Slope} & \multicolumn{1}{c}{Effect size} & \multicolumn{1}{c}{Power} & \multicolumn{1}{c}{Lower 95\%} & \multicolumn{1}{c}{Upper 95\%}\\
+\midrule
+\endhead
+GPS Prosociality & Multilevel regression & 0.28 & Medium & 0.83 & 0.80 & 0.87\\
+WVS Charitable & Multilevel logistic regression & 0.59 & Small & 0.80 & 0.77 & 0.82\\
+WVS Trust & Multilevel logistic regression & 0.58 & Small & 0.84 & 0.81 & 0.86\\
+WVS Trust Groups & Multilevel regression & 0.20 & Small & 0.79 & 0.70 & 0.87\\
+WVS Justify & Multilevel regression & 0.25 & Medium & 0.81 & 0.72 & 0.88\\
+\bottomrule
+\end{longtable}
+
+\end{lltable}
+
+\newpage
+
+
+
+\begin{lltable}
+
+\begin{longtable}{llll}\noalign{\getlongtablewidth\global\LTcapwidth=\longtablewidth}
+\caption{\label{tab:tableQuadratic}Posterior slopes from models with quadratic effects of relational mobility.}\\
+\toprule
+Outcome & \multicolumn{1}{c}{Parameter} & \multicolumn{1}{c}{Linear slope} & \multicolumn{1}{c}{Quadratic slope}\\
+\midrule
+\endfirsthead
+\caption*{\normalfont{Table \ref{tab:tableQuadratic} continued}}\\
+\toprule
+Outcome & \multicolumn{1}{c}{Parameter} & \multicolumn{1}{c}{Linear slope} & \multicolumn{1}{c}{Quadratic slope}\\
+\midrule
+\endhead
+GPS Prosociality & Population-level & b = -0.01, 95\% CI [-0.20,\ \ 0.17] & b = -0.01, 95\% CI [-0.21,\ \ 0.19]\\
+ & RE: Altruism & b =\ \ 0.41, 95\% CI [-0.07,\ \ 0.84] & b =\ \ 0.02, 95\% CI [-0.28,\ \ 0.39]\\
+ & RE: Positive reciprocity & b = -0.07, 95\% CI [-0.54,\ \ 0.37] & b = -0.07, 95\% CI [-0.51,\ \ 0.20]\\
+ & RE: Trust & b = -0.64, 95\% CI [-1.11, -0.20] & b = -0.03, 95\% CI [-0.39,\ \ 0.29]\\
+WVS Charitable & Population-level & b =\ \ 0.19, 95\% CI [-1.34,\ \ 1.73] & b =\ \ 0.09, 95\% CI [-1.77,\ \ 2.01]\\
+WVS Trust & Population-level & b =\ \ 0.07, 95\% CI [-1.39,\ \ 1.56] & b = -0.11, 95\% CI [-1.93,\ \ 1.71]\\
+WVS Trust Groups & Population-level & b =\ \ 0.02, 95\% CI [-0.90,\ \ 0.95] & b = -0.06, 95\% CI [-1.06,\ \ 0.94]\\
+ & RE: Another nationality & b =\ \ 0.72, 95\% CI [-0.25,\ \ 1.74] & b = -1.57, 95\% CI [-2.94, -0.19]\\
+ & RE: Another religion & b =\ \ 0.76, 95\% CI [-0.23,\ \ 1.81] & b =\ \ 1.23, 95\% CI [-0.16,\ \ 2.70]\\
+ & RE: Know personally & b = -0.54, 95\% CI [-1.53,\ \ 0.48] & b = -1.43, 95\% CI [-2.87, -0.01]\\
+ & RE: Meet first time & b =\ \ 0.25, 95\% CI [-0.74,\ \ 1.27] & b = -0.95, 95\% CI [-2.37,\ \ 0.48]\\
+ & RE: Family & b = -1.14, 95\% CI [-2.12, -0.10] & b =\ \ 1.52, 95\% CI [ 0.03,\ \ 2.96]\\
+ & RE: Neighbourhood & b = -0.16, 95\% CI [-1.14,\ \ 0.88] & b =\ \ 0.36, 95\% CI [-1.04,\ \ 1.79]\\
+WVS Justify & Population-level & b = -0.20, 95\% CI [-1.12,\ \ 0.70] & b =\ \ 0.03, 95\% CI [-0.92,\ \ 0.96]\\
+ & RE: Public transport & b =\ \ 0.53, 95\% CI [-0.71,\ \ 1.71] & b =\ \ 2.50, 95\% CI [-0.07,\ \ 5.04]\\
+ & RE: Cheat taxes & b =\ \ 0.20, 95\% CI [-1.07,\ \ 1.41] & b =\ \ 3.64, 95\% CI [ 1.10,\ \ 6.16]\\
+ & RE: Gov benefits & b = -2.02, 95\% CI [-3.32, -0.82] & b = -5.33, 95\% CI [-7.91, -2.81]\\
+ & RE: Accept bribe & b = -0.10, 95\% CI [-1.36,\ \ 1.08] & b = -1.08, 95\% CI [-3.65,\ \ 1.46]\\
+\bottomrule
+\end{longtable}
+
+\end{lltable}
+
+\newpage
+
+
+
+\begin{lltable}
+
+\scriptsize{
+
+\begin{longtable}{lllllllllllllll}\noalign{\getlongtablewidth\global\LTcapwidth=\longtablewidth}
+\caption{\label{tab:tableRaw2}Raw national-level data from Study 2. Mean averages are reported for prosocial measures from the World Values Survey. SE = standard error for relational mobility score.}\\
+\toprule
+Country & \multicolumn{1}{c}{CharOrg} & \multicolumn{1}{c}{Trust} & \multicolumn{1}{c}{TruFam} & \multicolumn{1}{c}{TruNeigh} & \multicolumn{1}{c}{TruKnow} & \multicolumn{1}{c}{TruMeet} & \multicolumn{1}{c}{TruRel} & \multicolumn{1}{c}{TruNat} & \multicolumn{1}{c}{JusGovBen} & \multicolumn{1}{c}{JusFare} & \multicolumn{1}{c}{JusTax} & \multicolumn{1}{c}{JusBribe} & \multicolumn{1}{c}{RelMob} & \multicolumn{1}{c}{SE}\\
+\midrule
+\endfirsthead
+\caption*{\normalfont{Table \ref{tab:tableRaw2} continued}}\\
+\toprule
+Country & \multicolumn{1}{c}{CharOrg} & \multicolumn{1}{c}{Trust} & \multicolumn{1}{c}{TruFam} & \multicolumn{1}{c}{TruNeigh} & \multicolumn{1}{c}{TruKnow} & \multicolumn{1}{c}{TruMeet} & \multicolumn{1}{c}{TruRel} & \multicolumn{1}{c}{TruNat} & \multicolumn{1}{c}{JusGovBen} & \multicolumn{1}{c}{JusFare} & \multicolumn{1}{c}{JusTax} & \multicolumn{1}{c}{JusBribe} & \multicolumn{1}{c}{RelMob} & \multicolumn{1}{c}{SE}\\
+\midrule
+\endhead
+Australia & 0.33 & 0.54 & 3.76 & 2.93 & 3.41 & 2.48 & 2.83 & 2.85 & 9.22 & 8.79 & 9.15 & 9.56 & 0.14 & 0.06\\
+Brazil & 0.10 & 0.07 & 3.45 & 2.47 & 2.62 & 1.80 & 2.47 & 2.09 & 8.56 & 7.45 & 8.00 & 9.43 & 0.20 & 0.05\\
+Canada & 0.24 & 0.50 & 3.58 & 2.94 & 3.37 & 2.45 & 2.89 & 2.93 & 8.66 & 7.67 & 8.42 & 8.76 & 0.17 & 0.05\\
+Chile & 0.16 & 0.14 & 3.64 & 2.74 & 2.65 & 1.97 & 2.26 & 2.25 & 6.48 & 7.83 & 8.58 & 8.72 & 0.11 & 0.06\\
+Colombia & 0.32 & 0.05 & 3.55 & 2.35 & 2.54 & 1.70 & 2.09 & 1.92 & 7.22 & 7.34 & 8.95 & 9.13 & 0.20 & 0.05\\
+Egypt & 0.05 & 0.07 & 3.93 & 3.19 & 3.34 & 1.90 & 2.46 & 1.85 & 9.21 & 9.41 & 9.46 & 9.82 & -0.19 & 0.06\\
+Estonia & 0.02 & 0.34 & 3.88 & 2.97 & 3.29 & 2.21 & 2.58 & 2.70 & 9.09 & 8.54 & 9.02 & 9.64 & -0.02 & 0.05\\
+France & 0.08 & 0.28 & 3.64 & 2.91 & 3.30 & 2.18 & 2.73 & 2.78 & 7.39 & 8.41 & 9.02 & 9.26 & 0.21 & 0.05\\
+Germany & 0.13 & 0.45 & 3.83 & 2.95 & 3.21 & 2.18 & 2.63 & 2.65 & 9.44 & 9.00 & 9.43 & 9.65 & -0.01 & 0.05\\
+Hong Kong & 0.18 & 0.39 & 3.69 & 2.71 & 2.99 & 2.12 & 2.47 & 2.45 & 7.94 & 8.53 & 8.77 & 8.99 & -0.34 & 0.05\\
+Hungary & 0.05 & 0.28 & 3.91 & 3.14 & 3.16 & 2.30 & 2.68 & 2.59 & 9.52 & 8.02 & 9.50 & 9.10 & -0.39 & 0.06\\
+Japan & 0.03 & 0.36 & 3.70 & 2.65 & 2.98 & 1.87 & 1.95 & 2.10 & 9.24 & 9.68 & 9.74 & 9.61 & -0.41 & 0.05\\
+Jordan & 0.08 & 0.16 & 3.88 & 2.99 & 3.05 & 2.03 & 2.42 & 2.29 & 8.01 &  & 8.89 & 9.56 & -0.34 & 0.06\\
+Lebanon & 0.07 & 0.10 & 3.81 & 2.70 & 2.65 & 1.89 & 2.29 & 2.11 & 7.60 &  & 8.44 & 8.36 & -0.16 & 0.06\\
+Malaysia & 0.31 & 0.20 & 3.72 & 2.81 & 3.01 & 1.88 & 2.48 & 2.18 & 6.60 & 7.02 & 7.59 & 7.92 & -0.39 & 0.06\\
+Mexico & 0.18 & 0.10 & 3.65 & 2.49 & 2.37 & 1.59 & 2.03 & 1.82 & 6.30 & 6.70 & 8.03 & 8.36 & 0.36 & 0.05\\
+Netherlands & 0.17 & 0.62 & 3.84 & 3.44 & 3.66 & 2.81 & 3.01 & 3.01 & 9.41 & 8.49 & 8.91 & 9.41 & 0.20 & 0.05\\
+New Zealand & 0.33 & 0.60 & 3.79 & 3.06 & 3.49 & 2.48 & 2.83 & 2.85 & 9.01 & 8.85 & 9.21 & 9.66 & 0.08 & 0.05\\
+Philippines & 0.22 & 0.05 & 3.81 & 2.87 & 2.95 & 2.02 & 2.31 & 2.07 & 5.72 & 6.19 & 6.92 & 6.78 & -0.08 & 0.06\\
+Poland & 0.04 & 0.25 & 3.64 & 2.81 & 2.95 & 2.10 & 2.39 & 2.44 & 9.08 & 8.66 & 9.50 & 9.76 & 0.05 & 0.05\\
+Portugal & 0.03 & 0.17 & 3.66 & 2.92 & 2.89 & 2.21 & 2.62 & 2.59 & 8.99 & 9.17 & 9.05 & 9.65 & 0.00 & 0.00\\
+Puerto Rico & 0.30 & 0.18 & 3.55 & 2.87 & 3.07 & 1.90 & 2.63 & 2.58 & 8.53 & 8.87 & 9.48 & 9.63 & 0.31 & 0.06\\
+Singapore & 0.11 & 0.34 & 3.75 & 2.84 & 3.11 & 1.99 & 2.48 & 2.37 & 8.46 & 9.18 & 9.47 & 9.59 & -0.14 & 0.06\\
+South Korea & 0.05 & 0.33 & 3.80 & 2.90 & 2.92 & 1.96 & 2.12 & 1.97 & 7.76 & 8.03 & 8.78 & 8.78 & -0.01 & 0.06\\
+Spain & 0.08 & 0.41 & 3.84 & 2.97 & 3.36 & 2.37 & 2.67 & 2.73 & 7.10 & 7.25 & 8.16 & 8.39 & 0.13 & 0.05\\
+Sweden & 0.26 & 0.67 & 3.90 & 3.35 & 3.55 & 2.86 & 3.15 & 3.22 & 9.21 & 8.54 & 9.35 & 9.46 & 0.17 & 0.05\\
+Taiwan & 0.22 & 0.31 & 3.79 & 2.90 & 3.15 & 2.21 & 2.53 & 2.38 & 8.00 & 8.76 & 9.25 & 9.43 & -0.29 & 0.06\\
+Tunisia & 0.10 & 0.14 & 3.60 & 2.80 & 2.79 & 2.04 & 2.06 & 2.06 & 8.24 & 8.88 & 9.08 & 9.26 & -0.22 & 0.06\\
+Turkey & 0.06 & 0.14 & 3.79 & 2.99 & 2.78 & 2.00 & 2.16 & 2.13 & 9.11 & 8.90 & 9.31 & 9.35 & -0.06 & 0.06\\
+UK & 0.13 & 0.41 & 3.85 & 3.05 & 3.53 & 2.49 & 2.93 & 2.94 & 9.37 & 8.51 & 9.30 & 9.69 & 0.04 & 0.06\\
+Ukraine & 0.06 & 0.29 & 3.82 & 2.90 & 2.88 & 2.04 & 2.34 & 2.36 & 7.86 & 7.26 & 7.99 & 8.91 & 0.05 & 0.05\\
+USA & 0.34 & 0.40 & 3.54 & 2.76 & 3.20 & 2.23 & 2.77 & 2.78 & 8.47 & 8.07 & 8.89 & 9.23 & 0.18 & 0.06\\
+\bottomrule
+\end{longtable}
+
+}
+
+\end{lltable}
+
+\newpage
+
+
+
+\begin{table}[h]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:tableInvarianceWVS1}Measurement invariance results for the measures of trust in different groups from the World Values Survey. Across nations, the analyses tested the measurement invariance of the factor structure for two factors: (1) trust in your family, people in your neighbourhood, and people you know personally, and (2) trust in people you meet for the first time, people of another nationality, and people of another religion. Thresholds for good fit: RMSEA \textless{} 0.08; SRMR \textless{} 0.08; CFI \textgreater{} 0.95 (Hu \& Bentler, 1999; MacCallum et al., 1996).}
+
+\begin{tabular}{m{4cm}m{3cm}m{3cm}m{3cm}}
+\toprule
+Model & \multicolumn{1}{c}{RMSEA} & \multicolumn{1}{c}{CFI} & \multicolumn{1}{c}{SRMR}\\
+\midrule
+Configural invariance & 0.10 & 0.95 & 0.04\\
+Metric invariance & 0.09 & 0.94 & 0.06\\
+Scalar invariance & 0.14 & 0.83 & 0.09\\
+\bottomrule
+\end{tabular}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+\newpage
+
+
+
+\begin{table}[h]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:tableInvarianceWVS2}Measurement invariance results for the moral justifiability measures from the World Values Survey. Across nations, the analyses tested the measurement invariance of the factor structure for a single factor with loadings from all four items: claiming government benefits, avoiding public transport fare, cheating on taxes, and accepting a bribe. Thresholds for good fit: RMSEA \textless{} 0.08; SRMR \textless{} 0.08; CFI \textgreater{} 0.95 (Hu \& Bentler, 1999; MacCallum et al., 1996).}
+
+\begin{tabular}{m{4cm}m{3cm}m{3cm}m{3cm}}
+\toprule
+Model & \multicolumn{1}{c}{RMSEA} & \multicolumn{1}{c}{CFI} & \multicolumn{1}{c}{SRMR}\\
+\midrule
+Configural invariance & 0.14 & 0.96 & 0.03\\
+Metric invariance & 0.13 & 0.93 & 0.07\\
+Scalar invariance & 0.17 & 0.79 & 0.11\\
+\bottomrule
+\end{tabular}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+\newpage
+
 \hypertarget{supplementary-references}{%
 \subsection{Supplementary References}\label{supplementary-references}}
 
-Cronk, L., Berbesque, C., Conte, T., Gervais, M., Iyer, P., McCarthy, B., Sonkoi, D., Townsend, C., \& Aktipis, A. (2019). Managing risk through cooperation: Need-based transfers and risk pooling among the societies of the Human Generosity Project. In L. R. Lozny \& T. H. McGovern (Eds.), \emph{Global perspectives on long term community resource management} (pp.~41---75). Springer International Publishing. \url{https://doi.org/10.1007/978-3-030-15800-2_4}
+Chen, H., Cohen, P., \& Chen, S. (2010). How big is a big odds ratio? Interpreting the magnitudes of odds ratios in epidemiological studies. \emph{Communications in Statistics --- Simulation and Computation}, \emph{39}(4), 860--864. \url{https://doi.org/10.1080/03610911003650383}
+
+Cronk, L., Berbesque, C., Conte, T., Gervais, M., Iyer, P., McCarthy, B., Sonkoi, D., Townsend, C., \& Aktipis, A. (2019). Managing risk through cooperation: Need-based transfers and risk pooling among the societies of the Human Generosity Project. In L. R. Lozny \& T. H. McGovern (Eds.), \emph{Global perspectives on long term community resource management} (pp.~41--75). Springer International Publishing. \url{https://doi.org/10.1007/978-3-030-15800-2_4}
 
 Eberhard, D. M., Simons, G. F., \& Fennig, C. D. (Eds.). (2018). \emph{Ethnologue: Languages of the world} (Twenty-first). SIL International.
 
-Eff, E. A. (2008). Weight matrices for cultural proximity: Deriving weights from a language phylogeny. \emph{Structure and Dynamics}, \emph{3}(2).
+Eff, E. A. (2008). Weight matrices for cultural proximity: Deriving weights from a language phylogeny. \emph{Structure and Dynamics}, \emph{3}(2). \url{https://doi.org/10.5070/SD932003296}
+
+Funder, D. C., \& Ozer, D. J. (2019). Evaluating effect size in psychological research: Sense and nonsense. \emph{Advances in Methods and Practices in Psychological Science}, \emph{2}(2), 156--168. \url{https://doi.org/10.1177/2515245919847202}
 
 Hammarström, H., Forkel, R., Haspelmath, M., \& Bank, S. (2017). \emph{Glottolog 3.0.} Max Planck Institute for the Science of Human History. \url{https://doi.org/10.5281/zenodo.4061162}
+
+Hu, L. T., \& Bentler, P. M. (1999). Cutoff criteria for fit indexes in covariance structure analysis: Conventional criteria versus new alternatives. \emph{Structural Equation Modeling}, \emph{6}(1), 1--55. \url{https://doi.org/10.1080/10705519909540118}
+
+MacCallum, R. C., Browne, M. W., \& Sugawara, H. M. (1996). Power analysis and determination of sample size for covariance structure modeling. \emph{Psychological Methods}, \emph{1}(2), 130--149. \url{https://doi.org/10.1037/1082-989x.1.2.130}
 
 Talhelm, T., Zhang, X., Oishi, S., Shimin, C., Duan, D., Lan, X., \& Kitayama, S. (2014). Large-scale psychological differences within china explained by rice versus wheat agriculture. \emph{Science}, \emph{344}(6184), 603--608. \url{https://doi.org/10.1126/science.1246850}
 
