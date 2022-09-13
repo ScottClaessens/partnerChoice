@@ -133,7 +133,7 @@ tar_read(plotWVSWorld)
 
 \newpage
 
-(ref:plotWVS5bCaption) _Posterior predictions from a Bayesian multilevel logistic regression predicting charitable organisation membership from country-level relational mobility, controlling for environmental harshness and subsistence style._ The line and shaded area indicate the median posterior regression line and 95% credible intervals. Points indicate the proportion of individuals belonging to charitable organisations on the y-axis and relational mobility scores on the x-axis, for each of the 32 countries, with error bars representing +/- 1 standard error.
+(ref:plotWVS5bCaption) _Posterior predictions from a Bayesian multilevel logistic regression predicting charitable organisation membership from country-level relational mobility, controlling for environmental harshness and subsistence style._ The line and shaded area indicate the median posterior regression line and 95% credible intervals. Points indicate the proportion of individuals belonging to charitable organisations on the y-axis and relational mobility scores on the x-axis, for each of the 32 countries, with error bars representing +/- 1 standard error. Letters represent country ISO codes.
 
 ```{r plotWVS5b, echo=F, fig.width=5, fig.height=3.5, fig.cap="(ref:plotWVS5bCaption)"}
 tar_read(plotWVS_5.2)
@@ -141,7 +141,7 @@ tar_read(plotWVS_5.2)
 
 \newpage
 
-(ref:plotWVS6bCaption) _Posterior predictions from a Bayesian multilevel logistic regression predicting generalised trust from country-level relational mobility, controlling for environmental harshness and subsistence style._ The line and shaded area indicate the median posterior regression line and 95% credible intervals. Points indicate the proportion of individuals stating that "most people can be trusted" on the y-axis and relational mobility scores on the x-axis, for each of the 32 countries, with error bars representing +/- 1 standard error.
+(ref:plotWVS6bCaption) _Posterior predictions from a Bayesian multilevel logistic regression predicting generalised trust from country-level relational mobility, controlling for environmental harshness and subsistence style._ The line and shaded area indicate the median posterior regression line and 95% credible intervals. Points indicate the proportion of individuals stating that "most people can be trusted" on the y-axis and relational mobility scores on the x-axis, for each of the 32 countries, with error bars representing +/- 1 standard error. Letters represent country ISO codes.
 
 ```{r plotWVS6b, echo=F, fig.width=5, fig.height=3.5, fig.cap="(ref:plotWVS6bCaption)"}
 tar_read(plotWVS_6.2)
@@ -149,7 +149,7 @@ tar_read(plotWVS_6.2)
 
 \newpage
 
-(ref:plotWVS7bCaption) _Posterior predictions from a Bayesian multilevel ordinal regression predicting trust in specific groups from country-level relational mobility, controlling for environmental harshness and subsistence style._ Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average trust and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error.
+(ref:plotWVS7bCaption) _Posterior predictions from a Bayesian multilevel ordinal regression predicting trust in specific groups from country-level relational mobility, controlling for environmental harshness and subsistence style._ Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average trust and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error. Letters represent country ISO codes.
 
 ```{r plotWVS7b, echo=F, fig.width=8, fig.height=6.5, fig.cap="(ref:plotWVS7bCaption)"}
 tar_read(plotWVS_7.2)
@@ -157,7 +157,7 @@ tar_read(plotWVS_7.2)
 
 \newpage
 
-(ref:plotWVS7cCaption) _Posterior predictions from a Bayesian multilevel ordinal regression predicting trust in specific groups from country-level relational mobility, controlling for environmental harshness and subsistence style and including a quadratic effect for relational mobility._ Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average trust and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error.
+(ref:plotWVS7cCaption) _Posterior predictions from a Bayesian multilevel ordinal regression predicting trust in specific groups from country-level relational mobility, controlling for environmental harshness and subsistence style and including a quadratic effect for relational mobility._ Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average trust and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error. Letters represent country ISO codes.
 
 ```{r plotWVS7c, echo=F, fig.width=8, fig.height=6.5, fig.cap="(ref:plotWVS7cCaption)"}
 tar_read(plotWVS_7.3)
@@ -165,7 +165,7 @@ tar_read(plotWVS_7.3)
 
 \newpage
 
-(ref:plotWVS8bCaption) _Posterior predictions from a Bayesian multilevel ordinal regression predicting moral justifiability of different scenarios from country-level relational mobility, controlling for environmental harshness and subsistence style._ Higher numbers on the y-axis indicate _lower_ justifiability ratings for each scenario. Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average justifiability (reversed) and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error.
+(ref:plotWVS8bCaption) _Posterior predictions from a Bayesian multilevel ordinal regression predicting moral justifiability of different scenarios from country-level relational mobility, controlling for environmental harshness and subsistence style._ Higher numbers on the y-axis indicate _lower_ justifiability ratings for each scenario. Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average justifiability (reversed) and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error. Letters represent country ISO codes.
 
 ```{r plotWVS8b, echo=F, fig.width=6, fig.height=6, fig.cap="(ref:plotWVS8bCaption)"}
 tar_read(plotWVS_8.2)
@@ -173,7 +173,7 @@ tar_read(plotWVS_8.2)
 
 \newpage
 
-(ref:plotWVS8cCaption) _Posterior predictions from a Bayesian multilevel ordinal regression predicting moral justifiability of different scenarios from country-level relational mobility, controlling for environmental harshness and subsistence style and including a quadratic effect for relational mobility._ Higher numbers on the y-axis indicate _lower_ justifiability ratings for each scenario. Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average justifiability (reversed) and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error.
+(ref:plotWVS8cCaption) _Posterior predictions from a Bayesian multilevel ordinal regression predicting moral justifiability of different scenarios from country-level relational mobility, controlling for environmental harshness and subsistence style and including a quadratic effect for relational mobility._ Higher numbers on the y-axis indicate _lower_ justifiability ratings for each scenario. Lines and shaded areas indicate median posterior regression lines and 95% credible intervals. Points indicate average justifiability (reversed) and relational mobility scores for each of the 32 countries, with error bars representing +/- 1 standard error. Letters represent country ISO codes.
 
 ```{r plotWVS8c, echo=F, fig.width=6, fig.height=6, fig.cap="(ref:plotWVS8cCaption)"}
 tar_read(plotWVS_8.3)
