@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.13)  13 SEP 2022 15:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.13)  23 SEP 2022 12:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -693,77 +693,77 @@ File: manuscript_files/figure-latex/plotWVS5a-1.pdf Graphic file (type pdf)
 <use manuscript_files/figure-latex/plotWVS5a-1.pdf>
 Package pdftex.def Info: manuscript_files/figure-latex/plotWVS5a-1.pdf  used on input line 354.
 (pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
-<manuscript_files/figure-latex/plotWVS6a-1.pdf, id=286, 361.35pt x 252.945pt>
+[18 <./manuscript_files/figure-latex/plotWVS5a-1.pdf>]
+<manuscript_files/figure-latex/plotWVS6a-1.pdf, id=302, 361.35pt x 252.945pt>
 File: manuscript_files/figure-latex/plotWVS6a-1.pdf Graphic file (type pdf)
 <use manuscript_files/figure-latex/plotWVS6a-1.pdf>
 Package pdftex.def Info: manuscript_files/figure-latex/plotWVS6a-1.pdf  used on input line 364.
 (pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
-[18]
-<manuscript_files/figure-latex/plotWVS7a-1.pdf, id=301, 578.16pt x 469.755pt>
+[19 <./manuscript_files/figure-latex/plotWVS6a-1.pdf>]
+<manuscript_files/figure-latex/plotWVS7a-1.pdf, id=324, 578.16pt x 469.755pt>
 File: manuscript_files/figure-latex/plotWVS7a-1.pdf Graphic file (type pdf)
 <use manuscript_files/figure-latex/plotWVS7a-1.pdf>
 Package pdftex.def Info: manuscript_files/figure-latex/plotWVS7a-1.pdf  used on input line 374.
 (pdftex.def)             Requested size: 469.75385pt x 381.675pt.
-[19 <./manuscript_files/figure-latex/plotWVS5a-1.pdf>]
-<manuscript_files/figure-latex/plotWVS8a-1.pdf, id=322, 433.62pt x 433.62pt>
+<manuscript_files/figure-latex/plotWVS8a-1.pdf, id=329, 433.62pt x 433.62pt>
 File: manuscript_files/figure-latex/plotWVS8a-1.pdf Graphic file (type pdf)
 <use manuscript_files/figure-latex/plotWVS8a-1.pdf>
 Package pdftex.def Info: manuscript_files/figure-latex/plotWVS8a-1.pdf  used on input line 384.
 (pdftex.def)             Requested size: 433.63878pt x 433.63878pt.
-[20 <./manuscript_files/figure-latex/plotWVS6a-1.pdf>] [21 <./manuscript_files/figure-latex/plotWVS7a-1.pdf>] [22 <./manuscript_files/figure-latex/plotWVS8a-1.pdf>] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35]
+[20] [21 <./manuscript_files/figure-latex/plotWVS7a-1.pdf>] [22 <./manuscript_files/figure-latex/plotWVS8a-1.pdf>] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 623.
+(hyperref)                removing `\\' on input line 620.
 
 [36
 
 ] [37] [38] [39] [40]
-<manuscript_files/figure-latex/plotGPSWorld-1.pdf, id=561, 578.16pt x 289.08pt>
+<manuscript_files/figure-latex/plotGPSWorld-1.pdf, id=559, 578.16pt x 289.08pt>
 File: manuscript_files/figure-latex/plotGPSWorld-1.pdf Graphic file (type pdf)
 <use manuscript_files/figure-latex/plotGPSWorld-1.pdf>
-Package pdftex.def Info: manuscript_files/figure-latex/plotGPSWorld-1.pdf  used on input line 740.
+Package pdftex.def Info: manuscript_files/figure-latex/plotGPSWorld-1.pdf  used on input line 737.
 (pdftex.def)             Requested size: 469.75385pt x 234.8769pt.
 [41 <./manuscript_files/figure-latex/plotGPSWorld-1.pdf>]
-<manuscript_files/figure-latex/plotWVSWorld-1.pdf, id=575, 578.16pt x 289.08pt>
+<manuscript_files/figure-latex/plotWVSWorld-1.pdf, id=573, 578.16pt x 289.08pt>
 File: manuscript_files/figure-latex/plotWVSWorld-1.pdf Graphic file (type pdf)
 <use manuscript_files/figure-latex/plotWVSWorld-1.pdf>
-Package pdftex.def Info: manuscript_files/figure-latex/plotWVSWorld-1.pdf  used on input line 750.
+Package pdftex.def Info: manuscript_files/figure-latex/plotWVSWorld-1.pdf  used on input line 747.
 (pdftex.def)             Requested size: 469.75385pt x 234.8769pt.
 [42 <./manuscript_files/figure-latex/plotWVSWorld-1.pdf>]
-<manuscript_files/figure-latex/plotWVS5b-1.pdf, id=588, 361.35pt x 252.945pt>
+<manuscript_files/figure-latex/plotWVS5b-1.pdf, id=586, 361.35pt x 252.945pt>
 File: manuscript_files/figure-latex/plotWVS5b-1.pdf Graphic file (type pdf)
 <use manuscript_files/figure-latex/plotWVS5b-1.pdf>
-Package pdftex.def Info: manuscript_files/figure-latex/plotWVS5b-1.pdf  used on input line 760.
+Package pdftex.def Info: manuscript_files/figure-latex/plotWVS5b-1.pdf  used on input line 757.
 (pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
 [43 <./manuscript_files/figure-latex/plotWVS5b-1.pdf>]
-<manuscript_files/figure-latex/plotWVS6b-1.pdf, id=603, 361.35pt x 252.945pt>
+<manuscript_files/figure-latex/plotWVS6b-1.pdf, id=601, 361.35pt x 252.945pt>
 File: manuscript_files/figure-latex/plotWVS6b-1.pdf Graphic file (type pdf)
 <use manuscript_files/figure-latex/plotWVS6b-1.pdf>
-Package pdftex.def Info: manuscript_files/figure-latex/plotWVS6b-1.pdf  used on input line 770.
+Package pdftex.def Info: manuscript_files/figure-latex/plotWVS6b-1.pdf  used on input line 767.
 (pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
 [44 <./manuscript_files/figure-latex/plotWVS6b-1.pdf>]
-<manuscript_files/figure-latex/plotWVS7b-1.pdf, id=617, 578.16pt x 469.755pt>
+<manuscript_files/figure-latex/plotWVS7b-1.pdf, id=615, 578.16pt x 469.755pt>
 File: manuscript_files/figure-latex/plotWVS7b-1.pdf Graphic file (type pdf)
 <use manuscript_files/figure-latex/plotWVS7b-1.pdf>
-Package pdftex.def Info: manuscript_files/figure-latex/plotWVS7b-1.pdf  used on input line 780.
+Package pdftex.def Info: manuscript_files/figure-latex/plotWVS7b-1.pdf  used on input line 777.
 (pdftex.def)             Requested size: 469.75385pt x 381.675pt.
 [45 <./manuscript_files/figure-latex/plotWVS7b-1.pdf>]
-<manuscript_files/figure-latex/plotWVS7c-1.pdf, id=632, 578.16pt x 469.755pt>
+<manuscript_files/figure-latex/plotWVS7c-1.pdf, id=630, 578.16pt x 469.755pt>
 File: manuscript_files/figure-latex/plotWVS7c-1.pdf Graphic file (type pdf)
 <use manuscript_files/figure-latex/plotWVS7c-1.pdf>
-Package pdftex.def Info: manuscript_files/figure-latex/plotWVS7c-1.pdf  used on input line 790.
+Package pdftex.def Info: manuscript_files/figure-latex/plotWVS7c-1.pdf  used on input line 787.
 (pdftex.def)             Requested size: 469.75385pt x 381.675pt.
 [46 <./manuscript_files/figure-latex/plotWVS7c-1.pdf>]
-<manuscript_files/figure-latex/plotWVS8b-1.pdf, id=648, 433.62pt x 433.62pt>
+<manuscript_files/figure-latex/plotWVS8b-1.pdf, id=646, 433.62pt x 433.62pt>
 File: manuscript_files/figure-latex/plotWVS8b-1.pdf Graphic file (type pdf)
 <use manuscript_files/figure-latex/plotWVS8b-1.pdf>
-Package pdftex.def Info: manuscript_files/figure-latex/plotWVS8b-1.pdf  used on input line 800.
+Package pdftex.def Info: manuscript_files/figure-latex/plotWVS8b-1.pdf  used on input line 797.
 (pdftex.def)             Requested size: 433.63878pt x 433.63878pt.
 [47 <./manuscript_files/figure-latex/plotWVS8b-1.pdf>]
-<manuscript_files/figure-latex/plotWVS8c-1.pdf, id=663, 433.62pt x 433.62pt>
+<manuscript_files/figure-latex/plotWVS8c-1.pdf, id=661, 433.62pt x 433.62pt>
 File: manuscript_files/figure-latex/plotWVS8c-1.pdf Graphic file (type pdf)
 <use manuscript_files/figure-latex/plotWVS8c-1.pdf>
-Package pdftex.def Info: manuscript_files/figure-latex/plotWVS8c-1.pdf  used on input line 810.
+Package pdftex.def Info: manuscript_files/figure-latex/plotWVS8c-1.pdf  used on input line 807.
 (pdftex.def)             Requested size: 433.63878pt x 433.63878pt.
 [48 <./manuscript_files/figure-latex/plotWVS8c-1.pdf>] [49] [50] [51
 
@@ -780,18 +780,18 @@ Package rerunfilecheck Info: File `manuscript.out' has not changed.
 (rerunfilecheck)             Checksum: 01109CAD860D1FC08635AD87B55D3E27;4292.
  ) 
 Here is how much of TeX's memory you used:
- 16900 strings out of 477035
- 282058 string characters out of 5826562
+ 16899 strings out of 477035
+ 282042 string characters out of 5826562
  700189 words of memory out of 5000000
  37526 multiletter control sequences out of 15000+600000
  522735 words of font info for 66 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  72i,18n,77p,1780b,629s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/Users/scla896/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{c:/Users/scla896/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/Users/scla896/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{c:/Users/scla896/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/Users/scla896/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}<c:/Users/scla896/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/scla896/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb><c:/Users/scla896/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/Users/scla896/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><c:/Users/scla896/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/Users/scla896/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/Users/scla896/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/Users/scla896/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb><c:/Users/scla896/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmss8.pfb><c:/Users/scla896/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
-Output written on manuscript.pdf (57 pages, 1550649 bytes).
+Output written on manuscript.pdf (57 pages, 1550440 bytes).
 PDF statistics:
- 834 PDF objects out of 1000 (max. 8388607)
- 712 compressed objects within 8 object streams
- 202 named destinations out of 1000 (max. 500000)
+ 832 PDF objects out of 1000 (max. 8388607)
+ 710 compressed objects within 8 object streams
+ 201 named destinations out of 1000 (max. 500000)
  300 words of extra memory for PDF output out of 10000 (max. 10000000)
 

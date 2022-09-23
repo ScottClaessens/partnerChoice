@@ -1130,7 +1130,7 @@ plotWVSResults8 <- function(d, model, file) {
   }
   # group plots
   pA <- plotFun(items$item[1], "Claiming government benefits\nto which you are not entitled")
-  pB <- plotFun(items$item[2], "Avoiding a fare\nonpublic transport")
+  pB <- plotFun(items$item[2], "Avoiding a fare\non public transport")
   pC <- plotFun(items$item[3], " \nCheating on taxes")
   pD <- plotFun(items$item[4], " \nSomeone accepting a bribe")
   # put together
