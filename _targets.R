@@ -12,6 +12,11 @@ plan(callr)
 # full workflow
 list(
   
+  #### Session Info ####
+  
+  # print session info for reproducibility
+  tar_target(sessionInfo, writeLines(capture.output(sessionInfo()), "sessionInfo.txt")),
+  
   #### Study 1 - GPS ####
   
   # raw data files

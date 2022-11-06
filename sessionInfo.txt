@@ -1,0 +1,76 @@
+R version 4.2.1 (2022-06-23 ucrt)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 19044)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=English_New Zealand.utf8  LC_CTYPE=English_New Zealand.utf8   
+[3] LC_MONETARY=English_New Zealand.utf8 LC_NUMERIC=C                        
+[5] LC_TIME=English_New Zealand.utf8    
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] sjlabelled_1.2.0    simr_1.0.6          lme4_1.1-30        
+ [4] Matrix_1.4-1        semTools_0.5-6      rnaturalearth_0.1.0
+ [7] rmarkdown_2.16      readxl_1.4.1        papaja_0.1.1       
+[10] tinylabels_0.2.3    lavaan_0.6-12       haven_2.5.1        
+[13] ggrepel_0.9.1       ggdag_0.2.6         cowplot_1.1.1      
+[16] brms_2.18.0         Rcpp_1.0.9          future.callr_0.8.0 
+[19] future_1.27.0       forcats_0.5.2       stringr_1.4.1      
+[22] dplyr_1.0.10        purrr_0.3.4         readr_2.1.2        
+[25] tidyr_1.2.1         tibble_3.1.8        ggplot2_3.3.6      
+[28] tidyverse_1.3.2     tarchetypes_0.7.1   targets_0.13.5     
+
+loaded via a namespace (and not attached):
+  [1] utf8_1.2.2           tidyselect_1.1.2     htmlwidgets_1.5.4   
+  [4] grid_4.2.1           munsell_0.5.0        base64url_1.4       
+  [7] codetools_0.2-18     units_0.8-0          DT_0.24             
+ [10] miniUI_0.1.1.1       withr_2.5.0          Brobdingnag_1.2-7   
+ [13] colorspace_2.0-3     knitr_1.40           rstudioapi_0.14     
+ [16] stats4_4.2.1         bayesplot_1.9.0      listenv_0.8.0       
+ [19] emmeans_1.8.0        rstan_2.26.13        RLRsim_3.1-8        
+ [22] mnormt_2.1.0         bit64_4.0.5          farver_2.1.1        
+ [25] bridgesampling_1.1-2 coda_0.19-4          parallelly_1.32.1   
+ [28] vctrs_0.4.2          generics_0.1.3       TH.data_1.1-1       
+ [31] xfun_0.33            R6_2.5.1             markdown_1.1        
+ [34] assertthat_0.2.1     promises_1.2.0.1     scales_1.2.1        
+ [37] multcomp_1.4-20      googlesheets4_1.0.1  gtable_0.3.1        
+ [40] globals_0.16.0       processx_3.7.0       tidygraph_1.2.2     
+ [43] sandwich_3.0-2       rlang_1.0.6          splines_4.2.1       
+ [46] gargle_1.2.0         broom_1.0.1          checkmate_2.1.0     
+ [49] inline_0.3.19        yaml_2.3.5           reshape2_1.4.4      
+ [52] abind_1.4-5          modelr_0.1.9         threejs_0.3.3       
+ [55] crosstalk_1.2.0      backports_1.4.1      httpuv_1.6.5        
+ [58] tensorA_0.36.2       tools_4.2.1          ellipsis_0.3.2      
+ [61] posterior_1.3.0      proxy_0.4-27         ggridges_0.5.3      
+ [64] plyr_1.8.7           base64enc_0.1-3      classInt_0.4-7      
+ [67] ps_1.7.1             prettyunits_1.1.1    zoo_1.8-10          
+ [70] fs_1.5.2             magrittr_2.0.3       data.table_1.14.2   
+ [73] colourpicker_1.1.1   reprex_2.0.2         googledrive_2.0.0   
+ [76] mvtnorm_1.1-3        matrixStats_0.62.0   hms_1.1.2           
+ [79] shinyjs_2.1.0        mime_0.12            evaluate_0.16       
+ [82] xtable_1.8-4         pbkrtest_0.5.1       shinystan_2.6.0     
+ [85] gridExtra_2.3        rstantools_2.2.0     compiler_4.2.1      
+ [88] KernSmooth_2.23-20   V8_4.2.1             crayon_1.5.1        
+ [91] minqa_1.2.4          StanHeaders_2.26.13  htmltools_0.5.3     
+ [94] mgcv_1.8-40          later_1.3.0          tzdb_0.3.0          
+ [97] RcppParallel_5.1.5   lubridate_1.8.0      DBI_1.1.3           
+[100] dbplyr_2.2.1         MASS_7.3-58.1        sf_1.0-8            
+[103] boot_1.3-28          car_3.1-0            cli_3.4.1           
+[106] insight_0.18.2       parallel_4.2.1       igraph_1.3.4        
+[109] pkgconfig_2.0.3      sp_1.5-0             binom_1.1-1.1       
+[112] xml2_1.3.3           dygraphs_1.1.1.6     pbivnorm_0.6.0      
+[115] estimability_1.4.1   rvest_1.0.3          distributional_0.3.0
+[118] callr_3.7.2          digest_0.6.29        cellranger_1.1.0    
+[121] curl_4.3.2           shiny_1.7.2          gtools_3.9.3        
+[124] nloptr_2.0.3         lifecycle_1.0.2      nlme_3.1-159        
+[127] jsonlite_1.8.2       carData_3.0-5        fansi_1.0.3         
+[130] pillar_1.8.1         lattice_0.20-45      loo_2.5.1           
+[133] plotrix_3.8-2        fastmap_1.1.0        httr_1.4.4          
+[136] pkgbuild_1.3.1       survival_3.4-0       glue_1.6.2          
+[139] xts_0.12.1           iterators_1.0.14     shinythemes_1.2.0   
+[142] bit_4.0.4            class_7.3-20         stringi_1.7.8       
+[145] e1071_1.7-11        

@@ -350,31 +350,49 @@ drawDAG <- function() {
   # and unmeasured confounds captured by geographic and linguistic distance
   #
   dag_coords <-
-    tibble(name = c("RM", "Pro", "Sub", "Harsh", "U", "Geo", "Lin"),
+    tibble(name = c("R", "P", "S", "H", "U", "G", "L"),
            x    = c(1, 2, 1.5, 1.5, 0, 0, 0),
            y    = c(0, 0, 1, -1, 0, 1, -1))
   out <-
-    dagify(Pro ~ RM + Harsh + Sub + U,
-           RM ~ Harsh + Sub + U,
-           Sub ~ U,
-           Harsh ~ U,
-           U ~ Geo + Lin,
-           exposure = "RM",
-           outcome = "Pro",
+    dagify(P ~ R + H + S + U,
+           R ~ H + S + U,
+           S ~ U,
+           H ~ U,
+           U ~ G + L,
+           exposure = "R",
+           outcome = "P",
            latent = "U",
            coords = dag_coords) %>%
-    ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+    ggplot(aes(x = x, y = y, xend = xend, yend = yend))
+  # modify labels
+  labels <- c("R" = "Relational\nMobility",
+              "P" = "Prosociality",
+              "S" = "Subsistence",
+              "H" = "Harshness",
+              "U" = "U",
+              "G" = "Geography",
+              "L" = "Language")
+  out$data$name <- labels[out$data$name]
+  out$data$to <- labels[out$data$to]
+  # modify some links
+  out$data$xend[6]  <- 1.90
+  out$data$xend[9]  <- 1.45
+  out$data$xend[10] <- 1.95
+  out$data$xend[11] <- 0.95
+  # plot
+  out <-
+    out +
     geom_dag_point(
       data = function(x) filter(x, name == "U"),
-      alpha = 1/2, size = 20, show.legend = F, colour = "lightgrey"
+      alpha = 1/2, size = 20, show.legend = FALSE, colour = "lightgrey"
       ) +
     geom_dag_text(color = "black") +
     geom_dag_edges_link(
-      data = function(x) filter(x, !(name == "U" & to == "Pro"))
+      data = function(x) filter(x, !(name == "U" & to == "Prosociality"))
     ) +
     geom_dag_edges_arc(
-      data = function(x) filter(x, name == "U" & to == "Pro"),
-      curvature = 0.3
+      data = function(x) filter(x, name == "U" & to == "Prosociality"),
+      curvature = 0.35
     ) +
     theme(axis.line = element_blank(),
           axis.ticks = element_blank(),

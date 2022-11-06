@@ -1,6 +1,6 @@
-# Is partner choice related to prosociality? A cross-national investigation
+# Partner choice does not predict prosociality across countries
 
-This repository contains the R code for the manuscript "Is partner choice related to prosociality? A cross-national investigation".
+This repository contains the R code for the manuscript "Partner choice does not predict prosociality across countries".
 
 ## Getting Started
 

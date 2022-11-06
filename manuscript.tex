@@ -34,6 +34,46 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -156,7 +196,7 @@
     {}{\InnerPatchFailed}%
   }
 {}{\PatchFailed}
-\keywords{partner choice, relational mobility, cooperation, prosociality, cross-cultural\newline\indent Word count: 5500 words}
+\keywords{partner choice, relational mobility, cooperation, prosociality, cross-cultural\newline\indent Word count: 5700 words}
 \usepackage{lineno}
 
 \linenumbers
@@ -175,7 +215,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={Is partner choice related to prosociality? A cross-national investigation},
+  pdftitle={Partner choice does not predict prosociality across countries},
   pdfauthor={Scott Claessens1 \& Thanos Kyritsis1},
   pdflang={en-EN},
   pdfkeywords={partner choice, relational mobility, cooperation, prosociality, cross-cultural},
@@ -186,7 +226,7 @@
   urlcolor={blue},
   pdfcreator={LaTeX via pandoc}}
 
-\title{Is partner choice related to prosociality? A cross-national investigation}
+\title{Partner choice does not predict prosociality across countries}
 \author{Scott Claessens\textsuperscript{1} \& Thanos Kyritsis\textsuperscript{1}}
 \date{}
 
@@ -204,7 +244,7 @@ Correspondence concerning this article should be addressed to Scott Claessens, F
 \note{This working paper has not yet been peer-reviewed.}
 
 \abstract{%
-Why does human prosociality vary around the world? Evolutionary models and laboratory experiments suggest that possibilities for partner choice (i.e., the ability to leave unprofitable relationships and strike up new ones) should promote cooperation across human societies. Leveraging the Global Preferences Survey (n = 27,125; 27 countries) and the World Values Survey (n = 54,728; 32 countries), we test this theory by estimating the associations between relational mobility, a socioecological measure of partner choice, and a wide variety of prosocial attitudes and behaviours, including impersonal altruism, reciprocity, trust, collective action, and moral judgements of antisocial behaviour. Contrary to our pre-registered predictions, we found little evidence to suggest that partner choice is related to prosociality across countries. After controlling for posited shared causes of relational mobility and prosociality around the world --- environmental harshness, subsistence style, and geographic and linguistic proximity --- we found that only impersonal altruism and trust in people from another religion are positively related to relational mobility. We did not find positive relationships between relational mobility and reciprocity, generalised trust, collective action, or moral judgements of antisocial behaviour. These findings challenge existing evolutionary theories of human cooperation which emphasise partner choice as a key explanatory mechanism, and highlight the need to generalise theoretical models and controlled experiments to global samples.
+Why does human prosociality vary around the world? Evolutionary models and laboratory experiments suggest that possibilities for partner choice (i.e., the ability to leave unprofitable relationships and strike up new ones) should promote cooperation across human societies. Leveraging the Global Preferences Survey (n = 27,125; 27 countries) and the World Values Survey (n = 54,728; 32 countries), we test this theory by estimating the associations between relational mobility, a socioecological measure of partner choice, and a wide variety of prosocial attitudes and behaviours, including impersonal altruism, reciprocity, trust, collective action, and moral judgements of antisocial behaviour. Contrary to our pre-registered predictions, we found little evidence that partner choice is related to prosociality across countries. After controlling for shared causes of relational mobility and prosociality --- environmental harshness, subsistence style, and geographic and linguistic proximity --- we found that only altruism and trust in people from another religion are positively related to relational mobility. We did not find positive relationships between relational mobility and reciprocity, generalised trust, collective action, or moral judgements. These findings challenge evolutionary theories of human cooperation which emphasise partner choice as a key explanatory mechanism, and highlight the need to generalise models and experiments to global samples.
 }
 
 
@@ -249,7 +289,7 @@ The Global Preferences Survey was conducted as part of the 2012 Gallup World Pol
 
 Participants in the Global Preferences Survey were asked a series of self-report questions that measure the following social preferences: altruism, generalised trust, positive reciprocity, negative reciprocity, risk-taking, and patience. For the purposes of our study, we focused on the altruism, trust, and positive reciprocity items (for raw country-level data, see Supplementary Table \ref{tab:tableRaw1}). Negative reciprocity was not studied, as previous factor analyses have shown that punitive behaviour forms a separate latent variable distinct from cooperation (Peysakhovich et al., 2014).
 
-Altruism was measured by two items; a hypothetical charitable donation (``Imagine the following situation: Today you unexpectedly received 1000 euros. How much of this amount would you donate to a good cause?'') and willingness to unconditionally donate to charity (``How willing are you to give to good causes without expecting anything in return?''). Trust was measured by a single item: agreement with the statement ``I assume that people have only the best intentions''. Positive reciprocity was measured by two items: stating the price of a hypothetical thank-you gift the participant would give to a stranger who helped them, and agreement with the statement ``When someone does me a favour I am willing to return it''. These items have been shown to reliably predict altruistic, trusting, and reciprocal behaviour in incentivised economic decision-making experiments (Falk et al., 2016). These items also have metric invariance across countries, suggesting that they can be meaningfully compared around the world (Supplementary Table \ref{tab:tableInvarianceGPS}).
+Altruism was measured by two items; a hypothetical charitable donation (``Imagine the following situation: Today you unexpectedly received 1000 euros. How much of this amount would you donate to a good cause?'') and willingness to unconditionally donate to charity (``How willing are you to give to good causes without expecting anything in return?''). Trust was measured by a single item: agreement with the statement ``I assume that people have only the best intentions''. Positive reciprocity was measured by two items: stating the price of a hypothetical thank-you gift the participant would give to a stranger who helped them, and agreement with the statement ``When someone does me a favour I am willing to return it''. These items have been shown to reliably predict altruistic, trusting, and reciprocal behaviour in incentivised economic decision-making experiments (Falk et al., 2016). These items also have metric invariance across countries (Supplementary Table \ref{tab:tableInvarianceGPS}).
 
 \hypertarget{relational-mobility}{%
 \paragraph{Relational mobility}\label{relational-mobility}}
@@ -266,7 +306,7 @@ In addition to our main variables, we also included several control variables in
 \begin{figure}
 \centering
 \includegraphics{manuscript_files/figure-latex/plotDAG-1.pdf}
-\caption{\label{fig:plotDAG}\emph{Directed acyclic graph of the causal model justifying the inclusion of covariates in our statistical models.} Thomson et al.~(2018) show that environmental harshness (Harsh) and subsistence style (Sub) are antecedents of relational mobility (RM), but other evidence also suggests that environmental harshness and subsistence style directly affect prosociality (Pro; Cronk et al., 2019; Talhelm et al., 2014). Environmental harshness and subsistence style are thus third variables that confound the direct path from relational mobility to prosociality. Moreover, all four of these variables are confounded by unmeasured factors (U), such as ecology, climate, institutions, and norms. We cannot directly condition on unmeasured factors, but since these factors are themselves predicted by geographic (Geo) and linguistic (Lin) proximity between countries, we can account for them by allowing countries to covary according to geographic and linguistic proximity.}
+\caption{\label{fig:plotDAG}\emph{Directed acyclic graph of the causal model justifying the inclusion of covariates in our statistical models.} Thomson et al.~(2018) show that environmental harshness and subsistence style are antecedents of relational mobility, but other evidence also suggests that environmental harshness and subsistence style directly affect prosociality (Cronk et al., 2019; Talhelm et al., 2014). Environmental harshness and subsistence style are thus third variables that confound the direct path from relational mobility to prosociality. Moreover, all four of these variables are confounded by unmeasured factors (U), such as ecology, climate, institutions, and norms. We cannot directly condition on unmeasured factors, but since these factors are themselves predicted by geographic and linguistic proximity between countries, we can account for them by allowing countries to covary according to geographic and linguistic proximity.}
 \end{figure}
 
 First, we controlled for environmental harshness and subsistence style. These two variables were retrieved from the same multi-country study of relational mobility (Thomson et al., 2018). Environmental harshness was a composite measure of seven indicators of historical and ecological threats: (1) history of territorial threats, (2) demanding geoclimate, (3) historical pathogen prevalence, (4) tuberculosis incidence, (5) disaster vulnerability, (6) population density in 1500, and (7) daily fat supply (reversed). Subsistence style was an index that represented the amount of area harvested with wheat, minus the percentage of pasture land for herding, plus the amount of harvested area devoted to rice farming, creating a continuum from relatively mobile and independent subsistence to more settled and interdependent subsistence. Thomson et al. (2018) argue that these country-level characteristics are key antecedents of relational mobility. Additional evidence suggests that these variables also affect prosociality (Cronk et al., 2019; Talhelm et al., 2014). These variables are thus shared causes that could confound the direct relationship between relational mobility and prosociality. We statistically conditioned on both environmental harshness and subsistence style to remove this confounding.
@@ -328,7 +368,7 @@ The World Values Survey and the European Values Survey are conducted mainly via 
 \hypertarget{prosociality-1}{%
 \paragraph{Prosociality}\label{prosociality-1}}
 
-Participants in both the World Values Survey and the European Values Survey answer a range of self-report questions on social values, societal wellbeing, trust, economic values, religion, politics, and ethics. For the purposes of our study, we highlighted several variables as measures of cooperation, trust, and prosociality. The first variable captures cooperation via collective action: ``Are you a member of a charitable or humanitarian organisation?'' For a similar interpretation of this variable, see Jacquet et al. (2021). The second variable captures generalised trust: ``Generally speaking, would you say that most people can be trusted or that you need to be very careful in dealing with people?''. The third set of variables captures levels of trust in specific groups of people, namely family, neighborhood, personal acquaintances, people the respondent has met for the first time, people of another religion, and people of another nationality. The fourth set of variables captures the justifiability of different self-interested moral trangressions, including claiming unentitled government benefits, avoiding a fare on public transport, cheating on taxes, and someone accepting a bribe. Both the set of items measuring trust in different groups and the set of items measuring moral justifiability for different moral transgressions have metric invariance across countries, suggesting that they can be meaningfully compared around the world (Supplementary Tables \ref{tab:tableInvarianceWVS1} and \ref{tab:tableInvarianceWVS2}).
+Participants in both the World Values Survey and the European Values Survey answer a range of self-report questions on social values, societal wellbeing, trust, economic values, religion, politics, and ethics. For the purposes of our study, we highlighted several variables as measures of cooperation, trust, and prosociality. The first variable captures cooperation via collective action: ``Are you a member of a charitable or humanitarian organisation?'' For a similar interpretation of this variable, see Jacquet et al. (2021). The second variable captures generalised trust: ``Generally speaking, would you say that most people can be trusted or that you need to be very careful in dealing with people?''. The third set of variables captures levels of trust in specific groups of people, namely family, neighborhood, personal acquaintances, people the respondent has met for the first time, people of another religion, and people of another nationality. The fourth set of variables captures the justifiability of different self-interested moral trangressions, including claiming unentitled government benefits, avoiding a fare on public transport, cheating on taxes, and someone accepting a bribe. Both the set of items measuring trust in different groups and the set of items measuring moral justifiability for different moral transgressions have metric invariance across countries (Supplementary Tables \ref{tab:tableInvarianceWVS1} and \ref{tab:tableInvarianceWVS2}).
 
 \hypertarget{relational-mobility-and-control-variables}{%
 \paragraph{Relational mobility and control variables}\label{relational-mobility-and-control-variables}}
@@ -394,15 +434,17 @@ Across two pre-registered cross-national studies, we found little evidence to su
 
 Why did we not find the expected relationships between relational mobility and prosociality for most measures? One might argue that relational mobility is not an adequate measure of the kinds of partner choice implemented in theoretical models of cooperation or laboratory experiments. We would contest this view. Relational mobility is explicitly defined as a construct that quantifies ``variance in partner choice in human societies'' akin to biological markets (p.~7521, Thomson et al., 2018). In the relational mobility scale, people are asked about their immediate society, including friends, acquaintances, colleagues, and neighbours, and whether these people can ``leave {[}current relationships{]} for better ones'' and ``choose\ldots{} the people they interact with''. These are the exact same opportunities afforded to agents in partner choice models and participants in partner choice experiments. For example, the Walk Away strategy has the ability to choose new interaction partners and leave those interaction partners if they defect (Aktipis, 2004).
 
-Others might argue that our measures of prosociality lacked construct validity. Indeed, these were self-reported rather than behavioural measures of prosociality that in some cases (e.g., charitable membership organisation) mapped only loosely onto the construct of interest. This was largely unadvoidable: using secondary data, we were limited to survey questions that had not been explicitly designed to test our particular hypotheses. However, the self-report measures of prosociality from the Global Preferences Survey were generated based on their strong positive relationships with prosocial behaviour in incentivised economic games, and yet the evidence with these measures remained mixed.
+Others might argue that our measures of prosociality lacked construct validity or were not suitable for cross-country comparisons. We acknowledge that our outcome variables were self-reported rather than behavioural measures that in some cases (e.g., charitable membership organisation) mapped only loosely onto the construct of interest. This was largely unavoidable using secondary data. However, the self-report measures of prosociality from the Global Preferences Survey were generated based on their strong positive relationships with prosocial behaviour in incentivised economic games, and yet the evidence with these measures remained mixed. Moreover, we found that all of our outcome variables exhibited metric invariance (i.e., invariant factor loadings) across countries, suggesting that participants attributed the same meanings to the constructs around the world. Although we did not find scalar invariance (i.e., invariant item intercepts) for these measures, researchers have suggested that this level of invariance is an overly strict threshold for cross-cultural comparisons of many groups (Selig et al., 2008) and does not necessarily imply incomparability of measures across groups (Welzel et al., 2021). Future work should assess the comparability and comprehension of survey measures of prosociality across countries.
 
 It is also unlikely that our null results arose from a non-linear relationship between relational mobility and prosociality. Some theoretical models find that extreme levels of partner choice actually become harmful for the evolution of cooperation (Aktipis, 2004). Under this view, relational mobility might initially promote prosocial behaviour but reduce it again at high levels, masking any simple linear relationship between relational mobility and prosociality. However, our statistical models with quadratic terms revealed no pronounced ``hump-shaped'' relationships between relational mobility and prosociality. Instead, the 95\% credible intervals for most quadratic effects included zero.
 
-Instead of arising as artifacts of operationalisations or potential non-linear effects, we are confident that our findings reflect a true null relationship between relational mobility and prosociality. Across two studies, we leveraged large samples in a multilevel design, allowing us to make claims about individual-level psychology in socioecological context. We used a wide variety of prosociality measures. We explicitly mapped out a causal diagram and controlled for various sources of confounding in our statistical models, including geographic and cultural non-independence, an issue that is largely ignored in cross-national studies and can create spurious inferences (Bromham et al., 2018; Claessens \& Atkinson, 2022). We also directly modelled measurement error on the relational mobility variable, since this country-level variable was a factor score that was itself measured imperfectly (Thomson et al., 2018). With these methodological strengths, we found that relational mobility was not reliably related to prosociality, a null result that is line with a previous meta-analytic study (Spadaro et al., 2022).
+Instead of arising as artifacts of operationalisations, self-report measures, or potential non-linear effects, we are confident that our findings reflect a true null relationship between relational mobility and prosociality. Across two studies, we leveraged large samples in a multilevel design, allowing us to make claims about individual-level psychology in socioecological context. We used a wide variety of prosociality measures. We explicitly mapped out a causal diagram and controlled for various sources of confounding in our statistical models, including geographic and cultural non-independence, an issue that is largely ignored in cross-national studies and can create spurious inferences (Bromham et al., 2018; Claessens \& Atkinson, 2022). We also directly modelled measurement error on the relational mobility variable, since this country-level variable was a factor score that was itself measured imperfectly (Thomson et al., 2018). With these methodological strengths, we found that relational mobility was not reliably related to prosociality, a null result that is line with a previous meta-analytic study (Spadaro et al., 2022).
 
-Our findings build on and contrast with previous work. Thomson et al. (2018) found that relational mobility was positively related to trust in strangers. Supporting this link, we found a ``scope of trust'' effect, whereby relational mobility negatively predicted trust in close contacts (family members) and positively predicted trust in distant contacts (people of other religions and nationalities). This finding shows that, with multiple groups of increasing social distance, relational mobility scales up people's circles of trust beyond close kin. However, previous research has also shown that relational mobility is positively related to generalised trust, willingness to help close friends, social support towards close friends, and gift-giving in romantic relationships (Kito et al., 2017; Thomson et al., 2018; Yuki et al., 2007; Yuki \& Schug, 2012). In contrast to this previous research, we found that relational mobility is either unrelated or negatively related to generalised trust, and is also unrelated to willingness to return a favour and gift-giving, as well as a host of other prosocial behaviours and attitudes. These differences in results may have arisen from differences in analytic strategies. For example, Thomson et al. (2018) conducted country-level correlations, and only found a relationship between relational mobility and generalised trust when excluding Hungary and Latin American countries (\emph{N} = 27). By contrast, we conducted individual-level multilevel models with measurement error and controls for statistical non-independence between countries.
+Our findings build on and contrast with previous work. Thomson et al. (2018) found that relational mobility was positively related to trust in strangers. Supporting this link, we found a ``scope of trust'' effect, whereby relational mobility negatively predicted trust in close contacts (family members) and positively predicted trust in distant contacts (people of other religions and nationalities). This pattern of associations reveals that, with multiple groups of increasing social distance, relational mobility scales up people's circles of trust beyond close kin. This finding is in line with recent models of partner choice, fitness interdependence, and anonymous helping (Barclay, 2020). These models show that in environments where partners are more easily replaced, individuals become less interdependent with their existing partners, thus reducing the amount of prosociality towards close contacts and increasing the amount of prosociality towards distant contacts.
 
-These null findings challenge previous theoretical and empirical studies suggesting that partner choice promotes prosociality and cooperation in humans. Theoretical models show that introducing the possibility of partner choice creates conditions that favour the evolution of cooperation (Aktipis, 2004, 2011; Enquist \& Leimar, 1993; Roberts, 2020, 1998; Roberts et al., 2021). Laboratory and field work also suggests that partner choice, over and above simple reputational effects, encourages forms of competitive prosociality as people endeavour to be chosen for profitable partnerships (Barclay, 2004; Barclay \& Raihani, 2016; Barclay \& Willer, 2007; Bliege Bird \& Power, 2015; Sylwester \& Roberts, 2010, 2013). Yet our findings suggest that cross-national variation in prosociality is not well explained by differences in possibilities for partner choice.
+However, previous research has also shown that relational mobility is positively related to generalised trust, willingness to help close friends, social support towards close friends, and gift-giving in romantic relationships (Kito et al., 2017; Thomson et al., 2018; Yuki et al., 2007; Yuki \& Schug, 2012). In contrast to this previous research, we found that relational mobility is either unrelated or negatively related to generalised trust, and is also unrelated to willingness to return a favour and gift-giving, as well as a host of other prosocial behaviours and attitudes. These differences in results may have arisen from differences in analytic strategies. For example, Thomson et al. (2018) conducted country-level correlations, and only found a relationship between relational mobility and generalised trust when excluding Hungary and Latin American countries (\emph{N} = 27). By contrast, we conducted individual-level multilevel models with measurement error and controls for statistical non-independence between countries.
+
+Taken together, these null findings challenge previous theoretical and empirical studies suggesting that partner choice promotes prosociality and cooperation in humans. Theoretical models show that introducing the possibility of partner choice creates conditions that favour the evolution of cooperation (Aktipis, 2004, 2011; Enquist \& Leimar, 1993; Roberts, 2020, 1998; Roberts et al., 2021). Laboratory and field work also suggests that partner choice, over and above simple reputational effects, encourages forms of competitive prosociality as people endeavour to be chosen for profitable partnerships (Barclay, 2004; Barclay \& Raihani, 2016; Barclay \& Willer, 2007; Bliege Bird \& Power, 2015; Sylwester \& Roberts, 2010, 2013). Yet our findings suggest that cross-national variation in prosociality is not well explained by differences in possibilities for partner choice.
 
 It is possible that relational mobility does affect prosocial behaviour and attitudes, but at a more local scale. Our biased sample of countries reflects a set of large-scale modern industrialised societies which are uncharacteristic of most of human history. Large-scale societies mostly promote and enforce prosociality through formal centralised institutions (e.g., courts, laws). In small-scale societies, by contrast, prosociality is more often promoted through local social norms that guide partner choice, reputation, and reciprocity (Glowacki \& Lew-Levy, 2022). This could explain why our cross-national results differ to those from previous field studies which measure partner choice in small-scale societies. To test this possibility, future research should employ the relational mobility self-report measures in a wider variety of societies with different social scales and cultural backgrounds, ideally including non-Western and small-scale societies.
 
@@ -420,7 +462,7 @@ We would like to acknowledge the many researchers involved in the Global Prefere
 \hypertarget{author-contributions}{%
 \section{Author Contributions}\label{author-contributions}}
 
-SC and TK conceived and designed the studies. SC performed the statistical analyses. SC wrote the paper with significant input from TK.
+SC and TK conceived and designed the studies. SC performed the statistical analyses and created all visualisations. SC wrote the paper with significant input from TK.
 
 \hypertarget{financial-support}{%
 \section{Financial support}\label{financial-support}}
@@ -562,6 +604,9 @@ Roberts, G., Raihani, N., Bshary, R., Manrique, H. M., Farina, A., Samu, F., \& 
 \leavevmode\vadjust pre{\hypertarget{ref-Angelo2021}{}}%
 Romano, A., Sutter, M., Liu, J. H., \& Balliet, D. (2021). Political ideology, cooperation and national parochialism across 42 nations. \emph{Philosophical Transactions of the Royal Society B: Biological Sciences}, \emph{376}(1822), 20200146. \url{https://doi.org/10.1098/rstb.2020.0146}
 
+\leavevmode\vadjust pre{\hypertarget{ref-Selig2008}{}}%
+Selig, J. P., Card, N. A., \& Little, T. D. (2008). Latent variable structural equation modeling in cross-cultural research: Multigroup and multilevel approaches. In F. J. R. van de Vijver, D. A. van Hemert, \& Y. H. Poortinga (Eds.), \emph{Multilevel analysis of individuals and cultures} (pp. 93--119). Taylor \& Francis Group/Lawrence Erlbaum Associates.
+
 \leavevmode\vadjust pre{\hypertarget{ref-Smith2020}{}}%
 Smith, K. M., \& Apicella, C. L. (2020). Partner choice in human evolution: The role of cooperation, foraging ability, and culture in {Hadza} campmate preferences. \emph{Evolution and Human Behavior}, \emph{41}(5), 354--366. https://doi.org/\url{https://doi.org/10.1016/j.evolhumbehav.2020.07.009}
 
@@ -588,6 +633,9 @@ Van Doesum, N. J., Murphy, R. O., Gallucci, M., Aharonov-Majar, E., Athenstaedt,
 
 \leavevmode\vadjust pre{\hypertarget{ref-Vehtari2017}{}}%
 Vehtari, A., Gelman, A., \& Gabry, J. (2017). Practical {B}ayesian model evaluation using leave-one-out cross-validation and {WAIC}. \emph{Statistics and Computing}, \emph{27}, 1413--1432. \url{https://doi.org/10.1007/s11222-016-9696-4}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Welzel2021}{}}%
+Welzel, C., Brunkert, L., Kruse, S., \& Inglehart, R. F. (2021). Non-invariance? An overstated problem with misconceived causes. \emph{Sociological Methods \& Research}, 0049124121995521. \url{https://doi.org/10.1177/0049124121995521}
 
 \leavevmode\vadjust pre{\hypertarget{ref-Wickham2016}{}}%
 Wickham, H. (2016). \emph{{ggplot2}: Elegant graphics for data analysis}. Springer-Verlag New York. \url{https://ggplot2.tidyverse.org}
@@ -642,15 +690,21 @@ where \(p_{lj}\) is the percentage of the population in nation \(l\) speaking la
 \hypertarget{bayesian-multilevel-models}{%
 \subsubsection{Bayesian multilevel models}\label{bayesian-multilevel-models}}
 
-In both Studies 1 and 2, we use Bayesian multilevel models to test our hypotheses. Below, we write out the formulae for the different models. We focus on models that include relational mobility as the only predictor, but these can be generalised to include additional predictors.
+In both Studies 1 and 2, we use Bayesian multilevel models to test our hypotheses. Below, we write out the formulae for the different models. We focus on models that include relational mobility as the only predictor, but these can be generalised to include additional predictors as fixed effects.
 
-In Study 1, we model prosociality as the outcome variable (\(\text{Pro}\)), relational mobility as the country-level predictor variable (\(\text{Rel}\)), random intercepts and slopes for different prosociality items in the Global Preferences Survey (altruism, positive reciprocity, and trust), and random intercepts for participants and countries. We allow separate random intercepts for countries to covary according to geographic (\(\textbf{G}\)) and linguistic (\(\textbf{L}\)) proximity matrices, and additionally include a residual random intercept over countries to capture country-specific effects that are independent of geographic and linguistic relationships with other countries. We also model relational mobility with measurement error by including standard deviations (\(\text{Rel}_{\text{SD}}\)) from observed latent variable means (\(\text{Rel}_{\text{OBS}}\)). The model formulae is as follows:
+In Study 1, we model prosociality as the outcome variable (\(\text{Pro}\)), relational mobility as the country-level predictor variable (\(\text{Rel}\)), random intercepts and slopes for different prosociality items in the Global Preferences Survey (\(\text{item}\); altruism, positive reciprocity, and trust), and random intercepts for participants (\(\text{part}\)) and countries (\(\text{country}\)).
+
+To deal with spatial and cultural non-independence between countries, we allow separate random intercepts for countries to covary according to geographic (\(\textbf{G}\)) and linguistic (\(\textbf{L}\)) proximity matrices. This is similar to the approach employed in phylogenetic general linear mixed models, which deal with the non-independent structure in model `residuals' by including a pre-computed covariance matrix specifying the relationships between species (Villemereuil \& Nakagawa, 2014; see also \href{https://cran.r-project.org/web/packages/brms/vignettes/brms_phylogenetics.html}{here}). In addition to these random effects, we include a residual random intercept over countries to capture country-specific effects that are independent of geographic and linguistic relationships with other countries.
+
+We also model relational mobility with measurement error by including standard deviations (\(\text{Rel}_{\text{SD}}\)) from observed latent variable means (\(\text{Rel}_{\text{OBS}}\)). This ensures that the uncertainty in the measurement of relational mobility from previous research is propagated into this model.
+
+The model formula is as follows:
 
 \[
 \begin{aligned}
 \text{Pro}_{i} &\sim \text{Normal}(\mu_{i},\sigma) \\
 \mu_{i} &= \alpha_{i} + \beta_{i}\text{Rel}_{\text{TRUE},i} \\
-\text{Rel}_{\text{TRUE},i} &= \lambda + \kappa z \\
+\text{Rel}_{\text{TRUE},i} &= \lambda + \kappa z_{\text{country}[i]} \\
 \text{Rel}_{\text{OBS},i} &\sim \text{Normal}(\text{Rel}_{\text{TRUE},i}, \text{Rel}_{\text{SD},i}) \\
 \alpha_{i} &= \bar{\alpha} + \alpha_{\text{item}[i]} + \alpha_{\text{part}[i]} + \alpha_{\text{G,country}[i]} + \alpha_{\text{L,country}[i]} + \alpha_{\text{R,country}[i]} \\
 \beta_{i} &= \bar{\beta} + \beta_{\text{item}[i]} \\
@@ -666,12 +720,34 @@ In Study 1, we model prosociality as the outcome variable (\(\text{Pro}\)), rela
 \alpha_{\text{G,country}} &\sim \text{Normal}(0, \tau_{G} \textbf{G}) \\
 \alpha_{\text{L,country}} &\sim \text{Normal}(0, \tau_{L} \textbf{L}) \\
 \alpha_{\text{R,country}} &\sim \text{Normal}(0, \tau_{R}) \\
-z &\sim \text{Normal}(0, 1)\\
+z_{\text{country}} &\sim \text{Normal}(0, 1)\\
 \bar{\alpha},\bar{\beta},\lambda &\sim \text{Normal}(0, 0.1) \\
 \textbf{R} &\sim \text{LKJCorr}(1)\\
 \kappa,\tau_{\alpha},\tau_{\beta},\tau_{P},\tau_{G},\tau_{L},\tau_{R},\sigma &\sim \text{Exponential}(5)
 \end{aligned}
 \]
+where \(\bar{\alpha}\) and \(\bar{\beta}\) represent intercept and slope fixed effects, other \(\alpha\) and \(\beta\) parameters represent random intercepts and slopes, \(\tau\) parameters represent standard deviations for random effects, \(\textbf{R}\) represents the correlation matrix for the item random effects, \(\sigma\) represents the residual variance, and \(\lambda\), \(\kappa\), and \(z\) represent the mean, standard deviation, and standardised latent values for the relational mobility measurement error model.
+
+As a formula suitable for the R package \emph{brms}, the model is written as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{brm}\NormalTok{(}
+  \AttributeTok{formula =}\NormalTok{ Pro }\SpecialCharTok{\textasciitilde{}} \DecValTok{0} \SpecialCharTok{+}\NormalTok{ Intercept }\SpecialCharTok{+} \FunctionTok{me}\NormalTok{(RML, RML\_SE, }\AttributeTok{gr =}\NormalTok{ iso) }\SpecialCharTok{+} 
+\NormalTok{    (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ RML }\SpecialCharTok{|}\NormalTok{ item) }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{|}\NormalTok{ id) }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{|} \FunctionTok{gr}\NormalTok{(iso1, }\AttributeTok{cov =}\NormalTok{ lingCov)) }\SpecialCharTok{+} 
+\NormalTok{    (}\DecValTok{1} \SpecialCharTok{|} \FunctionTok{gr}\NormalTok{(iso2, }\AttributeTok{cov =}\NormalTok{ geoCov)) }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{|}\NormalTok{ iso3), }
+  \AttributeTok{data =}\NormalTok{ d, }
+  \AttributeTok{family =}\NormalTok{ gaussian,}
+  \AttributeTok{prior =} \FunctionTok{c}\NormalTok{(}\FunctionTok{prior}\NormalTok{(}\FunctionTok{normal}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.1}\NormalTok{), }\AttributeTok{class =}\NormalTok{ b),}
+            \FunctionTok{prior}\NormalTok{(}\FunctionTok{exponential}\NormalTok{(}\DecValTok{5}\NormalTok{), }\AttributeTok{class =}\NormalTok{ sd),}
+            \FunctionTok{prior}\NormalTok{(}\FunctionTok{exponential}\NormalTok{(}\DecValTok{5}\NormalTok{), }\AttributeTok{class =}\NormalTok{ sigma),}
+            \FunctionTok{prior}\NormalTok{(}\FunctionTok{normal}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.1}\NormalTok{), }\AttributeTok{class =}\NormalTok{ meanme),}
+            \FunctionTok{prior}\NormalTok{(}\FunctionTok{exponential}\NormalTok{(}\DecValTok{5}\NormalTok{), }\AttributeTok{class =}\NormalTok{ sdme)), }
+  \AttributeTok{data2 =} \FunctionTok{list}\NormalTok{(}\AttributeTok{lingCov =}\NormalTok{ lingCov, }\AttributeTok{geoCov =}\NormalTok{ geoCov)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
 \newpage
 
 In Study 2, we use two types of Bayesian multilevel model. To analyse binary data on charitable organisation membership (\(\text{Org}\)) and generalised trust (\(\text{GenTru}\)), we use multilevel logistic regression models with random intercepts for countries. As in Study 1, we allow country random intercepts to vary according to geographic and linguistic proximity, and we model measurement error on the relational mobility predictor.
@@ -680,7 +756,7 @@ In Study 2, we use two types of Bayesian multilevel model. To analyse binary dat
 \begin{aligned}
 \text{Org}_{i}/\text{GenTru}_{i} &\sim \text{Bernoulli}(p_{i}) \\
 \text{logit}(p_{i}) &= \alpha_{i} + \beta\text{Rel}_{\text{TRUE},i} \\
-\text{Rel}_{\text{TRUE},i} &= \lambda + \kappa z \\
+\text{Rel}_{\text{TRUE},i} &= \lambda + \kappa z_{\text{country}[i]} \\
 \text{Rel}_{\text{OBS},i} &\sim \text{Normal}(\text{Rel}_{\text{TRUE},i}, \text{Rel}_{\text{SD},i}) \\
 \alpha_{i} &= \bar{\alpha} + \alpha_{\text{G,country}[i]} + \alpha_{\text{L,country}[i]} + \alpha_{\text{R,country}[i]} \\
 \alpha_{\text{G,country}} &\sim \text{Normal}(0, \tau_{G} \textbf{G}) \\
@@ -688,10 +764,30 @@ In Study 2, we use two types of Bayesian multilevel model. To analyse binary dat
 \alpha_{\text{R,country}} &\sim \text{Normal}(0, \tau_{R}) \\
 \lambda &\sim \text{Normal}(0, 0.1) \\
 \kappa &\sim \text{Exponential}(5) \\
-\bar{\alpha},\beta,z &\sim \text{Normal}(0, 1)\\
+\bar{\alpha},\beta,z_{\text{country}} &\sim \text{Normal}(0, 1)\\
 \tau_{G},\tau_{L},\tau_{R} &\sim \text{Exponential}(2)
 \end{aligned}
 \]
+
+where \(\bar{\alpha}\) and \(\beta\) represent the intercept and slope fixed effects, other \(\alpha\) parameters represent random intercepts, \(\tau\) parameters represent standard deviations for random effects, and \(\lambda\), \(\kappa\), and \(z\) represent the mean, standard deviation, and standardised latent values for the relational mobility measurement error model.
+
+In \emph{brms}, this model is written as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{brm}\NormalTok{(}
+  \AttributeTok{formula =}\NormalTok{ Org }\SpecialCharTok{\textasciitilde{}} \DecValTok{0} \SpecialCharTok{+}\NormalTok{ Intercept }\SpecialCharTok{+} \FunctionTok{me}\NormalTok{(RML, RML\_SE, }\AttributeTok{gr =}\NormalTok{ iso) }\SpecialCharTok{+} 
+\NormalTok{    (}\DecValTok{1} \SpecialCharTok{|} \FunctionTok{gr}\NormalTok{(iso1, }\AttributeTok{cov =}\NormalTok{ lingCov)) }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{|} \FunctionTok{gr}\NormalTok{(iso2, }\AttributeTok{cov =}\NormalTok{ geoCov)) }\SpecialCharTok{+} 
+\NormalTok{    (}\DecValTok{1} \SpecialCharTok{|}\NormalTok{ iso3), }
+  \AttributeTok{data =}\NormalTok{ d, }\AttributeTok{family =}\NormalTok{ bernoulli,}
+  \AttributeTok{prior =} \FunctionTok{c}\NormalTok{(}\FunctionTok{prior}\NormalTok{(}\FunctionTok{normal}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\AttributeTok{class =}\NormalTok{ b),}
+            \FunctionTok{prior}\NormalTok{(}\FunctionTok{exponential}\NormalTok{(}\DecValTok{2}\NormalTok{), }\AttributeTok{class =}\NormalTok{ sd),}
+            \FunctionTok{prior}\NormalTok{(}\FunctionTok{normal}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.1}\NormalTok{), }\AttributeTok{class =}\NormalTok{ meanme),}
+            \FunctionTok{prior}\NormalTok{(}\FunctionTok{exponential}\NormalTok{(}\DecValTok{5}\NormalTok{), }\AttributeTok{class =}\NormalTok{ sdme)),}
+  \AttributeTok{data2 =} \FunctionTok{list}\NormalTok{(}\AttributeTok{lingCov =}\NormalTok{ lingCov, }\AttributeTok{geoCov =}\NormalTok{ geoCov)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
 
 To analyse ordinal data on trust in different groups (\(\text{Trust}\)) and moral justifiability of different antisocial behaviours (\(\text{Just}\)), we use multilevel cumulative link regression models with random intercepts and slopes for groups / behaviours (\(\text{item}\)), as well as random intercepts for participants and countries. Again, as in Study 1, we allow country random intercepts to vary according to geographic and linguistic proximity, and we model measurement error on the relational mobility predictor.
 
@@ -699,7 +795,7 @@ To analyse ordinal data on trust in different groups (\(\text{Trust}\)) and mora
 \begin{aligned}
 \text{Trust}_{i}/\text{Just}_{i} &\sim \text{Ordered-logit}(\phi_{i},\zeta) \\
 \phi_{i} &= \alpha_{i} + \beta_{i}\text{Rel}_{\text{TRUE},i} \\
-\text{Rel}_{\text{TRUE},i} &= \lambda + \kappa z \\
+\text{Rel}_{\text{TRUE},i} &= \lambda + \kappa z_{\text{country}[i]} \\
 \text{Rel}_{\text{OBS},i} &\sim \text{Normal}(\text{Rel}_{\text{TRUE},i}, \text{Rel}_{\text{SD},i}) \\
 \alpha_{i} &= \alpha_{\text{item}[i]} + \alpha_{\text{part}[i]} + \alpha_{\text{G,country}[i]} + \alpha_{\text{L,country}[i]} + \alpha_{\text{R,country}[i]} \\
 \beta_{i} &= \bar{\beta} + \beta_{\text{item}[i]} \\
@@ -715,7 +811,7 @@ To analyse ordinal data on trust in different groups (\(\text{Trust}\)) and mora
 \alpha_{\text{G,country}} &\sim \text{Normal}(0, \tau_{G} \textbf{G}) \\
 \alpha_{\text{L,country}} &\sim \text{Normal}(0, \tau_{L} \textbf{L}) \\
 \alpha_{\text{R,country}} &\sim \text{Normal}(0, \tau_{R}) \\
-z &\sim \text{Normal}(0, 1)\\
+z_{\text{country}} &\sim \text{Normal}(0, 1)\\
 \zeta_{j} &\sim \text{Normal}(0, 2)\\
 \bar{\beta} &\sim \text{Normal}(0, 0.5) \\
 \lambda &\sim \text{Normal}(0, 0.1) \\
@@ -724,6 +820,26 @@ z &\sim \text{Normal}(0, 1)\\
 \tau_{\alpha},\tau_{\beta},\tau_{P},\tau_{G},\tau_{L},\tau_{R} &\sim \text{Exponential}(4) \\
 \end{aligned}
 \]
+
+where \(\zeta\) parameters represent ordinal intercept cutpoints, \(\bar{\beta}\) represents the slope fixed effect, other \(\alpha\) and \(\beta\) parameters represent random intercepts and slopes, \(\tau\) parameters represent standard deviations for random effects, \(\textbf{R}\) represents the correlation matrix for the item random effects, and \(\lambda\), \(\kappa\), and \(z\) represent the mean, standard deviation, and standardised latent values for the relational mobility measurement error model.
+
+In \emph{brms}, this model is written as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{brm}\NormalTok{(}
+  \AttributeTok{formula =}\NormalTok{ Trust }\SpecialCharTok{\textasciitilde{}} \DecValTok{1} \SpecialCharTok{+} \FunctionTok{me}\NormalTok{(RML, RML\_SE, }\AttributeTok{gr =}\NormalTok{ iso) }\SpecialCharTok{+} 
+\NormalTok{    (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ RML }\SpecialCharTok{|}\NormalTok{ group) }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{|}\NormalTok{ id) }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{|} \FunctionTok{gr}\NormalTok{(iso1, }\AttributeTok{cov =}\NormalTok{ lingCov)) }\SpecialCharTok{+} 
+\NormalTok{    (}\DecValTok{1} \SpecialCharTok{|} \FunctionTok{gr}\NormalTok{(iso2, }\AttributeTok{cov =}\NormalTok{ geoCov)) }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{|}\NormalTok{ iso3), }
+  \AttributeTok{data =}\NormalTok{ d, }\AttributeTok{family =}\NormalTok{ cumulative,}
+  \AttributeTok{prior =} \FunctionTok{c}\NormalTok{(}\FunctionTok{prior}\NormalTok{(}\FunctionTok{normal}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{), }\AttributeTok{class =}\NormalTok{ Intercept),}
+            \FunctionTok{prior}\NormalTok{(}\FunctionTok{normal}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.5}\NormalTok{), }\AttributeTok{class =}\NormalTok{ b),}
+            \FunctionTok{prior}\NormalTok{(}\FunctionTok{exponential}\NormalTok{(}\DecValTok{4}\NormalTok{), }\AttributeTok{class =}\NormalTok{ sd),}
+            \FunctionTok{prior}\NormalTok{(}\FunctionTok{normal}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.1}\NormalTok{), }\AttributeTok{class =}\NormalTok{ meanme),}
+            \FunctionTok{prior}\NormalTok{(}\FunctionTok{exponential}\NormalTok{(}\DecValTok{5}\NormalTok{), }\AttributeTok{class =}\NormalTok{ sdme))}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
 
 \newpage
 
@@ -1088,6 +1204,8 @@ MacCallum, R. C., Browne, M. W., \& Sugawara, H. M. (1996). Power analysis and d
 Talhelm, T., Zhang, X., Oishi, S., Shimin, C., Duan, D., Lan, X., \& Kitayama, S. (2014). Large-scale psychological differences within china explained by rice versus wheat agriculture. \emph{Science}, \emph{344}(6184), 603--608. \url{https://doi.org/10.1126/science.1246850}
 
 Thomson, R., Yuki, M., Talhelm, T., Schug, J., Kito, M., Ayanian, A. H., Becker, J. C., Becker, M., Chiu, C.-y., Choi, H.-S., Ferreira, C. M., Fülöp, M., Gul, P., Houghton-Illera, A. M., Joasoo, M., Jong, J., Kavanagh, C. M., Khutkyy, D., Manzi, C., \ldots{} Visserman, M. L. (2018). Relational mobility predicts social behaviors in 39 countries and is tied to historical farming and threat. \emph{Proceedings of the National Academy of Sciences}, \emph{115}(29), 7521--7526. \url{https://doi.org/10.1073/pnas.1713191115}
+
+Villemereuil, P. D., \& Nakagawa, S. (2014). General quantitative genetic methods for comparative biology. In \emph{Modern phylogenetic comparative methods and their application in evolutionary biology} (pp.~287-303). Springer, Berlin, Heidelberg.
 
 
 \end{document}

@@ -30,15 +30,21 @@ where $p_{lj}$ is the percentage of the population in nation $l$ speaking langua
 
 ### Bayesian multilevel models
 
-In both Studies 1 and 2, we use Bayesian multilevel models to test our hypotheses. Below, we write out the formulae for the different models. We focus on models that include relational mobility as the only predictor, but these can be generalised to include additional predictors.
+In both Studies 1 and 2, we use Bayesian multilevel models to test our hypotheses. Below, we write out the formulae for the different models. We focus on models that include relational mobility as the only predictor, but these can be generalised to include additional predictors as fixed effects.
 
-In Study 1, we model prosociality as the outcome variable ($\text{Pro}$), relational mobility as the country-level predictor variable ($\text{Rel}$), random intercepts and slopes for different prosociality items in the Global Preferences Survey (altruism, positive reciprocity, and trust), and random intercepts for participants and countries. We allow separate random intercepts for countries to covary according to geographic ($\textbf{G}$) and linguistic ($\textbf{L}$) proximity matrices, and additionally include a residual random intercept over countries to capture country-specific effects that are independent of geographic and linguistic relationships with other countries. We also model relational mobility with measurement error by including standard deviations ($\text{Rel}_{\text{SD}}$) from observed latent variable means ($\text{Rel}_{\text{OBS}}$). The model formulae is as follows:
+In Study 1, we model prosociality as the outcome variable ($\text{Pro}$), relational mobility as the country-level predictor variable ($\text{Rel}$), random intercepts and slopes for different prosociality items in the Global Preferences Survey ($\text{item}$; altruism, positive reciprocity, and trust), and random intercepts for participants ($\text{part}$) and countries ($\text{country}$).
+
+To deal with spatial and cultural non-independence between countries, we allow separate random intercepts for countries to covary according to geographic ($\textbf{G}$) and linguistic ($\textbf{L}$) proximity matrices. This is similar to the approach employed in phylogenetic general linear mixed models, which deal with the non-independent structure in model 'residuals' by including a pre-computed covariance matrix specifying the relationships between species (Villemereuil & Nakagawa, 2014; see also [here](https://cran.r-project.org/web/packages/brms/vignettes/brms_phylogenetics.html)). In addition to these random effects, we include a residual random intercept over countries to capture country-specific effects that are independent of geographic and linguistic relationships with other countries.
+
+We also model relational mobility with measurement error by including standard deviations ($\text{Rel}_{\text{SD}}$) from observed latent variable means ($\text{Rel}_{\text{OBS}}$). This ensures that the uncertainty in the measurement of relational mobility from previous research is propagated into this model.
+
+The model formula is as follows:
 
 $$
 \begin{aligned}
 \text{Pro}_{i} &\sim \text{Normal}(\mu_{i},\sigma) \\
 \mu_{i} &= \alpha_{i} + \beta_{i}\text{Rel}_{\text{TRUE},i} \\
-\text{Rel}_{\text{TRUE},i} &= \lambda + \kappa z \\
+\text{Rel}_{\text{TRUE},i} &= \lambda + \kappa z_{\text{country}[i]} \\
 \text{Rel}_{\text{OBS},i} &\sim \text{Normal}(\text{Rel}_{\text{TRUE},i}, \text{Rel}_{\text{SD},i}) \\
 \alpha_{i} &= \bar{\alpha} + \alpha_{\text{item}[i]} + \alpha_{\text{part}[i]} + \alpha_{\text{G,country}[i]} + \alpha_{\text{L,country}[i]} + \alpha_{\text{R,country}[i]} \\
 \beta_{i} &= \bar{\beta} + \beta_{\text{item}[i]} \\
@@ -54,12 +60,32 @@ $$
 \alpha_{\text{G,country}} &\sim \text{Normal}(0, \tau_{G} \textbf{G}) \\
 \alpha_{\text{L,country}} &\sim \text{Normal}(0, \tau_{L} \textbf{L}) \\
 \alpha_{\text{R,country}} &\sim \text{Normal}(0, \tau_{R}) \\
-z &\sim \text{Normal}(0, 1)\\
+z_{\text{country}} &\sim \text{Normal}(0, 1)\\
 \bar{\alpha},\bar{\beta},\lambda &\sim \text{Normal}(0, 0.1) \\
 \textbf{R} &\sim \text{LKJCorr}(1)\\
 \kappa,\tau_{\alpha},\tau_{\beta},\tau_{P},\tau_{G},\tau_{L},\tau_{R},\sigma &\sim \text{Exponential}(5)
 \end{aligned}
 $$
+where $\bar{\alpha}$ and $\bar{\beta}$ represent intercept and slope fixed effects, other $\alpha$ and $\beta$ parameters represent random intercepts and slopes, $\tau$ parameters represent standard deviations for random effects, $\textbf{R}$ represents the correlation matrix for the item random effects, $\sigma$ represents the residual variance, and $\lambda$, $\kappa$, and $z$ represent the mean, standard deviation, and standardised latent values for the relational mobility measurement error model.
+
+As a formula suitable for the R package _brms_, the model is written as follows:
+
+```{r, echo = TRUE, eval = FALSE}
+brm(
+  formula = Pro ~ 0 + Intercept + me(RML, RML_SE, gr = iso) + 
+    (1 + RML | item) + (1 | id) + (1 | gr(iso1, cov = lingCov)) + 
+    (1 | gr(iso2, cov = geoCov)) + (1 | iso3), 
+  data = d, 
+  family = gaussian,
+  prior = c(prior(normal(0, 0.1), class = b),
+            prior(exponential(5), class = sd),
+            prior(exponential(5), class = sigma),
+            prior(normal(0, 0.1), class = meanme),
+            prior(exponential(5), class = sdme)), 
+  data2 = list(lingCov = lingCov, geoCov = geoCov)
+  )
+```
+
 \newpage
 
 In Study 2, we use two types of Bayesian multilevel model. To analyse binary data on charitable organisation membership ($\text{Org}$) and generalised trust ($\text{GenTru}$), we use multilevel logistic regression models with random intercepts for countries. As in Study 1, we allow country random intercepts to vary according to geographic and linguistic proximity, and we model measurement error on the relational mobility predictor.
@@ -68,7 +94,7 @@ $$
 \begin{aligned}
 \text{Org}_{i}/\text{GenTru}_{i} &\sim \text{Bernoulli}(p_{i}) \\
 \text{logit}(p_{i}) &= \alpha_{i} + \beta\text{Rel}_{\text{TRUE},i} \\
-\text{Rel}_{\text{TRUE},i} &= \lambda + \kappa z \\
+\text{Rel}_{\text{TRUE},i} &= \lambda + \kappa z_{\text{country}[i]} \\
 \text{Rel}_{\text{OBS},i} &\sim \text{Normal}(\text{Rel}_{\text{TRUE},i}, \text{Rel}_{\text{SD},i}) \\
 \alpha_{i} &= \bar{\alpha} + \alpha_{\text{G,country}[i]} + \alpha_{\text{L,country}[i]} + \alpha_{\text{R,country}[i]} \\
 \alpha_{\text{G,country}} &\sim \text{Normal}(0, \tau_{G} \textbf{G}) \\
@@ -76,10 +102,28 @@ $$
 \alpha_{\text{R,country}} &\sim \text{Normal}(0, \tau_{R}) \\
 \lambda &\sim \text{Normal}(0, 0.1) \\
 \kappa &\sim \text{Exponential}(5) \\
-\bar{\alpha},\beta,z &\sim \text{Normal}(0, 1)\\
+\bar{\alpha},\beta,z_{\text{country}} &\sim \text{Normal}(0, 1)\\
 \tau_{G},\tau_{L},\tau_{R} &\sim \text{Exponential}(2)
 \end{aligned}
 $$
+
+where $\bar{\alpha}$ and $\beta$ represent the intercept and slope fixed effects, other $\alpha$ parameters represent random intercepts, $\tau$ parameters represent standard deviations for random effects, and $\lambda$, $\kappa$, and $z$ represent the mean, standard deviation, and standardised latent values for the relational mobility measurement error model.
+
+In _brms_, this model is written as follows:
+
+```{r, echo = TRUE, eval = FALSE}
+brm(
+  formula = Org ~ 0 + Intercept + me(RML, RML_SE, gr = iso) + 
+    (1 | gr(iso1, cov = lingCov)) + (1 | gr(iso2, cov = geoCov)) + 
+    (1 | iso3), 
+  data = d, family = bernoulli,
+  prior = c(prior(normal(0, 1), class = b),
+            prior(exponential(2), class = sd),
+            prior(normal(0, 0.1), class = meanme),
+            prior(exponential(5), class = sdme)),
+  data2 = list(lingCov = lingCov, geoCov = geoCov)
+  )
+```
 
 To analyse ordinal data on trust in different groups ($\text{Trust}$) and moral justifiability of different antisocial behaviours ($\text{Just}$), we use multilevel cumulative link regression models with random intercepts and slopes for groups / behaviours ($\text{item}$), as well as random intercepts for participants and countries. Again, as in Study 1, we allow country random intercepts to vary according to geographic and linguistic proximity, and we model measurement error on the relational mobility predictor.
 
@@ -87,7 +131,7 @@ $$
 \begin{aligned}
 \text{Trust}_{i}/\text{Just}_{i} &\sim \text{Ordered-logit}(\phi_{i},\zeta) \\
 \phi_{i} &= \alpha_{i} + \beta_{i}\text{Rel}_{\text{TRUE},i} \\
-\text{Rel}_{\text{TRUE},i} &= \lambda + \kappa z \\
+\text{Rel}_{\text{TRUE},i} &= \lambda + \kappa z_{\text{country}[i]} \\
 \text{Rel}_{\text{OBS},i} &\sim \text{Normal}(\text{Rel}_{\text{TRUE},i}, \text{Rel}_{\text{SD},i}) \\
 \alpha_{i} &= \alpha_{\text{item}[i]} + \alpha_{\text{part}[i]} + \alpha_{\text{G,country}[i]} + \alpha_{\text{L,country}[i]} + \alpha_{\text{R,country}[i]} \\
 \beta_{i} &= \bar{\beta} + \beta_{\text{item}[i]} \\
@@ -103,7 +147,7 @@ $$
 \alpha_{\text{G,country}} &\sim \text{Normal}(0, \tau_{G} \textbf{G}) \\
 \alpha_{\text{L,country}} &\sim \text{Normal}(0, \tau_{L} \textbf{L}) \\
 \alpha_{\text{R,country}} &\sim \text{Normal}(0, \tau_{R}) \\
-z &\sim \text{Normal}(0, 1)\\
+z_{\text{country}} &\sim \text{Normal}(0, 1)\\
 \zeta_{j} &\sim \text{Normal}(0, 2)\\
 \bar{\beta} &\sim \text{Normal}(0, 0.5) \\
 \lambda &\sim \text{Normal}(0, 0.1) \\
@@ -112,6 +156,24 @@ z &\sim \text{Normal}(0, 1)\\
 \tau_{\alpha},\tau_{\beta},\tau_{P},\tau_{G},\tau_{L},\tau_{R} &\sim \text{Exponential}(4) \\
 \end{aligned}
 $$
+
+where $\zeta$ parameters represent ordinal intercept cutpoints, $\bar{\beta}$ represents the slope fixed effect, other $\alpha$ and $\beta$ parameters represent random intercepts and slopes, $\tau$ parameters represent standard deviations for random effects, $\textbf{R}$ represents the correlation matrix for the item random effects, and $\lambda$, $\kappa$, and $z$ represent the mean, standard deviation, and standardised latent values for the relational mobility measurement error model.
+
+In _brms_, this model is written as follows:
+
+```{r, echo = TRUE, eval = FALSE}
+brm(
+  formula = Trust ~ 1 + me(RML, RML_SE, gr = iso) + 
+    (1 + RML | group) + (1 | id) + (1 | gr(iso1, cov = lingCov)) + 
+    (1 | gr(iso2, cov = geoCov)) + (1 | iso3), 
+  data = d, family = cumulative,
+  prior = c(prior(normal(0, 2), class = Intercept),
+            prior(normal(0, 0.5), class = b),
+            prior(exponential(4), class = sd),
+            prior(normal(0, 0.1), class = meanme),
+            prior(exponential(5), class = sdme))
+  )
+```
 
 \newpage
 
@@ -300,3 +362,5 @@ MacCallum, R. C., Browne, M. W., & Sugawara, H. M. (1996). Power analysis and de
 Talhelm, T., Zhang, X., Oishi, S., Shimin, C., Duan, D., Lan, X., & Kitayama, S. (2014). Large-scale psychological differences within china explained by rice versus wheat agriculture. _Science_, _344_(6184), 603–608. https://doi.org/10.1126/science.1246850
 
 Thomson, R., Yuki, M., Talhelm, T., Schug, J., Kito, M., Ayanian, A. H., Becker, J. C., Becker, M., Chiu, C.-y., Choi, H.-S., Ferreira, C. M., Fülöp, M., Gul, P., Houghton-Illera, A. M., Joasoo, M., Jong, J., Kavanagh, C. M., Khutkyy, D., Manzi, C., ... Visserman, M. L. (2018). Relational mobility predicts social behaviors in 39 countries and is tied to historical farming and threat. _Proceedings of the National Academy of Sciences_, _115_(29), 7521–7526. https://doi.org/10.1073/pnas.1713191115
+
+Villemereuil, P. D., & Nakagawa, S. (2014). General quantitative genetic methods for comparative biology. In _Modern phylogenetic comparative methods and their application in evolutionary biology_ (pp. 287-303). Springer, Berlin, Heidelberg.
